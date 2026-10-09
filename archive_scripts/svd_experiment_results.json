@@ -1,0 +1,87 @@
+{
+  "baseline_cv_f1": 0.7043,
+  "baseline_cv_acc": 0.7048,
+  "configurations": [
+    {
+      "label": "Baseline (no SVD)",
+      "cv_acc_mean": 0.6759,
+      "cv_acc_std": 0.0374,
+      "cv_f1_mean": 0.6745,
+      "cv_f1_std": 0.0373,
+      "tr_acc_mean": 0.9942,
+      "folds": [
+        0.7225,
+        0.6743,
+        0.6193,
+        0.6499,
+        0.7063
+      ],
+      "time_s": 0.5
+    },
+    {
+      "label": "SVD n_components=50",
+      "cv_acc_mean": 0.5898,
+      "cv_acc_std": 0.0347,
+      "cv_f1_mean": 0.5888,
+      "cv_f1_std": 0.0341,
+      "tr_acc_mean": 0.7515,
+      "folds": [
+        0.633,
+        0.5479,
+        0.5531,
+        0.5909,
+        0.6191
+      ],
+      "time_s": 0.7
+    },
+    {
+      "label": "SVD n_components=100",
+      "cv_acc_mean": 0.6599,
+      "cv_acc_std": 0.0229,
+      "cv_f1_mean": 0.6595,
+      "cv_f1_std": 0.0231,
+      "tr_acc_mean": 0.8361,
+      "folds": [
+        0.6857,
+        0.6341,
+        0.6348,
+        0.6864,
+        0.6566
+      ],
+      "time_s": 1.5
+    },
+    {
+      "label": "SVD n_components=150",
+      "cv_acc_mean": 0.6759,
+      "cv_acc_std": 0.0332,
+      "cv_f1_mean": 0.6755,
+      "cv_f1_std": 0.0331,
+      "tr_acc_mean": 0.8788,
+      "folds": [
+        0.7299,
+        0.6619,
+        0.6286,
+        0.6858,
+        0.6713
+      ],
+      "time_s": 1.7
+    }
+  ],
+  "best_svd": {
+    "label": "SVD n_components=150",
+    "cv_acc_mean": 0.6759,
+    "cv_acc_std": 0.0332,
+    "cv_f1_mean": 0.6755,
+    "cv_f1_std": 0.0331,
+    "tr_acc_mean": 0.8788,
+    "folds": [
+      0.7299,
+      0.6619,
+      0.6286,
+      0.6858,
+      0.6713
+    ],
+    "time_s": 1.7
+  },
+  "svd_improved": false
+}

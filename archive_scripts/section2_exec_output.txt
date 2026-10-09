@@ -1,0 +1,147 @@
+﻿Section 2 cells: 35 to 57
+
+============================================================
+  Running cell 37 (exec #1)...
+============================================================
+============================================================
+  Loaded: DATASET.CSV
+  Shape : 857 rows x 12 columns
+============================================================
+
+[A1] Missing Values per Column:
+  Γ£à No missing values in any column.
+
+[A2] Duplicate Rows: 0 Γ£à
+[A3] Duplicate Complaint_IDs: 0 Γ£à
+[A4] Empty Complaint_Text: 0 Γ£à
+[A5] Very Short Complaints (<5 words): 0 Γ£à
+[A6] Repeated Complaint Text (exact): 0 Γ£à
+
+[A7] Potentially Templated Complaints (same opening, count > 2):
+    Count=4: "The washroom on our floor hasnt been cle..."
+    Count=3: "Flush in the washroom near the stairs ha..."
+    Count=3: "The wifi on our floor becomes almost unu..."
+    Count=3: "The pipe behind the washroom wall is lea..."
+    Count=3: "Dust has settled thick on the window sil..."
+    Count=3: "The switchboard cover in my room is crac..."
+
+  Note: 6 repeated openings found.
+  These are likely real complaints about the same recurring issue,
+  NOT data quality problems. All have different Complaint_IDs and text.
+
+[A8] Priority Unique Values: ['High', 'Low', 'Medium']
+     Invalid Priority rows: 0 Γ£à
+
+[A9] Students_Affected present: False Γ£à (correctly absent)
+     Support_Count present: True - will be EXCLUDED from ML features
+
+============================================================
+  Γ£à Dataset is clean and ready for training.
+============================================================
+
+
+============================================================
+  Running cell 40 (exec #2)...
+============================================================
+Priority Distribution:
+  High  : 260 samples  (30.3%)
+  Medium: 359 samples  (41.9%)
+  Low   : 238 samples  (27.8%)
+
+  -> Plot captured for cell 40
+
+============================================================
+  Running cell 43 (exec #3)...
+============================================================
+Top categories by proportion of HIGH priority complaints:
+Category
+Lift                  0.611
+Fire Safety           0.600
+Drainage              0.542
+Electricity           0.531
+Water Supply          0.529
+Leakage               0.500
+Pest Control          0.500
+Ragging/Harassment    0.500
+
+  -> Plot captured for cell 43
+
+============================================================
+  Running cell 46 (exec #4)...
+============================================================
+Complaint Type normalized distribution:
+Priority         High  Medium   Low
+Complaint_Type                     
+Private         0.240   0.380  0.38
+Public          0.315   0.426  0.26
+
+  -> Plot captured for cell 46
+
+============================================================
+  Running cell 49 (exec #5)...
+============================================================
+Block - normalized priority distribution:
+Priority   High  Medium    Low
+Block                         
+A         0.330   0.421  0.249
+B         0.257   0.430  0.313
+C         0.323   0.406  0.271
+
+Floor - normalized priority distribution:
+Priority   High  Medium    Low
+Floor                         
+Ground    0.376   0.337  0.287
+First     0.256   0.449  0.295
+Second    0.319   0.392  0.289
+Third     0.310   0.480  0.210
+Fourth    0.219   0.521  0.260
+
+  -> Plot captured for cell 49
+
+============================================================
+  Running cell 52 (exec #6)...
+============================================================
+Average word count statistics by Priority:
+           mean  min  max   std
+Priority                       
+High      15.07    6   25  2.72
+Medium    14.84    9   24  2.70
+Low       15.00    6   24  2.88
+
+  -> Plot captured for cell 52
+
+============================================================
+  Running cell 55 (exec #7)...
+============================================================
+Support_Count Statistics by Priority:
+(For data integrity check only ΓÇö NOT an ML input feature)
+-------------------------------------------------------
+          count   mean    std  min   25%   50%   75%   max
+Priority                                                  
+High      260.0  12.67  11.32  0.0  4.75  11.0  16.0  65.0
+Medium    359.0   6.99   6.14  0.0  2.00   6.0  10.0  42.0
+Low       238.0   2.72   4.31  0.0  0.00   1.0   4.0  42.0
+
+=======================================================
+  ARCHITECTURE NOTE:
+=======================================================
+
+  ML Prediction Flow (at submission time):
+    Student submits complaint
+      -> Support_Count = 0  (nobody has voted yet)
+      -> Complaint_Text + Category + Type + Block + Floor
+      -> ML Model
+      -> Initial Priority: High / Medium / Low
+
+  Mathematical Escalation Flow (after voting):
+    Students vote / support the complaint
+      -> Support_Count increases
+      -> escalate_priority(ml_priority, support_count)
+      -> Priority may escalate one level
+
+  Support_Count is EXCLUDED from ML features.
+
+
+
+Γ£à Section 2 cells executed and outputs embedded.
+   Notebook saved: hostel_complaint_prioritization.ipynb

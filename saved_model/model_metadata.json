@@ -1,0 +1,30 @@
+{
+  "model_name": "LinearSVC",
+  "dataset": "Dataset_duration.csv",
+  "n_samples": 857,
+  "n_train": 685,
+  "n_test": 172,
+  "n_features": 1537,
+  "tfidf_features": 1497,
+  "ohe_features": 39,
+  "num_features": 1,
+  "classes": [
+    "High",
+    "Medium",
+    "Low"
+  ],
+  "train_accuracy": 0.9927,
+  "test_accuracy": 0.6628,
+  "test_f1_weighted": 0.6627,
+  "cv_accuracy_mean": 0.7048,
+  "cv_f1_mean": 0.7043,
+  "excluded": [
+    "Support_Count",
+    "Room_No",
+    "Status",
+    "Complaint_Date",
+    "Complaint_ID",
+    "Duration_Standardized"
+  ],
+  "leakage_fixed": true
+}

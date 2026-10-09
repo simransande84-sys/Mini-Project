@@ -1,0 +1,82 @@
+﻿=== DATASET.CSV INSPECTION ===
+Shape: (857, 12)
+Rows: 857, Columns: 12
+
+=== COLUMN NAMES ===
+  [0] Complaint_ID
+  [1] Complaint_Text
+  [2] Complaint_Type
+  [3] Block
+  [4] Floor
+  [5] Room_No
+  [6] Category
+  [7] Duration
+  [8] Support_Count
+  [9] Priority
+  [10] Status
+  [11] Complaint_Date
+
+=== DATA TYPES ===
+Complaint_ID        str
+Complaint_Text      str
+Complaint_Type      str
+Block               str
+Floor               str
+Room_No           int64
+Category            str
+Duration            str
+Support_Count     int64
+Priority            str
+Status              str
+Complaint_Date      str
+dtype: object
+
+=== MISSING VALUES ===
+Complaint_ID      0
+Complaint_Text    0
+Complaint_Type    0
+Block             0
+Floor             0
+Room_No           0
+Category          0
+Duration          0
+Support_Count     0
+Priority          0
+Status            0
+Complaint_Date    0
+dtype: int64
+
+=== DUPLICATE ROWS ===
+Duplicate rows: 0
+
+=== PRIORITY UNIQUE VALUES AND COUNTS ===
+Priority
+Medium    359
+High      260
+Low       238
+Name: count, dtype: int64
+Unique Priority values: ['High', 'Low', 'Medium']
+
+=== FIRST 5 ROWS ===
+  Complaint_ID                                                                                        Complaint_Text Complaint_Type Block   Floor  Room_No     Category            Duration  Support_Count Priority       Status Complaint_Date
+0        C0001                                                                Theres cobwebs all over the staircase.         Public     B   First       15  Cleanliness  since this evening              2      Low     Resolved     01-05-2026
+1        C0002         My washroom door doesnt lock properly because the pipe fitting behind it is loose and jammed.         Public     C   First       15     Washroom     since yesterday              0      Low      Pending     01-05-2026
+2        C0003                                       The milk served at breakfast smelled slightly off this morning.         Public     C  Ground        4         Mess  since this morning              1     High      Pending     01-05-2026
+3        C0004                              Mess timing keeps changing without any notice, we end up missing dinner.         Public     C  Second       23         Mess    since 30 minutes             20   Medium  In Progress     01-05-2026
+4        C0005  Theres cobwebs all over the staircase, doesnt look like anyone has cleaned it in ages, since Monday.         Public     B   First       14  Cleanliness        since Monday             17   Medium      Pending     01-05-2026
+
+=== LAST 5 ROWS ===
+    Complaint_ID                                                                                                    Complaint_Text Complaint_Type Block   Floor  Room_No      Category             Duration  Support_Count Priority       Status Complaint_Date
+852        C1135           Water cooler on our floor is dispensing water that tastes metallic, I think the filter needs replacing.         Public     C   First       12  Water Cooler    for almost a week              6   Medium      Pending     16-07-2026
+853        C1136         The washing machine drum makes a banging noise on spin cycle, worried it might damage clothes eventually.         Public     A  Second       21       Laundry  for the past 3 days              3      Low      Pending     17-07-2026
+854        C1137  Balcony railing outside the common room feels loose when leaned on, could be dangerous if someone isn't careful.         Public     B   Third       38    Structural      since last week              7     High  In Progress     18-07-2026
+855        C1138                              AC in the reading hall is leaking water that's pooling under one of the study desks.         Public     C  Fourth       49            AC     for 3-4 days now              5   Medium      Pending     19-07-2026
+856        C1139                   The mosquito mesh on my window has torn loose from one corner, mosquitoes get in every evening.        Private     A   First       20        Window  for the past 2 days              2      Low      Pending     20-07-2026
+
+Students_Affected present: False
+Support_Count present: True
+Complaint_ID present: True
+Text column found: Complaint_Text
+
+=== DUPLICATE Complaint_ID ===
+Duplicate Complaint_IDs: 0

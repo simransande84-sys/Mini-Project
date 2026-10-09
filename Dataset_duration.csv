@@ -1,0 +1,858 @@
+Complaint_ID,Complaint_Text,Complaint_Type,Block,Floor,Room_No,Category,Duration_Standardized,Support_Count,Priority,Status,Complaint_Date
+C0001,Theres cobwebs all over the staircase.,Public,B,First,15,Cleanliness,3 hours,2,Low,Resolved,01-05-2026
+C0002,My washroom door doesnt lock properly because the pipe fitting behind it is loose and jammed.,Public,C,First,15,Washroom,1 day,0,Low,Pending,01-05-2026
+C0003,The milk served at breakfast smelled slightly off this morning.,Public,C,Ground,4,Mess,8 hours,1,High,Pending,01-05-2026
+C0004,"Mess timing keeps changing without any notice, we end up missing dinner.",Public,C,Second,23,Mess,1 hour,20,Medium,In Progress,01-05-2026
+C0005,"Theres cobwebs all over the staircase, doesnt look like anyone has cleaned it in ages, since Monday.",Public,B,First,14,Cleanliness,4 days,17,Medium,Pending,01-05-2026
+C0007,"Since yesterday, bunk bed ladder in my room feels really loose, kind of unsafe to climb.",Public,A,Second,29,Furniture,1 day,0,High,In Progress,01-05-2026
+C0008,Theres been no drinking water in the cooler on Second floor since this morning.,Public,B,Second,30,Water Cooler,8 hours,20,High,In Progress,01-05-2026
+C0012,"Someone keeps banging on doors late at night as some kind of prank, for 4 days now.",Public,B,First,14,Noise,4 days,14,High,Pending,02-05-2026
+C0013,"Study table drawer in Room 24 is stuck and just wont open, since Wednesday.",Public,B,Second,28,Furniture,2 days,0,Low,Pending,03-05-2026
+C0014,"Backup power only seems to work for the corridor lights, rooms stay completely dark during cuts.",Public,B,First,20,Electricity,4 days,4,High,Pending,04-05-2026
+C0015,"For the past 3 days, dropped my wallet somewhere between the library and Block A, if anyone finds it please let me know.",Private,A,Second,29,Security,3 days,0,Low,Pending,05-05-2026
+C0016,"Lost my phone charger somewhere near Block B, would really appreciate any help finding it.",Private,B,Second,22,Security,6 days,0,Low,Pending,05-05-2026
+C0017,"Cant open the drawer of my study table anymore, it just wont budge.",Public,C,First,14,Furniture,1 week,0,Low,Resolved,06-05-2026
+C0018,Id card checking at the main gate has become quite lax these days.,Private,C,Ground,4,Security,4 days,0,Low,Pending,06-05-2026
+C0019,Shower head in the bathroom is broken.,Public,C,Second,24,Washroom,4 days,0,Low,Resolved,06-05-2026
+C0020,"The cupboard door in my room wont close properly, the hinge looks broken.",Public,A,First,20,Furniture,8 days,0,Low,In Progress,06-05-2026
+C0022,"Two of my friends fell sick after dinner yesterday, the food might have been stale.",Public,C,First,19,Mess,1 day,0,High,In Progress,07-05-2026
+C0023,Garbage bins outside Block C havent been emptied in almost 2 weeks now.,Public,C,Ground,6,Cleanliness,2 weeks,9,High,In Progress,07-05-2026
+C0024,The water dispenser stand in the common area is cracked and looks like it might collapse.,Public,C,First,14,Water Cooler,6 days,1,High,Pending,07-05-2026
+C0026,"Carrom board in the common room is missing four coins so we cant even play properly, since yesterday.",Public,B,Second,22,Furniture,1 day,8,Medium,Resolved,07-05-2026
+C0027,"For 5 hours, the chair in my room is broken, one leg has completely come off.",Public,B,Ground,6,Furniture,5 hours,0,Low,In Progress,08-05-2026
+C0029,"My denim jacket went missing from the room, not really sure if it was stolen or just misplaced.",Private,A,Second,25,Security,2 days,0,Low,Pending,08-05-2026
+C0030,"Dropped my umbrella somewhere between the library and Block C, if anyone finds it please let me know for 6 days.",Private,C,First,20,Security,6 days,0,Low,Pending,08-05-2026
+C0031,Theres a moldy smell coming from the bathroom ceiling.,Public,A,Ground,3,Washroom,2 weeks,0,Medium,Pending,08-05-2026
+C0034,The security guard wasnt at the front desk after 11pm again yesterday.,Public,A,Second,29,Security,1 day,0,High,In Progress,10-05-2026
+C0035,"Hinge on my rooms cupboard door looks broken, it wont shut properly anymore.",Public,C,Second,25,Furniture,4 days,0,Low,Pending,10-05-2026
+C0036,"Since Tuesday, theres a long crack running across the ceiling of my room, getting a bit worried about it.",Public,C,Second,26,Furniture,3 days,0,Medium,Pending,10-05-2026
+C0037,"My spectacles went missing from the room, not really sure if it was stolen or just misplaced, since last Friday.",Private,A,First,17,Security,1 week,0,Low,Pending,11-05-2026
+C0039,"Since last night, my bed frame is creaking really badly and one leg feels loose.",Public,C,First,15,Furniture,1 day,0,Medium,Pending,11-05-2026
+C0040,"Since this evening, dustbins on my floor are overflowing and nobody has collected the trash in days.",Public,C,First,12,Cleanliness,3 hours,0,High,Resolved,11-05-2026
+C0041,"The main entrance door of Block A doesnt close properly at night anymore since Wednesday, someone pls check this.",Public,A,First,19,Door,2 days,23,High,In Progress,12-05-2026
+C0044,"Dropped my earphones somewhere between the library and Block C, if anyone finds it please let me know (for over a week).",Private,C,Second,26,Security,8 days,0,Low,Pending,12-05-2026
+C0045,The socket near my study table is loose and the plug keeps falling out.,Public,A,First,19,Electricity,12 days,0,Medium,Pending,12-05-2026
+C0046,"The lift interior light has been dim for days now, kind of unpleasant to use at night.",Public,A,First,20,Lift,4 days,1,Medium,Resolved,12-05-2026
+C0047,"The staircase corners have thick cobwebs building up, hasnt been cleaned in a while.",Public,B,Ground,5,Cleanliness,1 week,7,Low,Resolved,13-05-2026
+C0048,The washroom tap in my room is leaking non stop and wasting so much water.,Public,C,Ground,7,Leakage,4 days,0,Medium,Resolved,13-05-2026
+C0049,"Lift door doesnt close properly anymore, you basically have to slam it shut.",Public,B,Second,24,Lift,4 days,0,High,Resolved,13-05-2026
+C0053,"Misplaced my calculator in the common area, it has my name written on it.",Private,A,Ground,3,Security,4 days,0,Low,Pending,14-05-2026
+C0056,Washing machine in the laundry room is making a horrible noise and not spinning properly.,Public,C,Second,28,Laundry,4 days,11,Low,Resolved,15-05-2026
+C0057,"Main gate lock has been broken since last week, literally anyone can walk in.",Private,C,Ground,6,Security,1 week,0,High,Rejected,15-05-2026
+C0058,"Benches outside Block C are broken, someone could genuinely get hurt sitting on them.",Public,C,Ground,8,Furniture,2 weeks,1,Low,Resolved,16-05-2026
+C0061,"Flush in the common washroom on First floor isnt working properly at all, for the past 2 days.",Public,A,First,20,Washroom,2 days,17,Medium,Resolved,17-05-2026
+C0067,"Lift in our block has been out of service for days, we have to carry luggage up 5 floors.",Public,A,Ground,9,Lift,4 days,16,High,Resolved,17-05-2026
+C0068,"The drain right outside Block C is overflowing and it smells terrible, for almost a week.",Public,C,Second,26,Drainage,6 days,2,High,Resolved,18-05-2026
+C0069,"For 5 hours, sink drain in my room is completely clogged, water just doesnt go down anymore.",Public,B,Second,30,Drainage,5 hours,0,Medium,Resolved,18-05-2026
+C0070,"Water pressure is extremely low every morning, cant even fill a bucket properly.",Public,A,Second,22,Water Supply,8 days,30,High,In Progress,18-05-2026
+C0071,"Corridor floor on First floor is covered in dust and hasnt been swept in a while, since last Friday.",Public,A,First,20,Cleanliness,1 week,4,Low,Rejected,18-05-2026
+C0072,The lift in Block A has been making a horrible grinding noise and it feels unsafe.,Public,A,Second,29,Lift,5 hours,1,High,In Progress,18-05-2026
+C0073,"Corridor lights on Ground floor have been flickering on and off for no reason, since the weekend.",Public,B,Ground,1,Electricity,2 days,3,High,Resolved,18-05-2026
+C0074,Reading room chairs on Second floor are all wobbly and honestly quite uncomfortable to sit on.,Public,B,Second,25,Furniture,6 days,24,Medium,Resolved,18-05-2026
+C0075,"My earphones went missing from the room, not really sure if it was stolen or just misplaced.",Private,B,First,11,Security,2 days,0,Low,Resolved,19-05-2026
+C0076,"My wallet went missing from the room, not really sure if it was stolen or just misplaced, for the past 2 days.",Private,C,Ground,6,Security,2 days,0,Low,Resolved,20-05-2026
+C0077,"Theres a rat running around my room every night, its really freaking me out.",Public,A,Second,25,Pest Control,8 days,0,High,Pending,20-05-2026
+C0078,Notice board glass in the common area is cracked and pieces keep falling out.,Public,C,Second,24,Cleanliness,3 days,13,Medium,Resolved,20-05-2026
+C0079,"Mess food quality has gone really bad lately, everything tastes bland and comes out cold.",Public,A,Ground,6,Mess,3 days,40,High,In Progress,20-05-2026
+C0080,"Geyser pipe connection is leaking hot water near the switch, feels pretty dangerous.",Public,B,Ground,10,Leakage,1 week,0,High,Resolved,20-05-2026
+C0082,"Water coming out of the tap looks yellowish and smells kind of bad, for almost a week.",Public,B,Second,23,Water Supply,6 days,3,High,Pending,21-05-2026
+C0085,Cctv camera near the main gate hasnt been working for days now.,Public,A,Second,22,Security,4 days,5,High,In Progress,22-05-2026
+C0086,"Sofa in the common room has a broken leg and keeps tilting to one side, for a month now.",Public,B,Ground,10,Furniture,4 weeks,9,Low,Pending,22-05-2026
+C0087,"Water tank supplying Block A seems empty, taps have been running dry since morning.",Public,A,Second,29,Water Supply,8 hours,0,High,Pending,22-05-2026
+C0088,"Since this morning, study table in the common area on First floor has a broken drawer.",Public,C,First,11,Furniture,8 hours,0,Low,Pending,22-05-2026
+C0091,Black mold patches have started spreading across the bathroom wall in my room.,Public,B,Second,22,Washroom,3 days,0,High,In Progress,23-05-2026
+C0092,"Dust has been piling up on the Ground floor corridor, doesnt look like its been swept recently.",Public,B,Ground,5,Cleanliness,1 day,16,Medium,Resolved,23-05-2026
+C0093,"During power cuts only the corridor lights get backup, our rooms stay pitch dark.",Public,C,Second,21,Electricity,4 days,0,Medium,Resolved,23-05-2026
+C0095,"There were small stones in the rice today, I almost broke a tooth.",Public,A,Ground,3,Mess,8 hours,0,High,Pending,25-05-2026
+C0097,"Toilet seat in the washroom on First floor is broken and wobbly, for 2 weeks now.",Public,A,First,20,Washroom,2 weeks,4,Medium,Pending,25-05-2026
+C0098,Dropped my laptop charger somewhere between the library and Block C.,Private,C,Second,30,Security,8 hours,0,Low,In Progress,26-05-2026
+C0100,"Lately the mess food has tasted pretty bad, everything is bland and served cold.",Public,A,Ground,9,Mess,1 day,11,High,Resolved,26-05-2026
+C0101,Water keeps dripping from the washroom tap in my room and it wont stop.,Public,B,Ground,7,Leakage,6 days,0,Medium,Pending,26-05-2026
+C0102,"Found small stones mixed into todays rice, could have chipped a tooth.",Public,A,Ground,6,Mess,8 hours,1,High,In Progress,27-05-2026
+C0103,Left my water bottle in the mess hall yesterday and cant find it anywhere now.,Private,A,First,12,Security,1 day,0,Low,Resolved,27-05-2026
+C0104,The generator right outside makes it impossible to study in the evenings (since this evening).,Public,A,Second,30,Noise,3 hours,3,Medium,Resolved,27-05-2026
+C0105,"Door lock of the common entrance isnt latching properly, it just swings open, for almost a week.",Private,B,Second,26,Security,6 days,0,High,Resolved,27-05-2026
+C0110,The visitors register at the gate hasnt been updated properly in weeks.,Private,C,Ground,9,Security,2 weeks,0,Medium,In Progress,28-05-2026
+C0112,Misplaced my ID card in the common area.,Private,C,Ground,1,Security,12 days,0,Low,Rejected,29-05-2026
+C0113,"The common entrance door lock keeps swinging open, doesnt latch properly at all.",Private,A,Ground,1,Security,1 day,0,High,In Progress,29-05-2026
+C0114,Cockroaches keep coming out of the drain in my washroom every night.,Public,B,First,16,Pest Control,8 days,0,Medium,Pending,29-05-2026
+C0115,"The open drain near the entrance is breeding mosquitoes, its a health hazard honestly (for 4 days now).",Public,A,First,20,Drainage,4 days,0,High,Resolved,30-05-2026
+C0116,"Basin pipe under the sink is loose and water keeps leaking onto the floor, for over a week.",Public,C,First,12,Leakage,8 days,0,Medium,Resolved,30-05-2026
+C0117,There is a bad power fluctuation issue thats damaging chargers and laptops on Second floor.,Public,A,Second,25,Electricity,2 weeks,21,High,Pending,30-05-2026
+C0119,"Internet speed on Second floor becomes unusably slow after around 8pm, for 6 days.",Public,B,Second,26,WiFi,6 days,7,Medium,In Progress,30-05-2026
+C0120,"Notice board glass in the common area is cracked and pieces keep falling out, someone pls check this.",Public,B,Ground,4,Cleanliness,1 hour,0,Low,Resolved,30-05-2026
+C0121,"Theres barely any wifi signal that reaches the rooms at the end of the corridor, for 6 days.",Public,C,Second,25,WiFi,6 days,3,Low,Resolved,30-05-2026
+C0122,Chargers and laptops on Ground floor keep getting damaged because of constant power fluctuations.,Public,A,Ground,6,Electricity,4 weeks,0,High,Pending,31-05-2026
+C0123,"The signboard outside the hostel gate is tilted and needs to be straightened, since last week.",Public,B,Second,21,Furniture,1 week,16,Medium,Pending,31-05-2026
+C0126,"Dryer in the laundry area has been out of order for days now, clothes just wont dry.",Public,A,First,16,Laundry,4 days,5,Low,Pending,31-05-2026
+C0127,"Its the same boring menu every single day, could we at least get some variety.",Public,C,Second,26,Mess,8 days,23,Low,Resolved,31-05-2026
+C0128,"Since Tuesday, water coming out of the tap looks yellowish and smells kind of bad.",Public,C,First,15,Water Supply,3 days,3,High,In Progress,01-06-2026
+C0130,"Trash hasnt been picked up on our floor in days, bins are overflowing.",Public,C,First,12,Cleanliness,5 hours,3,Medium,Resolved,01-06-2026
+C0131,"Taps in Block C have been running dry since morning, looks like the tank feeding it is empty.",Public,C,Second,25,Water Supply,8 hours,0,High,In Progress,03-06-2026
+C0132,"Common washroom on First floor hasnt been cleaned in days, it genuinely smells really bad, since 30 minutes.",Public,C,First,13,Cleanliness,1 hour,14,Medium,In Progress,03-06-2026
+C0133,A lizard fell from the ceiling right onto my study table yesterday.,Public,C,First,19,Pest Control,1 day,0,Low,Pending,03-06-2026
+C0134,"My clothes went missing from the washing machine, this is actually the second time this month.",Public,B,First,11,Laundry,4 weeks,0,Low,Pending,03-06-2026
+C0135,Power backup didnt kick in at all during last nights outage.,Public,A,Second,22,Electricity,1 day,35,High,Rejected,03-06-2026
+C0136,The gate signboard outside is leaning to one side and needs fixing.,Public,A,Second,29,Furniture,3 days,0,Medium,In Progress,03-06-2026
+C0138,"Cant find my denim jacket anywhere in the room, might have been taken or just misplaced.",Private,A,Ground,4,Security,2 days,0,Low,Pending,04-06-2026
+C0140,"Lost my wrist watch somewhere near Block C, would really appreciate any help finding it.",Private,C,First,16,Security,3 days,0,Low,In Progress,04-06-2026
+C0141,The generator makes so much noise every single time theres a power cut.,Public,C,First,18,Electricity,8 days,42,Low,Resolved,04-06-2026
+C0142,"Shower head in the bathroom is broken, water just sprays sideways everywhere.",Public,C,Second,28,Washroom,3 days,0,Low,Resolved,05-06-2026
+C0143,One leg of my room chair has completely snapped off.,Public,B,First,16,Furniture,2 days,0,Low,In Progress,05-06-2026
+C0144,"The electrical panel near the stairwell keeps making a buzzing sound, sounds unsafe.",Public,B,Ground,10,Electricity,4 days,9,High,In Progress,05-06-2026
+C0145,"Dropped my hoodie somewhere between the library and Block C, if anyone finds it please let me know.",Private,C,Second,30,Security,5 hours,0,Low,In Progress,06-06-2026
+C0147,"Toilet seat in the washroom on Second floor is broken and wobbly, since noon.",Public,B,Second,30,Washroom,6 hours,0,Low,Pending,06-06-2026
+C0149,"Shower head in the bathroom is broken, water just sprays sideways everywhere, for more than 10 days.",Public,A,Second,29,Washroom,12 days,0,Low,In Progress,06-06-2026
+C0150,"Dropped my ID card somewhere between the library and Block B, if anyone finds it please let me know.",Private,B,Second,25,Security,1 week,0,Low,Rejected,06-06-2026
+C0152,"Found bed bugs in my mattress, honestly cant sleep properly anymore, since last week.",Public,B,Ground,3,Pest Control,1 week,0,High,In Progress,06-06-2026
+C0155,The washing machine ate my 20 rupees and didnt even start the cycle.,Public,C,First,17,Laundry,8 hours,0,Medium,Pending,07-06-2026
+C0156,"Four coins are missing from the carrom board in the common room, cant play a full game.",Public,A,Second,27,Furniture,1 week,9,Low,In Progress,07-06-2026
+C0158,Machine took my 20 rupees but never actually started the wash cycle.,Public,B,Second,22,Laundry,2 days,0,Low,Resolved,08-06-2026
+C0163,"Wifi password got changed without telling anyone, nobody on the floor can connect now, since yesterday.",Public,A,Ground,2,WiFi,1 day,14,Low,Resolved,10-06-2026
+C0164,Some guys on First floor play really loud music till like 2am every single night.,Public,B,First,11,Noise,8 days,6,High,Resolved,10-06-2026
+C0165,"The benches outside Block C are damaged and wobbly, someone could easily get hurt using them.",Public,C,First,13,Furniture,3 days,2,High,In Progress,10-06-2026
+C0166,Washroom floor on Second floor stays waterlogged because the drain is clogged.,Public,B,Second,28,Drainage,1 hour,0,Medium,In Progress,11-06-2026
+C0167,"Found a hair in my food again today, this is like the third time this month.",Public,B,First,16,Mess,4 weeks,13,High,In Progress,11-06-2026
+C0170,"Lost my bunch of keys somewhere near Block B, would really appreciate any help finding it.",Private,B,First,14,Security,4 days,0,Low,Resolved,11-06-2026
+C0172,"My notebook went missing from the room, not really sure if it was stolen or just misplaced, since Tuesday.",Private,A,First,12,Security,3 days,0,Low,Pending,11-06-2026
+C0174,"AC remote isnt working properly and the AC wont switch off even at night, since Wednesday.",Public,C,Ground,8,Electricity,2 days,0,Medium,Resolved,12-06-2026
+C0175,Misplaced my notebook in the common area.,Private,B,First,14,Security,6 days,0,Low,Rejected,12-06-2026
+C0176,Mosquitoes are unbearable in the evenings.,Public,C,Ground,2,Pest Control,4 weeks,0,High,Pending,12-06-2026
+C0179,"Dryer in the laundry area has been out of order fr days now, clothes just wont dry.",Public,B,First,17,Laundry,4 days,8,Low,Resolved,13-06-2026
+C0183,"Construction work right outside starts at 6am and its impossible to get any sleep, since last Friday.",Public,C,First,17,Noise,1 week,49,High,In Progress,14-06-2026
+C0184,Exhaust fan in the washroom doesnt work so it never really airs out properly.,Public,C,First,12,Washroom,1 week,0,Low,Resolved,14-06-2026
+C0185,"Dropped my water bottle somewhere between the library and Block A, if anyone finds it pls let me know, for 4 days now.",Private,A,Second,26,Security,4 days,0,Low,Pending,15-06-2026
+C0188,"Rainwater keeps entering the First floor corridor because of blocked drainage, for the past 2 days.",Public,C,First,11,Drainage,2 days,12,High,In Progress,15-06-2026
+C0193,"Since last Friday, toilet seat in the washroom on Second floor is broken and wobbly.",Public,A,Second,25,Washroom,1 week,6,Low,Rejected,16-06-2026
+C0194,Left my denim jacket in the mess hall yesterday and cant find it anywhere now.,Private,A,Ground,2,Security,1 day,0,Low,Pending,16-06-2026
+C0195,"There were tiny stones in the rice served today, quite dangerous to bite into.",Public,C,Second,29,Mess,8 hours,0,High,In Progress,16-06-2026
+C0197,"Misplaced my umbrella in the common area, it has my name written on it, kindly fix soon.",Private,B,Ground,10,Security,5 hours,0,Low,In Progress,17-06-2026
+C0199,"Inverter in Block B isnt charging properly, backup barely lasts 10 minutes now (for 2 weeks now).",Public,B,First,14,Electricity,2 weeks,7,Medium,Pending,17-06-2026
+C0200,"Theres a moldy smell coming from the bathroom ceiling, it wont go away, since 2 hours.",Public,B,Second,25,Washroom,2 hours,0,Low,Resolved,17-06-2026
+C0202,6am construction noise outside is making it impossible to sleep properly.,Public,C,First,14,Noise,2 days,27,High,Rejected,18-06-2026
+C0204,"For more than 10 days, garbage bins outside Block A havent been emptied in almost a week now.",Public,A,First,12,Cleanliness,12 days,11,Medium,Resolved,19-06-2026
+C0206,"Curtain rod in my room fell down again, this is the third time this month.",Public,A,Ground,10,Furniture,4 weeks,0,Low,Rejected,20-06-2026
+C0207,False ceiling panel near the stairwell fell down suddenly yesterday.,Public,A,Ground,2,Furniture,1 day,0,High,Resolved,20-06-2026
+C0208,Hot water in the geyser runs out within five minutes every single morning.,Public,C,First,20,Water Supply,8 days,0,Medium,Resolved,20-06-2026
+C0211,"Every night cockroaches crawl out from the washroom drain, its been going on for a while.",Public,C,First,18,Pest Control,8 days,0,Medium,In Progress,21-06-2026
+C0215,"Tube light near the staircase in Block A is completely dead, its pitch dark there at night.",Public,A,Ground,4,Electricity,5 hours,8,High,Resolved,22-06-2026
+C0220,"The staircase tube light in Block C has stopped working, that area is completely dark at night now.",Public,C,Second,30,Electricity,2 days,12,Medium,Pending,23-06-2026
+C0221,"Laundry room on Second floor was locked the entire day, couldnt wash my clothes before my exam.",Public,A,Second,22,Laundry,4 days,7,Medium,Resolved,23-06-2026
+C0225,Washroom drain in our room keeps letting cockroaches in at night.,Public,A,Second,23,Pest Control,8 days,0,Medium,Resolved,24-06-2026
+C0227,"Guards at the main gate barely check ID cards anymore, anyone could walk in.",Private,C,Ground,8,Security,2 days,0,Low,Resolved,25-06-2026
+C0228,CCTV near the main gate has been down for several days now.,Public,B,Second,30,Security,4 days,34,High,Pending,25-06-2026
+C0232,"For a month now, wifi password got changed without telling anyone, nobody on the floor can connect now.",Public,C,Ground,2,WiFi,4 weeks,3,Low,Pending,26-06-2026
+C0233,"Theres a leak from the geyser pipe near the switch, feels risky having water that close to it.",Public,A,First,13,Leakage,3 days,0,Low,Resolved,26-06-2026
+C0238,Internet on Ground floor turns painfully slow once it hits evening.,Public,C,Ground,6,WiFi,2 days,10,Medium,In Progress,27-06-2026
+C0239,The ladder attached to my bunk bed feels wobbly and unsafe every time I use it.,Public,B,Second,24,Furniture,6 hours,0,High,Rejected,27-06-2026
+C0240,"Wifi keeps disconnecting every few minutes, cant even attend my online classes properly (for 4 days now).",Public,B,Ground,2,WiFi,4 days,3,Medium,Pending,27-06-2026
+C0244,"The mosquito net frame on my window is broken and mosquitoes keep getting in, for more than 10 days.",Public,C,First,20,Window,12 days,0,High,Resolved,28-06-2026
+C0245,"Wall paint near my bed has started peeling off pretty badly, for a month now.",Public,C,First,16,Furniture,4 weeks,0,Low,Resolved,28-06-2026
+C0247,"Garbage bins outside Block B havent been emptied in almost a week now, someone pls check this.",Public,B,Ground,2,Cleanliness,1 day,2,Medium,Pending,28-06-2026
+C0248,Mess food quality has gone really bad lately.,Public,A,Second,30,Mess,1 day,46,High,Resolved,28-06-2026
+C0249,No one was at the security desk again past 11pm last night.,Public,A,Ground,2,Security,1 day,8,High,Resolved,29-06-2026
+C0254,The garbage bins on my floor are overflowing and its starting to smell.,Public,A,Second,22,Cleanliness,2 days,9,Medium,Resolved,29-06-2026
+C0255,"Water wont drain from my room sink at all, its completely blocked.",Public,C,First,20,Drainage,3 days,0,Low,In Progress,29-06-2026
+C0257,"The washroom bin hasnt been cleaned in so long, it smells awful the moment you walk in, since Monday.",Public,B,First,13,Washroom,4 days,10,Medium,In Progress,30-06-2026
+C0258,Ants have completely taken over the shelf where I keep my snacks (for almost a week).,Public,C,First,15,Pest Control,6 days,0,Low,Resolved,30-06-2026
+C0259,Tube light in my room keeps flickering non stop and its giving me a headache.,Public,B,First,13,Electricity,12 days,0,Low,Resolved,30-06-2026
+C0260,"Our block lift has been down for several days, its a real struggle carrying bags up the stairs.",Public,C,First,19,Lift,4 days,0,Medium,In Progress,30-06-2026
+C0263,"Inverter backup in Block A barely lasts 10 minutes now, charging seems to have stopped working properly.",Public,A,First,18,Electricity,8 days,2,Medium,In Progress,01-07-2026
+C0264,Roof of the corridor on First floor has started leaking whenever it rains.,Public,C,First,12,Furniture,3 days,19,Medium,Resolved,01-07-2026
+C0265,"Misplaced my wrist watch somewhere around Block B, would appreciate help locating it.",Private,B,Second,27,Security,2 days,0,Low,Resolved,01-07-2026
+C0268,Fan in Room 4 makes a loud grinding noise and wobbles when running on high speed.,Public,A,Second,27,Electricity,2 hours,0,Medium,Pending,02-07-2026
+C0270,"Common washroom on Ground floor hasnt been cleaned in days, it genuinely smells really bad for over a week.",Public,A,Ground,6,Cleanliness,8 days,4,Medium,Pending,02-07-2026
+C0271,"Mattress in my room is completely sunken in the middle, my back has been hurting (for the past 3 days).",Public,A,Second,30,Furniture,3 days,0,Medium,Pending,02-07-2026
+C0274,"Dropped my spectacles somewhere between the library and Block A, if anyone finds it please let me know.",Private,A,First,11,Security,1 hour,0,Low,In Progress,03-07-2026
+C0275,"Lost my spectacles somewhere near Block B, would really appreciate any help finding it (for over a week).",Private,B,First,18,Security,8 days,0,Low,Resolved,04-07-2026
+C0277,"The door of my room isnt closing all the way, theres a gap at the bottom.",Public,C,First,14,Furniture,2 days,0,Low,Resolved,04-07-2026
+C0283,The staircase railing near Ground floor is loose and wobbles when you hold it.,Public,A,Ground,6,Furniture,3 days,1,High,Pending,05-07-2026
+C0291,A false ceiling panel came crashing down near the stairwell yesterday.,Public,C,Second,23,Furniture,1 day,4,High,Pending,08-07-2026
+C0295,"Climbing the bunk bed ladder in my room feels risky, its been loose for a while.",Public,A,Second,23,Furniture,4 weeks,0,High,Resolved,10-07-2026
+C0296,Common washroom on Second floor hasnt been cleaned in days.,Public,B,Second,21,Cleanliness,5 hours,10,Medium,In Progress,10-07-2026
+C0299,"Found bed bugs in my mattress, honestly cant sleep properly anymore, for 4 days now.",Public,B,Second,26,Pest Control,4 days,0,High,Resolved,10-07-2026
+C0300,"Mornings are the worst for water pressure, barely enough to fill a bucket.",Public,C,First,14,Water Supply,8 days,39,High,In Progress,10-07-2026
+C0301,Ceiling fan regulator is broken so the fan only runs on full speed.,Public,C,Second,25,Electricity,6 days,0,Low,Rejected,10-07-2026
+C0302,"My room sink wont drain at all, water just pools up and stays there.",Public,A,Ground,3,Drainage,5 hours,0,Low,Resolved,10-07-2026
+C0305,"My umbrella went missing from the room, not really sure if it was stolen or just misplaced, since last week.",Private,C,Ground,1,Security,1 week,0,Low,Resolved,11-07-2026
+C0309,"My denim jacket has gone missing from the room, not sure if someone took it or I just lost track of it.",Private,A,Ground,10,Security,2 days,0,Low,Pending,11-07-2026
+C0310,"Mosquitoes are unbearable in the evenings, we havent been given any nets or repellent, for 5 hours.",Public,C,Ground,4,Pest Control,5 hours,6,High,Pending,12-07-2026
+C0311,"Laundry dryer isnt working, clothes are coming out still damp.",Public,A,Ground,4,Laundry,4 days,5,Low,Pending,12-07-2026
+C0315,Paint on the outer building wall is fading badly and looks quite patchy now.,Public,B,Second,23,Furniture,1 day,33,Medium,Pending,12-07-2026
+C0316,Evenings are unbearable because of mosquitoes and we havent gotten any nets or repellent yet.,Public,A,Second,30,Pest Control,4 days,0,High,In Progress,12-07-2026
+C0317,Flush in the Ground floor common washroom has stopped working properly.,Public,B,Ground,7,Washroom,3 days,0,Medium,Pending,12-07-2026
+C0320,"The sink in my room is clogged, water just sits there and doesnt go down.",Public,B,First,17,Drainage,6 days,0,Low,Pending,13-07-2026
+C0322,"We never know when mess timing is going to shift, missed dinner again because of it.",Public,B,First,20,Mess,3 days,42,Medium,Pending,13-07-2026
+C0323,"Wardrobe door in my room doesnt shut properly anymore, the hinges look rusted through, for almost a week.",Public,C,Second,25,Furniture,6 days,0,Medium,Pending,14-07-2026
+C0326,Washroom mirror is covered in stains and never actually gets wiped down.,Public,C,Second,28,Cleanliness,2 days,0,Low,Pending,14-07-2026
+C0327,"My laptop charger went missing from the room, not really sure if it was stolen or just misplaced since this morning, kindly fix soon.",Private,C,Ground,9,Security,8 hours,0,Low,Pending,14-07-2026
+C0328,"Misplaced my bunch of keys in the common area, it has my name written on it, since 2 hours.",Private,A,First,19,Security,2 hours,0,Low,Resolved,14-07-2026
+C0329,Window latch in my room is broken so it doesnt lock shut anymore (for 3-4 days now).,Public,C,Ground,6,Window,4 days,0,Low,In Progress,14-07-2026
+C0331,"Block B inverter isnt holding charge anymore, backup drops within 10 minutes.",Public,B,First,12,Electricity,3 days,14,Medium,Pending,15-07-2026
+C0333,"Water cooler on Second floor has been completely dry, cant fill our bottles at all.",Public,A,Second,28,Water Cooler,8 hours,3,High,Pending,16-07-2026
+C0335,Theres a crack spreading across my ceiling and it looks like its getting worse.,Public,B,First,15,Furniture,1 day,0,Medium,In Progress,16-07-2026
+C0337,A group keeps playing loud games in the corridor past midnight almost every day.,Public,C,First,17,Noise,8 days,18,Low,Pending,17-07-2026
+C0338,"Food quality at the mess has dropped a lot lately, everything is bland and served cold.",Public,B,Ground,5,Mess,6 hours,56,High,Resolved,17-07-2026
+C0339,The router near the common room has just been blinking red since yesterday.,Public,B,Ground,6,WiFi,1 day,3,Medium,Resolved,18-07-2026
+C0343,One leg of my bed frame feels loose and the whole bed creaks whenever I move.,Public,A,Ground,9,Furniture,12 days,0,Medium,Resolved,18-07-2026
+C0344,"The ladder on my bunk bed wobbles badly every time I climb up, feels unsafe.",Public,C,First,16,Furniture,12 days,0,High,In Progress,18-07-2026
+C0345,"Common room curtains are torn and dont close fully anymore, sunlight comes in all day.",Public,C,Ground,7,Furniture,5 hours,10,Low,Rejected,19-07-2026
+C0347,"Second floor corridor hasnt been swept in days, dust everywhere.",Public,B,Second,23,Cleanliness,6 days,17,Medium,Pending,20-07-2026
+C0349,"My room sink drain is fully blocked, nothing drains through anymore.",Public,B,Second,25,Drainage,3 days,0,Low,Rejected,21-07-2026
+C0354,Study table in the common area on First floor has a broken drawer.,Public,B,First,15,Furniture,1 week,2,Low,Pending,21-07-2026
+C0355,"Dropped my laptop charger somewhere between the library and Block B, if anyone finds it please let me know, for the past 2 days.",Private,B,Ground,4,Security,2 days,0,Low,Pending,22-07-2026
+C0356,Part of the false ceiling near the stairwell collapsed suddenly yesterday.,Public,C,First,16,Furniture,1 day,22,High,Resolved,22-07-2026
+C0357,"Mess hall tables are always sticky and the floor never actually gets mopped, since this evening.",Public,C,Ground,10,Mess,3 hours,56,High,In Progress,22-07-2026
+C0359,"Hot water is leaking from the geyser pipe near the switch, feels risky to be around.",Public,C,First,14,Leakage,4 days,0,High,Resolved,22-07-2026
+C0360,"My ID card went missing from the room, not really sure if it was stolen or just misplaced, since Monday.",Private,C,First,11,Security,4 days,0,Low,In Progress,22-07-2026
+C0361,Tables in the mess hall are constantly sticky and the floor doesnt seem to get mopped.,Public,C,Ground,8,Mess,6 hours,14,High,In Progress,22-07-2026
+C0362,Theres a big water tank overflow issue on the terrace thats been going on for days.,Public,C,Ground,10,Furniture,4 days,65,High,In Progress,22-07-2026
+C0363,"Misplaced my spectacles somewhere close to Block C, hoping someone found them.",Private,C,First,17,Security,1 week,0,Low,Resolved,23-07-2026
+C0364,Common washroom flush on Second floor is completely broken.,Public,C,Second,30,Washroom,6 days,11,High,Resolved,23-07-2026
+C0368,"Someone unknown tried 2 enter our floor around midnight, the entry log wasnt even checked, fr a month now.",Private,A,Ground,5,Security,4 weeks,0,High,Pending,24-07-2026
+C0370,Door lock of the common entrance isnt latching properly.,Private,B,Ground,7,Security,6 days,0,High,In Progress,24-07-2026
+C0371,The main entrance door of Block A doesnt close properly at night anymore.,Public,A,Second,29,Door,4 days,15,Low,Pending,25-07-2026
+C0372,"Cant find my earphones anywhere in the room, not sure if they were taken or I just lost them.",Private,B,First,16,Security,1 hour,0,Low,Resolved,26-07-2026
+C0373,Lift floor indicator display isnt working so we cant tell which floor we are on.,Public,A,First,18,Lift,1 week,0,Low,In Progress,26-07-2026
+C0374,"Lost my water bottle somewhere near Block A, would really appreciate any help finding it.",Private,A,Second,23,Security,3 days,0,Low,Pending,26-07-2026
+C0377,"Since noon, corridor lights on Second floor have been flickering on and off for no reason.",Public,C,Second,25,Electricity,6 hours,4,High,In Progress,27-07-2026
+C0385,"The lock on the main entrance door doesnt catch properly, keeps swinging open on its own.",Private,B,First,11,Security,1 day,0,High,In Progress,28-07-2026
+C0386,"Cant get any sleep because construction right outside starts so early, around 6am.",Public,B,Second,24,Noise,8 hours,9,High,Rejected,28-07-2026
+C0387,"My room door lock is jammed, I had to climb through the window yesterday.",Public,C,Second,28,Furniture,1 day,0,High,Pending,28-07-2026
+C0388,"Mosquito problem gets really bad by evening, still no nets or repellent provided.",Public,C,First,14,Pest Control,3 hours,3,Medium,In Progress,29-07-2026
+C0389,Boundary wall near Block B has a visible crack running through it.,Public,B,Second,22,Furniture,2 days,32,High,Pending,29-07-2026
+C0393,The common room sofa has a broken leg and tilts to one side whenever you sit on it.,Public,C,First,18,Furniture,6 hours,7,Low,In Progress,30-07-2026
+C0396,"Laundry area tap is leaking badly, theres always a puddle near the machines.",Public,C,Ground,3,Laundry,4 days,4,Medium,In Progress,31-07-2026
+C0397,"Cant find my wrist watch anywhere near Block B, lost track of it a few days back.",Private,B,Second,27,Security,1 week,0,Low,Pending,31-07-2026
+C0398,Fan in Room 36 wobbles and grinds loudly whenever its set to high speed.,Public,C,First,11,Electricity,8 days,0,Low,Pending,31-07-2026
+C0400,"Light inside the lift is really dim, hard to see anything at night.",Public,B,First,19,Lift,4 days,4,Low,Resolved,31-07-2026
+C0401,Shower in the common bathroom only gives cold water no matter how long you wait.,Public,B,Fourth,41,Washroom,2 hours,3,Medium,Resolved,11-05-2026
+C0402,Wifi speed in the corner rooms is always weaker than the rest of the floor.,Public,A,Ground,3,WiFi,4 days,1,Low,Pending,18-07-2026
+C0403,There was no water at all on our floor for almost the whole morning.,Public,B,First,14,Water Supply,1 day,9,High,In Progress,25-03-2026
+C0405,Window latch in my room is a bit stiff but still usable.,Public,B,Second,21,Window,2 days,1,Low,In Progress,23-06-2026
+C0406,My laptop was stolen from my room while i had stepped out for dinner.,Private,B,First,16,Security,2 days,0,High,Pending,26-07-2026
+C0407,The washroom on our floor hasnt been cleaned properly in a while.,Public,B,Fourth,41,Washroom,1 day,5,Medium,Pending,18-07-2026
+C0408,"The water cooler on our floor makes a loud buzzing noise, for 4 days now.",Public,A,Second,29,Water Cooler,1 week,6,Low,Rejected,06-03-2026
+C0409,"Ever since the new semester started, the wifi speed has really slowed down.",Public,B,First,12,WiFi,4 weeks,12,Medium,In Progress,21-06-2026
+C0410,There was a complete power outage on our floor for almost the entire night.,Public,C,Third,33,Electricity,2 days,21,High,Pending,09-05-2026
+C0411,"There is a slight rattling sound from the fan blade in my room, not too bothersome yet.",Public,B,Second,23,Fan,2 days,0,Low,In Progress,26-05-2026
+C0412,"Mosquitoes swarm near the washroom every evening, its a real problem.",Public,C,Ground,1,Pest Control,8 days,9,Medium,Pending,19-07-2026
+C0413,"The lift has been making a grinding noise and stopping abruptly between floors, for 6 days.",Public,A,Ground,1,Lift,5 hours,25,High,Resolved,14-06-2026
+C0414,The ethernet port in my room hasnt been working for the past few days.,Public,C,Ground,8,Internet,8 days,12,Medium,In Progress,18-07-2026
+C0415,A bike parked near the fire exit is blocking it completely.,Public,C,Second,24,Parking,2 weeks,12,Medium,Pending,13-07-2026
+C0416,"Water coming out of the tap looks slightly cloudy and has a strange smell, for almost a week.",Public,C,Second,23,Water Supply,8 days,4,Medium,In Progress,09-02-2026
+C0417,Wifi has been much slower ever since the new semester started.,Public,A,First,17,WiFi,3 days,21,Medium,Pending,29-07-2026
+C0418,The mess only had one curry option today which felt less compared to usual.,Public,B,Second,27,Mess,6 days,9,Low,Pending,12-07-2026
+C0419,For a few days now the washroom light on our floor hasnt turned on despite flipping the switch repeatedly.,Public,A,Third,37,Light,4 weeks,1,Medium,Pending,24-07-2026
+C0420,"All week the water supply has been irregular, some days it doesnt come at all.",Public,A,Third,33,Water Supply,6 days,9,High,Resolved,14-03-2026
+C0421,"Lunch vegetables today werent cleaned properly, mud was still visible.",Public,B,Fourth,48,Mess,12 days,10,Medium,Resolved,15-05-2026
+C0422,"The timing of water supply keeps shifting and nobody tells us in advance, for close to a fortnight.",Public,B,Fourth,50,Water Supply,2 weeks,4,Medium,Pending,11-07-2026
+C0423,Loose door handle in my room looks like its about to come off completely.,Public,B,Fourth,42,Door,4 days,1,Low,Pending,19-05-2026
+C0424,There are quite a few mosquitoes near the washroom area every evening.,Public,A,First,20,Pest Control,1 week,5,Medium,Rejected,25-01-2026
+C0425,One of the washroom doors doesnt latch shut properly.,Public,A,Ground,7,Washroom,4 hours,3,Medium,Rejected,26-06-2026
+C0426,Not much space left in the cycle stand by the block entrance these days.,Public,A,Third,40,Parking,4 days,12,Low,Pending,15-06-2026
+C0427,The food served at dinner today tasted undercooked and a few of us felt uneasy after eating it.,Public,B,Fourth,44,Mess,6 days,23,High,Pending,05-07-2026
+C0428,Construction work outside starts really early and disturbs everyone trying to study.,Public,A,First,20,Noise,2 hours,15,Medium,Pending,12-07-2026
+C0429,Wifi speed has dropped drastically since the new semester started.,Public,C,Second,28,WiFi,3 days,20,Medium,Resolved,13-04-2026
+C0430,"Found a small insect in todays sabzi, quite off-putting.",Public,C,Second,29,Mess,1 hour,14,High,Pending,12-07-2026
+C0431,Almost a week now and the laundry service still hasnt picked up on schedule.,Public,B,First,18,Laundry,1 day,2,Medium,Rejected,29-05-2026
+C0432,"The chair in my room has a broken leg and wobbles every time i sit on it, since Wednesday.",Public,B,Ground,1,Furniture,2 days,0,Low,Rejected,05-06-2026
+C0433,The door handle in my room feels loose and might fall off soon.,Public,B,Second,28,Door,1 hour,1,Low,Resolved,17-03-2026
+C0434,"Cycle stand near the block entrance is overcrowded, hardly any space left.",Public,B,Ground,3,Parking,5 hours,15,Low,Resolved,27-03-2026
+C0435,"Since the new semester began, wifi speeds have dropped noticeably.",Public,A,Fourth,45,WiFi,13 days,28,Medium,Resolved,09-06-2026
+C0436,Laundry returned my shirt with a fresh tear that definitely wasnt there before I sent it.,Public,A,Ground,3,Laundry,2 days,0,Low,Pending,20-07-2026
+C0437,Our floor had no water at all for nearly the entire morning.,Public,C,Fourth,42,Water Supply,1 week,13,High,Resolved,07-06-2026
+C0438,"I think someone went through my drawer while i was out, a few things feel out of place, for a month now.",Private,C,Ground,5,Security,2 days,0,Medium,Resolved,20-04-2026
+C0439,Garbage from the bins near the entrance hasnt been cleared in three days.,Public,A,Third,37,Cleanliness,4 hours,9,Medium,Pending,06-07-2026
+C0440,Attending online classes has become a struggle because the connection keeps cutting out.,Public,B,Ground,10,WiFi,3 days,27,Medium,Rejected,24-03-2026
+C0441,"The tank supplying our floor seems to have run dry, taps are just making noise with no water coming out, for more than 10 days.",Public,C,First,20,Water Supply,8 days,20,High,Pending,16-07-2026
+C0442,"Mess menu hasnt changed in four days, getting a bit repetitive.",Public,C,Second,28,Mess,2 weeks,15,Medium,Pending,06-07-2026
+C0444,"Flush in the washroom near the stairs has completely stopped working, since noon.",Public,C,Ground,5,Washroom,1 day,22,High,Pending,25-07-2026
+C0445,"Feels like someone went through my drawer while I was out, a few things seem out of place.",Private,A,First,12,Security,5 hours,0,Medium,In Progress,21-06-2026
+C0446,"Laundry pickups keep getting pushed back, its been almost a week now.",Public,C,First,19,Laundry,12 days,1,Medium,In Progress,01-06-2026
+C0447,Tap water looks a bit cloudy lately and has an odd smell to it.,Public,B,First,15,Water Supply,4 weeks,19,Medium,Pending,15-07-2026
+C0448,Cctv camera near the back gate hasnt been working for over a week.,Public,A,First,14,Security,2 hours,28,High,In Progress,24-06-2026
+C0449,Flush by the stairs washroom hasnt been working at all.,Public,C,Ground,10,Washroom,3 hours,19,High,In Progress,12-07-2026
+C0451,"Our blocks main entrance door has been jammed half open for two days, not safe at night.",Public,B,Second,30,Door,2 hours,11,High,In Progress,13-06-2026
+C0452,Our floors power has been cutting in and out hourly since yesterday.,Public,A,Ground,5,Electricity,1 week,8,High,Resolved,01-03-2026
+C0453,The wifi on our floor becomes almost unusable every evening after 8.,Public,C,First,13,WiFi,1 day,10,Medium,Pending,20-07-2026
+C0454,"The common room hasnt been swept in days, dust has piled up everywhere.",Public,A,First,11,Cleanliness,13 days,19,Medium,In Progress,10-07-2026
+C0455,Same food has been on the mess menu for four days in a row.,Public,B,First,15,Mess,3 days,18,Medium,In Progress,02-07-2026
+C0456,"Todays lunch vegetables had visible mud on them, clearly not washed properly.",Public,B,Fourth,47,Mess,1 day,4,Medium,In Progress,07-02-2026
+C0457,Water from the bathroom drain backs up every time someone upstairs uses the washroom.,Public,B,Third,36,Drainage,5 hours,13,High,Pending,28-07-2026
+C0458,The window in my room doesnt close properly and lets in rain during storms.,Public,A,Ground,8,Window,6 days,1,Medium,In Progress,21-06-2026
+C0460,"My roommate and I keep clashing over shared space, tension has been building up.",Private,C,Ground,4,Security,4 days,0,Medium,Pending,05-07-2026
+C0461,"Common bathroom shower has been giving only cold water for a while now, no matter how long you run it.",Public,A,Third,36,Washroom,6 days,6,Medium,Pending,22-07-2026
+C0462,"Cockroaches have basically taken over the mess kitchen, its an unhygienic mess in there.",Public,C,Fourth,45,Pest Control,1 hour,12,High,Resolved,19-03-2026
+C0463,The main electrical panel for our floor is making a buzzing sound constantly.,Public,A,First,19,Electricity,1 hour,19,High,In Progress,25-04-2026
+C0464,"Someone parked a bike blocking the fire exit near the parking area, for the past 2 days.",Public,A,Second,24,Parking,1 day,5,Medium,In Progress,29-06-2026
+C0465,"Only one curry option was served today, felt like less variety than the usual mess menu.",Public,B,Third,40,Mess,6 hours,1,Low,Pending,12-06-2026
+C0466,The timing of water supply keeps shifting and nobody tells us in advance.,Public,A,First,13,Water Supply,4 weeks,3,Medium,Rejected,17-02-2026
+C0467,"One bulb in the corridor near the stairs has fused and needs replacing, since Monday.",Public,C,Third,34,Light,5 hours,1,Low,Resolved,09-03-2026
+C0468,Power has been cutting on and off every hour on our floor since yesterday.,Public,A,First,20,Electricity,3 days,11,High,Resolved,16-06-2026
+C0469,A rat has been spotted moving around the store room near the common area at night.,Public,A,Third,31,Pest Control,6 days,24,High,In Progress,28-05-2026
+C0471,There hasnt been any drinking water in the cooler since this morning.,Public,B,Second,22,Water Cooler,4 days,9,Medium,In Progress,12-07-2026
+C0472,WiFi on our floor barely works once it gets past 8 in the evening.,Public,C,First,13,WiFi,2 hours,6,Medium,In Progress,27-05-2026
+C0473,One of my shirts came back from laundry with a tear that wasnt there before.,Public,A,Second,22,Laundry,1 day,1,Low,In Progress,04-05-2026
+C0474,"Mattress has a musty smell that wont go away even after airing it out, since Tuesday.",Public,A,Ground,8,Mattress,5 hours,1,Medium,Pending,08-07-2026
+C0475,Paint on the study table in my room is peeling off badly.,Public,C,Third,40,Furniture,2 days,1,Low,In Progress,18-05-2026
+C0476,The dustbin in the common area has gone missing since last week.,Public,C,Ground,3,Furniture,2 hours,0,Low,In Progress,12-02-2026
+C0477,"No hot water coming from the common bathroom shower at all, tried waiting it out but nothing.",Public,C,First,16,Washroom,2 days,16,Medium,Pending,20-04-2026
+C0478,The security guard at the main gate was missing for almost the entire night.,Public,A,Second,27,Security,1 hour,35,High,Pending,21-07-2026
+C0480,The back gate CCTV camera has been out of order for over a week now.,Public,A,Second,27,Security,2 days,10,High,Pending,22-07-2026
+C0481,"Its a bit stiff, but the window latch in my room still functions okay.",Public,B,Second,28,Window,12 days,1,Low,Pending,27-07-2026
+C0482,"The wifi on our floor becomes almost unusable every evening after 8, for close to a fortnight.",Public,A,Fourth,50,WiFi,3 days,21,Medium,In Progress,28-05-2026
+C0485,The CCTV camera by the back gate stopped working over a week ago and still hasnt been fixed.,Public,B,Fourth,46,Security,4 days,18,High,Pending,30-07-2026
+C0486,Garbage near the entrance bins hasnt been cleared for three days now.,Public,A,Second,21,Cleanliness,1 day,4,Medium,Resolved,06-05-2026
+C0489,"Every time someone upstairs uses the washroom, water backs up from the bathroom drain in my room.",Public,A,First,20,Drainage,4 weeks,11,High,Pending,08-07-2026
+C0490,"At night the main door of our block doesnt shut properly, feels like a safety issue.",Public,B,Ground,3,Door,1 day,1,Medium,In Progress,31-05-2026
+C0492,"Dinner tonight was undercooked, a few of us felt uneasy after eating it.",Public,B,First,13,Mess,1 week,6,High,In Progress,19-05-2026
+C0494,The laundry service keeps delaying pickups by almost a week now.,Public,B,Third,38,Laundry,4 hours,1,Medium,Resolved,31-05-2026
+C0495,Someone has left their bike right in front of the fire exit near the parking area.,Public,B,Third,39,Parking,12 days,19,Medium,In Progress,18-02-2026
+C0496,"Light outside our room door has been dim for quite some time, probably needs replacing.",Public,A,Fourth,49,Light,4 days,1,Low,In Progress,19-07-2026
+C0498,The washroom light on our floor stays off no matter how many times we flip the switch.,Public,C,First,13,Light,5 hours,0,Medium,In Progress,01-06-2026
+C0500,Our floor had a total power outage that lasted almost the whole night.,Public,B,Ground,7,Electricity,1 day,28,High,Pending,20-07-2026
+C0501,"One of the washroom doors doesnt latch shut properly, for the past 2 days.",Public,A,Second,30,Washroom,5 hours,4,Medium,Pending,07-07-2026
+C0502,"No matter how much I air it out, my mattress keeps smelling musty.",Public,B,Second,27,Mattress,3 hours,0,Medium,Pending,28-07-2026
+C0503,Mess timing shifts around without warning and were ending up missing meals because of it.,Public,C,Ground,10,Mess,2 days,26,Medium,Resolved,27-02-2026
+C0504,"Water keeps seeping in through the wall near the window during heavy rain, for more than 10 days.",Public,C,Ground,8,Leakage,6 days,1,High,Resolved,20-01-2026
+C0505,There is a rat moving around the store room near the common area at night.,Public,B,Ground,4,Pest Control,4 days,17,High,In Progress,15-03-2026
+C0506,Power went out completely on our floor for almost the whole night.,Public,B,Second,27,Electricity,5 hours,25,High,Pending,30-07-2026
+C0507,One leg is broken on my rooms chair and it wobbles whenever I sit down.,Public,A,Fourth,43,Furniture,2 weeks,1,Low,Resolved,20-05-2026
+C0508,"Water from the bathroom drain backs up every time someone upstairs uses the washroom, since last Friday.",Public,B,Third,36,Drainage,8 hours,29,High,Resolved,04-05-2026
+C0512,Wifi is consistently weaker in the corner rooms than anywhere else on the floor.,Public,C,Ground,2,WiFi,13 days,1,Low,In Progress,29-04-2026
+C0513,Its hard to concentrate on studies because of how early the outside construction begins.,Public,B,Second,25,Noise,5 hours,16,Medium,In Progress,30-06-2026
+C0514,"Tube light in my room wont stop flickering, its been like this for two days.",Public,C,Fourth,41,Light,4 days,1,Medium,Pending,10-06-2026
+C0516,"The pipe behind the washroom wall is leaking and the floor stays wet all the time, since last Friday.",Public,A,Fourth,49,Leakage,1 day,4,High,In Progress,18-07-2026
+C0517,A group of students has been blasting music till 2am every night this week.,Public,A,Ground,6,Noise,12 days,32,High,Pending,07-05-2026
+C0518,"Water only runs for about an hour each morning, barely enough for everyone to manage.",Public,B,Third,40,Water Supply,2 days,6,Medium,Resolved,10-05-2026
+C0519,Common rooms window pane got cracked from last nights strong wind.,Public,C,Fourth,42,Window,5 hours,1,Medium,In Progress,10-06-2026
+C0520,Staircase landing on our floor hasnt been mopped in well over a week.,Public,A,Fourth,49,Cleanliness,1 week,11,Medium,Resolved,28-04-2026
+C0521,"My internet connection drops every few minutes, really disrupts online classes.",Public,C,Second,28,WiFi,6 days,8,Medium,Pending,27-07-2026
+C0522,This time my laundry bag came back mixed up with someone elses.,Public,A,Second,26,Laundry,1 day,0,Low,Resolved,27-01-2026
+C0523,My bed frame keeps creaking loudly and one of its legs feels loose.,Public,C,Fourth,46,Furniture,2 weeks,2,Medium,Resolved,21-03-2026
+C0524,Flush in the washroom near the stairs has completely stopped working.,Public,C,Second,24,Washroom,4 hours,12,High,Resolved,01-04-2026
+C0525,Studying has become tough with construction starting so early right outside.,Public,A,Ground,5,Noise,4 weeks,21,Medium,Pending,23-07-2026
+C0526,Fan in the corridor cuts out after only about ten minutes of running.,Public,B,Second,29,Fan,1 hour,7,Medium,Pending,09-07-2026
+C0527,Roti served today was undercooked on one side.,Public,B,Ground,10,Mess,6 days,6,Low,Resolved,16-04-2026
+C0528,A few seniors have been mocking me constantly in the common room and i dont feel comfortable going there anymore.,Private,A,First,20,Security,3 days,0,Medium,Rejected,01-04-2026
+C0529,Four days running and the mess is still serving the exact same menu.,Public,A,Second,28,Mess,2 days,6,Medium,In Progress,16-04-2026
+C0530,"Someone has been messaging me repeatedly even after i asked them to stop, its starting to make me uncomfortable.",Private,B,Third,40,Security,5 hours,0,Medium,Resolved,09-06-2026
+C0531,Its really hard to concentrate on studying with construction noise starting outside so early.,Public,A,Third,34,Noise,8 days,9,Medium,Pending,11-07-2026
+C0532,"Cant get the washroom door to latch properly, it keeps swinging back open.",Public,B,Third,33,Washroom,4 days,5,Medium,Resolved,03-06-2026
+C0533,Dinner tonight tasted undercooked and a couple of us felt sick after eating it.,Public,C,First,15,Mess,4 weeks,22,High,Rejected,27-03-2026
+C0535,Theres a constant buzzing sound coming from the electrical panel on our floor.,Public,C,Fourth,46,Electricity,8 hours,35,High,Resolved,16-04-2026
+C0536,"Mud was visible on the vegetables served at lunch today, they werent washed well.",Public,C,Second,24,Mess,1 day,11,Medium,Pending,08-07-2026
+C0537,Got my shirt back from laundry with a tear in it that definitely wasnt there before.,Public,B,First,14,Laundry,5 hours,0,Low,Pending,26-07-2026
+C0538,My rooms switchboard cover has a crack in it and part of the wiring is showing.,Public,C,Third,35,Electricity,3 days,3,Medium,Resolved,11-06-2026
+C0539,Nonstop flickering from my rooms tube light for the past couple of days.,Public,B,Fourth,43,Light,13 days,1,Medium,Pending,28-07-2026
+C0540,There was loud shouting from the room next door well past midnight again.,Public,C,First,20,Noise,4 weeks,18,High,Pending,25-07-2026
+C0541,"The washroom on our floor hasnt been cleaned properly in a while, for 2 weeks now.",Public,C,Fourth,46,Washroom,2 hours,7,Medium,Pending,05-07-2026
+C0542,"The vegetables in todays lunch were not washed properly, could see mud on them.",Public,A,Third,37,Mess,4 days,14,Medium,Resolved,12-05-2026
+C0543,"The common washroom on our floor has had a foul smell for two days now, nobody wants to use it.",Public,B,First,15,Washroom,2 days,9,High,In Progress,30-06-2026
+C0544,The tube light in my room has been flickering non stop since two days.,Public,A,Second,29,Light,1 week,2,Medium,In Progress,21-06-2026
+C0546,"Window latch in my room feels a bit stiff, still works but could use a fix.",Public,C,Fourth,42,Window,1 day,1,Low,Pending,15-04-2026
+C0548,Some seniors keep making fun of me in the common room and its gotten to the point where I try to avoid going there.,Private,B,Second,25,Security,8 hours,0,Medium,In Progress,16-04-2026
+C0550,Water cooler on our floor makes a loud buzzing sound whenever its running.,Public,C,Fourth,47,Water Cooler,1 hour,3,Low,In Progress,28-06-2026
+C0551,The fan in our corridor stops working after running for barely ten minutes.,Public,B,Fourth,41,Fan,4 weeks,4,Medium,Pending,18-07-2026
+C0552,"Todays mess menu had just one curry, felt like a step down from the usual spread.",Public,C,Ground,4,Mess,3 days,1,Low,In Progress,17-05-2026
+C0553,The fan regulator knob in my room is a bit loose but the fan still works fine.,Public,A,Third,31,Fan,5 hours,1,Low,Pending,11-07-2026
+C0555,Some students have been playing loud music till 2 am every night this week.,Public,B,Ground,10,Noise,6 days,32,High,Resolved,05-06-2026
+C0558,"The pipe behind the washroom wall is leaking and the floor stays wet all the time, since this morning.",Public,B,Fourth,41,Leakage,6 hours,2,High,Pending,07-07-2026
+C0559,"My drawer looks disturbed, like someone went through it while I was away.",Private,B,First,11,Security,2 days,0,Medium,In Progress,04-03-2026
+C0560,The drain outside our block has been blocked for two days and water is starting to overflow.,Public,C,First,15,Drainage,5 hours,13,High,Pending,16-07-2026
+C0562,"Water supply has been irregular the entire week, some days it just doesnt come.",Public,B,First,17,Water Supply,6 days,28,High,Pending,26-07-2026
+C0563,The corridor light right outside my door is dim and could use a replacement.,Public,C,Ground,6,Light,12 days,1,Low,Pending,22-07-2026
+C0564,The mattress in my room has flattened out completely and isnt comfortable to sleep on anymore.,Public,C,Ground,1,Mattress,3 hours,0,Low,Pending,09-07-2026
+C0565,Washroom light on our floor doesnt turn on no matter how many times we try the switch.,Public,A,Fourth,48,Light,3 hours,1,Medium,Resolved,16-01-2026
+C0566,"Shower in the common bathroom refuses to give hot water, its been like this for some time.",Public,A,Third,37,Washroom,4 days,16,Medium,Resolved,03-06-2026
+C0567,"Bulb outside our room door has been dim for a while, might be time to swap it out.",Public,B,First,17,Light,2 days,5,Low,Rejected,13-03-2026
+C0568,"The washroom door in my room doesnt lock properly, since this morning.",Public,A,First,18,Door,12 days,1,Medium,In Progress,09-07-2026
+C0569,Someone stole my laptop from my room while I was out at dinner.,Private,A,Ground,4,Security,4 hours,0,High,In Progress,19-06-2026
+C0570,Cobwebs have built up in the corner of the corridor and nobody seems to have noticed.,Public,C,Third,37,Cleanliness,1 week,2,Low,Pending,17-07-2026
+C0571,"Lift doors dont close properly and it still starts moving, feels really unsafe.",Public,B,Third,39,Lift,1 day,10,High,Pending,14-05-2026
+C0572,Back gate CCTV has been non-functional for more than a week now.,Public,C,Third,38,Security,1 week,19,High,Pending,10-07-2026
+C0573,"Bins near the entrance are overflowing, garbage hasnt been cleared in three days.",Public,C,First,12,Cleanliness,2 hours,4,Medium,Pending,09-07-2026
+C0574,Todays roti came out undercooked on one side.,Public,A,Fourth,48,Mess,2 weeks,7,Low,Resolved,11-03-2026
+C0575,"Dust has settled thick on the window sills in the common area, since this morning.",Public,C,Ground,10,Cleanliness,8 hours,5,Low,Resolved,24-04-2026
+C0576,My clothes from laundry still havent been returned days after I dropped them off.,Public,C,Third,33,Laundry,8 days,1,Medium,Resolved,05-02-2026
+C0577,The dustbin thats usually in the common area has gone missing since last week.,Public,B,First,14,Furniture,3 hours,1,Low,Resolved,22-02-2026
+C0578,Evenings bring a lot of mosquitoes near the washroom area.,Public,B,Second,27,Pest Control,6 hours,15,Medium,Resolved,13-04-2026
+C0579,"Theres a bad smell in our floor washroom thats been there for two days, nobody wants to go in.",Public,B,Third,38,Washroom,1 hour,8,High,Resolved,24-05-2026
+C0580,"Kitchen area in the mess has a serious cockroach problem, doesnt look hygienic at all.",Public,B,Ground,8,Pest Control,3 days,17,High,Resolved,20-06-2026
+C0583,The same menu has been repeated for four days in a row now.,Public,C,Fourth,47,Mess,4 days,15,Medium,In Progress,27-05-2026
+C0585,"The wifi on our floor becomes almost unusable every evening after 8, since last Friday.",Public,C,Second,24,WiFi,2 weeks,15,Medium,Pending,27-07-2026
+C0586,"There was a small insect found in todays sabzi, several of us noticed it.",Public,A,Fourth,42,Mess,2 days,33,High,In Progress,08-04-2026
+C0587,"Dust has settled thick on the window sills in the common area, for close to a fortnight.",Public,A,Fourth,43,Cleanliness,4 hours,4,Low,Pending,24-07-2026
+C0588,Corridor fan keeps switching off after just ten minutes of use.,Public,A,First,15,Fan,6 days,3,Medium,In Progress,30-06-2026
+C0589,Fan in the common reading room makes a loud grinding noise whenever its switched on.,Public,C,First,17,Fan,1 day,6,Medium,Resolved,14-03-2026
+C0590,"Ceiling fan in my room has slowed down to almost half speed even on the highest setting, since last week.",Public,B,Ground,5,Fan,1 day,0,High,In Progress,07-07-2026
+C0591,Our room has been without a working socket near the desk for a few days.,Public,C,Third,33,Electricity,1 day,3,Medium,Resolved,13-03-2026
+C0592,Water from the tap has looked cloudy with a strange smell for a few days now.,Public,B,Second,29,Water Supply,6 days,11,Medium,Pending,19-07-2026
+C0593,"Two days since my fan stopped working, the heat is making it really hard to sleep at night.",Public,A,Ground,4,Fan,6 days,1,High,Pending,29-07-2026
+C0594,Corner of the corridor has cobwebs building up that no one seems to have noticed.,Public,C,Fourth,46,Cleanliness,6 hours,7,Low,Resolved,04-06-2026
+C0595,Water cooler on our floor has stopped giving cold water for the last two days.,Public,B,Fourth,41,Water Cooler,5 hours,10,Medium,In Progress,30-05-2026
+C0596,"A few of my things looked out of place, feels like someone was in my drawer while I was out.",Private,C,Third,33,Security,1 day,0,Medium,In Progress,19-06-2026
+C0597,Dust has settled thick on the window sills in the common area.,Public,C,Fourth,49,Cleanliness,1 day,7,Low,Resolved,27-05-2026
+C0600,"Laundry bag i submitted got mixed up with someone elses this time, for almost 2 weeks.",Public,B,Second,24,Laundry,6 days,1,Low,Pending,14-07-2026
+C0604,"The switchboard cover in my room is cracked and the wiring is slightly exposed, since this evening.",Public,B,First,12,Electricity,2 hours,7,Medium,Pending,07-07-2026
+C0605,"Even after telling them to stop, someone keeps messaging me repeatedly and its making me uncomfortable.",Private,A,Second,23,Security,2 weeks,0,Medium,Pending,10-07-2026
+C0606,We keep missing meals because mess timing changes without any warning.,Public,A,Third,34,Mess,4 days,13,Medium,Resolved,18-04-2026
+C0607,"Vegetables at lunch today looked unwashed, could see mud on them.",Public,C,First,12,Mess,13 days,12,Medium,Pending,29-07-2026
+C0608,Main door of our block doesnt close properly at night which feels unsafe.,Public,A,Second,27,Door,6 days,1,Medium,In Progress,03-03-2026
+C0609,"Mess only offered a single curry option today, less choice than we normally get.",Public,B,Fourth,41,Mess,8 days,8,Low,Resolved,06-06-2026
+C0611,Cash went missing from my drawer while I was away over the weekend.,Private,B,Second,27,Security,2 days,0,High,Pending,07-07-2026
+C0613,"The light outside our room door has been dim for a while now, might need changing.",Public,B,Third,35,Light,6 days,1,Low,In Progress,21-02-2026
+C0615,My chair wobbles a lot because one of its legs is broken.,Public,A,Second,30,Furniture,1 week,0,Low,Resolved,29-03-2026
+C0616,Clothes ive dropped for washing four days back still havent been returned.,Public,B,Ground,1,Laundry,1 day,0,Medium,Pending,23-04-2026
+C0617,My mattress has gone completely flat and its uncomfortable to sleep on now.,Public,A,Second,26,Mattress,4 hours,1,Low,Pending,26-07-2026
+C0618,Water only comes for about an hour in the morning which is barely enough for everyone.,Public,B,Fourth,42,Water Supply,4 weeks,18,Medium,In Progress,26-05-2026
+C0619,Internet in the study hall completely stopped working since yesterday afternoon.,Public,A,Third,40,Internet,5 hours,6,Medium,Pending,29-07-2026
+C0620,Theres a loud grinding sound from the fan in the common reading room every time its turned on.,Public,A,First,16,Fan,5 hours,11,Medium,In Progress,01-02-2026
+C0621,Last nights windy weather left a crack in the common room window pane.,Public,B,Fourth,47,Window,2 days,2,Medium,Rejected,20-02-2026
+C0622,"The chair in my room wobbles every time I use it, a leg is broken.",Public,B,Second,26,Furniture,12 days,2,Low,Resolved,01-02-2026
+C0623,"Cycle stand by the block entrance is packed, barely any room to park.",Public,A,Ground,5,Parking,6 days,10,Low,In Progress,25-06-2026
+C0624,My rooms ethernet port stopped working a few days ago.,Public,A,Third,40,Internet,1 hour,2,Medium,Resolved,08-03-2026
+C0625,"Washroom on our floor is in a pretty bad state, hasnt been cleaned properly for a while now.",Public,C,Ground,3,Washroom,6 hours,13,Medium,In Progress,20-05-2026
+C0626,A bike has been parked right in front of the fire exit near the parking area for a couple of days now.,Public,B,First,19,Parking,13 days,7,Medium,Resolved,02-05-2026
+C0627,Connection keeps dropping every few minutes making it hard to attend online classes.,Public,B,Second,23,WiFi,6 hours,3,Medium,In Progress,17-02-2026
+C0628,Barely any space left in the cycle stand near the block entrance these days.,Public,B,Fourth,42,Parking,8 hours,8,Low,Resolved,09-05-2026
+C0629,Found bed bugs in my mattress and they have started biting at night.,Public,A,Second,23,Pest Control,8 days,38,High,Pending,26-07-2026
+C0630,The fan in my room stopped working two days back and with this heat its become really hard to sleep.,Public,C,First,13,Fan,8 days,1,High,Pending,20-07-2026
+C0632,Some money was taken from my drawer during the weekend while I was gone.,Private,C,Fourth,49,Security,3 hours,0,High,Resolved,12-02-2026
+C0633,"Lift doors here dont close all the way but the lift still moves, feels unsafe.",Public,A,Third,34,Lift,5 hours,9,High,In Progress,22-05-2026
+C0634,Water cooler on our floor has stopped giving cold water since two days.,Public,B,Fourth,43,Water Cooler,1 day,6,Medium,Resolved,23-05-2026
+C0635,The staircase landing on our floor has not been mopped in over a week.,Public,A,Second,23,Cleanliness,2 days,12,Medium,In Progress,11-04-2026
+C0636,My room fan stopped working a couple of days ago and sleeping has been rough in this heat.,Public,C,Third,31,Fan,6 days,1,High,In Progress,31-05-2026
+C0638,"There are quite a few mosquitoes near the washroom area every evening, for almost a week.",Public,C,Ground,3,Pest Control,6 days,15,Medium,In Progress,25-04-2026
+C0639,"Ceiling fan in my room has slowed down to almost half speed even on the highest setting, for 3-4 days now.",Public,B,Third,33,Fan,4 days,1,High,Rejected,10-06-2026
+C0640,Construction outside begins really early and makes studying almost impossible.,Public,C,Third,40,Noise,1 week,19,Medium,Resolved,16-05-2026
+C0641,The water cooler on our floor makes a loud buzzing noise.,Public,A,Third,36,Water Cooler,4 days,1,Low,Resolved,23-05-2026
+C0642,My laptop went missing from my room during the time I was out for dinner.,Private,B,Third,33,Security,2 days,0,High,Pending,08-07-2026
+C0643,There is a constant leak near the washroom entrance and the floor is always slippery.,Public,A,Second,21,Washroom,2 days,4,High,Resolved,27-02-2026
+C0646,Paint is peeling badly off the study table in my room.,Public,B,Fourth,43,Furniture,12 days,0,Low,Pending,26-07-2026
+C0647,"Drain outside our block has been clogged for two days, water is starting to overflow onto the path.",Public,B,Ground,5,Drainage,6 days,8,High,Resolved,31-05-2026
+C0649,"Cobwebs keep collecting in the corridor corner, doesnt look like anyone has cleaned it.",Public,B,Fourth,47,Cleanliness,8 days,3,Low,Resolved,22-03-2026
+C0650,Sleeping has gotten uncomfortable because my mattress has flattened out completely.,Public,A,Second,21,Mattress,6 hours,0,Low,In Progress,05-06-2026
+C0651,"It looks like someone rifled through my drawer while I was out, a few things arent where I left them.",Private,B,Second,23,Security,4 days,0,Medium,In Progress,12-02-2026
+C0652,Window sills in the common area have a thick layer of dust on them.,Public,B,Fourth,50,Cleanliness,3 days,5,Low,Pending,09-07-2026
+C0653,"Dust has built up all over the common room, doesnt look like its been swept in days.",Public,A,Third,35,Cleanliness,1 day,16,Medium,Resolved,06-06-2026
+C0654,"For two days our washroom has smelled terrible, everyone is avoiding it.",Public,B,Third,37,Washroom,2 hours,7,High,In Progress,21-05-2026
+C0656,The bed frame in my room creaks loudly and one leg feels loose.,Public,A,Third,32,Furniture,5 hours,0,Medium,In Progress,16-07-2026
+C0657,"Only cold water comes out of the common bathroom shower, however long you wait.",Public,B,Ground,9,Washroom,2 days,3,Medium,In Progress,04-02-2026
+C0658,Fan in the common reading room grinds loudly whenever someone switches it on.,Public,C,Ground,6,Fan,1 week,3,Medium,In Progress,30-05-2026
+C0659,There was zero water supply on our floor pretty much the entire morning.,Public,A,Fourth,48,Water Supply,2 hours,20,High,Pending,04-05-2026
+C0661,"Water pressure has dropped so low that filling even one bucket takes forever, for more than 10 days.",Public,A,Fourth,44,Water Supply,4 days,16,High,Rejected,28-06-2026
+C0662,"Internet connection drops out every few minutes, makes attending online classes really difficult.",Public,B,First,18,WiFi,3 hours,15,Medium,In Progress,28-05-2026
+C0663,One of the washroom doors just wont latch shut anymore.,Public,C,Third,35,Washroom,6 days,4,Medium,Resolved,10-06-2026
+C0664,Loud shouting from the neighboring room went on well past midnight again.,Public,C,Ground,4,Noise,1 week,9,High,In Progress,24-03-2026
+C0665,"A few of us felt unwell after dinner today, the food seemed undercooked.",Public,C,Second,25,Mess,2 days,26,High,Pending,23-07-2026
+C0666,Cold water from our floors water cooler stopped working two days ago.,Public,C,Second,28,Water Cooler,2 days,13,Medium,In Progress,13-04-2026
+C0667,My bed frame creaks loudly and one of the legs feels loose.,Public,A,Third,33,Furniture,2 hours,2,Medium,In Progress,12-06-2026
+C0668,Someone in the room next door was shouting loudly late into the night again.,Public,A,First,15,Noise,3 days,25,High,Pending,14-06-2026
+C0669,Mosquitoes gather near the washroom area pretty badly every evening.,Public,A,Third,39,Pest Control,6 days,5,Medium,In Progress,09-06-2026
+C0673,Laundry sent back one of my shirts with a tear in it that wasnt there before I dropped it off.,Public,A,Second,30,Laundry,2 weeks,1,Low,In Progress,21-06-2026
+C0674,Its been close to a week and laundry still hasnt been picked up on time.,Public,C,Fourth,48,Laundry,3 hours,2,Medium,Resolved,26-05-2026
+C0675,My room tube light has been flickering nonstop for the past two days.,Public,C,Second,22,Light,5 hours,1,Medium,In Progress,16-06-2026
+C0676,"The washroom on our floor hasnt been cleaned properly in a while, since last week.",Public,A,Fourth,41,Washroom,6 days,4,Medium,Pending,13-07-2026
+C0677,My rooms door handle feels wobbly and looks like it could come off any time.,Public,A,Ground,9,Door,5 hours,1,Low,In Progress,28-05-2026
+C0679,Laundry pickup delays have stretched to almost a week at this point.,Public,A,Fourth,46,Laundry,1 week,0,Medium,In Progress,15-04-2026
+C0680,"Foul smell has taken over our floors common washroom for two days now, nobody wants to go in.",Public,B,Third,32,Washroom,2 weeks,14,High,Pending,04-05-2026
+C0681,"We only get about an hour of water in the morning, not really enough for everyone.",Public,B,First,16,Water Supply,3 hours,15,Medium,Resolved,03-05-2026
+C0682,Construction outside starts way too early and makes it hard to focus on studying.,Public,A,Third,32,Noise,4 days,22,Medium,Resolved,14-03-2026
+C0683,Someone parked a bike blocking the fire exit near the parking area.,Public,C,Ground,3,Parking,3 days,9,Medium,In Progress,15-07-2026
+C0685,Water supply timings change often without any prior notice to us.,Public,B,Second,30,Water Supply,2 days,14,Medium,In Progress,20-07-2026
+C0686,Door handle in my room is loose and seems close to falling off.,Public,B,Third,37,Door,3 hours,1,Low,Pending,07-04-2026
+C0687,"There is a water leakage from the ceiling in my room every time it rains, for almost 2 weeks.",Public,A,Ground,8,Leakage,5 hours,1,High,Rejected,27-01-2026
+C0688,"Flipping the switch does nothing, the washroom light on our floor just wont come on.",Public,B,Fourth,48,Light,2 hours,1,Medium,Pending,20-07-2026
+C0689,Rain gets into my room during storms because the window doesnt shut properly.,Public,C,Ground,2,Window,6 hours,2,Medium,Pending,11-06-2026
+C0690,Window pane in the common room cracked after the wind last night.,Public,A,Ground,4,Window,2 days,1,Medium,In Progress,30-06-2026
+C0691,Ethernet connection in my room hasnt worked for the past several days.,Public,C,First,15,Internet,2 days,10,Medium,Resolved,01-02-2026
+C0693,Main gate had no security guard on duty for almost the whole night.,Public,A,Fourth,48,Security,2 hours,55,High,Resolved,23-03-2026
+C0694,Noticed the tap water is cloudy and smells off lately.,Public,B,Fourth,43,Water Supply,1 day,10,Medium,Resolved,01-04-2026
+C0696,My laundry bag got swapped with another students by mistake.,Public,B,Second,24,Laundry,2 days,0,Low,In Progress,31-05-2026
+C0697,"The window in my room doesnt close properly and lets in rain during storms, for the past 2 days.",Public,C,First,18,Window,4 hours,2,Medium,In Progress,20-06-2026
+C0698,Hard to get any studying done with how early the outside construction starts.,Public,C,Ground,1,Noise,4 days,9,Medium,In Progress,29-04-2026
+C0699,The switchboard cover in my room is cracked and the wiring is slightly exposed.,Public,C,Ground,8,Electricity,2 hours,3,Medium,In Progress,12-06-2026
+C0700,"Theres a leak from the pipe behind the washroom wall, the floor stays wet constantly.",Public,A,Third,31,Leakage,13 days,2,High,Rejected,05-04-2026
+C0701,"No one seems to have cleaned the corridor corner in a while, cobwebs are piling up there.",Public,A,Third,38,Cleanliness,5 hours,5,Low,In Progress,09-06-2026
+C0702,Four days since I gave my clothes for washing and theyre still not back yet.,Public,B,Fourth,42,Laundry,8 days,2,Medium,In Progress,20-05-2026
+C0703,The common area dustbin has been missing for about a week now.,Public,B,Fourth,41,Furniture,1 day,1,Low,In Progress,25-06-2026
+C0704,"We never get advance notice when the water supply schedule changes, it just shifts randomly.",Public,B,Second,22,Water Supply,8 hours,10,Medium,Rejected,28-05-2026
+C0705,My laptop got stolen from my room while I had gone out for dinner.,Private,C,First,14,Security,5 hours,0,High,Resolved,09-06-2026
+C0706,"The area near the washroom entrance keeps leaking, floor stays slippery all the time.",Public,A,Third,38,Washroom,1 week,17,High,Pending,06-07-2026
+C0707,It feels unsafe that the lift starts moving even though the doors havent shut properly.,Public,A,Third,31,Lift,6 days,46,High,Pending,28-05-2026
+C0708,"Our floors water tank seems to have run completely dry, taps just make noise with no water.",Public,B,Ground,9,Water Supply,6 hours,6,High,Resolved,19-06-2026
+C0709,Loud shouting from next door went on past midnight once more.,Public,C,Second,27,Noise,2 weeks,29,High,Resolved,02-05-2026
+C0710,Clothes I dropped off for washing four days ago still havent come back.,Public,C,Ground,5,Laundry,4 days,1,Medium,In Progress,25-03-2026
+C0711,WiFi signal in the corner rooms is noticeably weaker than everywhere else on the floor.,Public,B,Second,22,WiFi,2 days,1,Low,In Progress,20-05-2026
+C0712,"Construction work outside starts really early and disturbs everyone trying to study, since 30 minutes.",Public,C,Third,40,Noise,6 days,8,Medium,In Progress,18-05-2026
+C0715,"Got the wrong laundry bag back this time, it got mixed up with someone elses.",Public,C,Second,23,Laundry,1 week,0,Low,In Progress,07-06-2026
+C0716,"Someone has been messaging me repeatedly even after i asked them to stop, its starting to make me uncomfortable, for more than 10 days.",Private,B,First,12,Security,1 week,0,Medium,In Progress,26-06-2026
+C0717,The switchboard cover in my room is cracked and I can see some wiring exposed.,Public,A,First,18,Electricity,3 days,5,Medium,In Progress,03-06-2026
+C0718,Bins near the entrance havent been emptied in three days and garbage is piling up.,Public,C,First,14,Cleanliness,4 hours,8,Medium,Pending,15-07-2026
+C0719,Flush near the stairwell washroom has completely stopped working.,Public,A,Ground,10,Washroom,4 days,13,High,In Progress,09-06-2026
+C0721,It feels risky that the lift keeps moving even when the doors dont shut all the way.,Public,A,Fourth,50,Lift,5 hours,12,High,Pending,16-07-2026
+C0722,"The tank supplying our floor seems to have run dry, taps are just making noise with no water coming out, since this afternoon.",Public,B,Second,23,Water Supply,2 hours,31,High,In Progress,06-05-2026
+C0723,"Flush in the washroom near the stairs has completely stopped working, since this afternoon.",Public,B,Ground,6,Washroom,4 days,4,High,Resolved,24-05-2026
+C0724,The washroom flush by the stairs isnt working at all anymore.,Public,A,First,19,Washroom,4 days,17,High,Resolved,06-02-2026
+C0725,Wind last night caused the window pane in the common room to crack.,Public,B,First,14,Window,4 hours,1,Medium,In Progress,15-07-2026
+C0726,"There is standing dirty water near the back entrance because the drain wont clear, for 2 weeks now.",Public,B,Ground,5,Drainage,1 week,5,High,Resolved,08-05-2026
+C0727,"No matter how many times we flip the switch, the washroom light on our floor wont turn on.",Public,C,Second,30,Light,3 days,1,Medium,Pending,09-07-2026
+C0728,"Common room is dusty all over, doesnt seem to have been swept in days.",Public,C,Fourth,43,Cleanliness,1 day,3,Medium,In Progress,05-07-2026
+C0729,My mattress still smells musty even after airing it out for a while.,Public,A,Second,28,Mattress,1 day,0,Medium,In Progress,07-06-2026
+C0733,"Midnight shouting from the room next door happened again, kept everyone up.",Public,A,Third,36,Noise,1 hour,27,High,In Progress,15-04-2026
+C0734,"My connection drops constantly, making it really hard to attend online classes.",Public,A,Fourth,45,WiFi,2 hours,26,Medium,Pending,27-07-2026
+C0735,Someone took my laptop from my room while I had stepped out for dinner.,Private,A,Third,36,Security,4 days,0,High,Resolved,17-05-2026
+C0736,Its really hard to study with construction noise starting so early outside.,Public,A,Third,34,Noise,4 weeks,18,Medium,Pending,22-07-2026
+C0737,The stairwell washroom flush is completely non-functional right now.,Public,C,Third,32,Washroom,5 hours,10,High,In Progress,11-06-2026
+C0738,The roti at todays meal was undercooked on one side.,Public,B,Second,21,Mess,8 hours,4,Low,Pending,07-07-2026
+C0740,"Our floor washroom has had a bad smell for two days, nobody wants to use it.",Public,C,First,20,Washroom,2 days,13,High,In Progress,15-05-2026
+C0742,Laundry pickups have been delayed by almost a week now.,Public,C,Third,34,Laundry,5 hours,3,Medium,Pending,18-07-2026
+C0743,Power on our floor keeps cutting on and off every hour since yesterday.,Public,A,Fourth,49,Electricity,2 days,17,High,Pending,13-07-2026
+C0744,Corner rooms always seem to get worse wifi than the rest of the floor.,Public,B,First,16,WiFi,1 hour,3,Low,In Progress,03-04-2026
+C0745,For a while now the light outside our door has been dim and flickering.,Public,A,Third,36,Light,4 days,7,Low,Pending,31-07-2026
+C0746,The corridor bulb near the stairs has fused and needs to be changed.,Public,B,Ground,6,Light,1 week,2,Low,Pending,28-07-2026
+C0747,"Cockroaches have taken over the kitchen area of the mess, its becoming unhygienic.",Public,B,Fourth,44,Pest Control,5 hours,11,High,Resolved,10-05-2026
+C0748,"Power keeps flickering on and off every hour on our floor, been happening since yesterday.",Public,A,Ground,9,Electricity,4 hours,9,High,Pending,20-07-2026
+C0750,"Washroom entrance has a persistent leak, the floor is always wet.",Public,C,Second,23,Washroom,3 hours,24,High,In Progress,16-05-2026
+C0751,"Main entrance door of our block has been stuck half open for two days, anyone could walk in at night.",Public,B,First,15,Door,6 days,22,High,Resolved,03-04-2026
+C0752,"Vegetables in lunch today werent washed properly, could actually see mud on them.",Public,B,Third,36,Mess,3 days,19,Medium,Resolved,31-01-2026
+C0753,"The washroom door in my room doesnt lock properly, for the last few days.",Public,A,Second,27,Door,6 days,0,Medium,Rejected,22-02-2026
+C0755,Since yesterday the power on our floor keeps switching off and on every hour or so.,Public,C,First,12,Electricity,1 day,23,High,Resolved,27-03-2026
+C0756,Tension has been building between my roommate and me over constant arguments about shared space.,Private,C,Third,40,Security,2 days,0,Medium,Pending,29-07-2026
+C0758,My roommate and i have been having constant arguments over shared space and it has gotten pretty tense.,Private,A,Ground,6,Security,12 days,0,Medium,In Progress,19-04-2026
+C0760,"One bulb in the corridor near the stairs has fused and needs replacing, for 3-4 days now.",Public,C,Ground,8,Light,1 hour,1,Low,Pending,07-07-2026
+C0762,Bed bugs have shown up in my mattress and theyve started biting at night.,Public,C,Second,29,Pest Control,8 days,20,High,Pending,23-07-2026
+C0764,"Cleanliness of our floor washroom has really slipped, doesnt seem to have been cleaned in a while.",Public,A,Third,38,Washroom,1 day,10,Medium,Resolved,21-02-2026
+C0765,For two days the tube light in my room has been flickering without stopping.,Public,A,Second,29,Light,2 days,1,Medium,Resolved,25-05-2026
+C0768,Cant get rid of the musty smell on my mattress no matter how much I air it out.,Public,B,Third,31,Mattress,2 days,0,Medium,Resolved,09-03-2026
+C0769,Someone took cash from my drawer while i was away for the weekend.,Private,A,Fourth,46,Security,4 weeks,0,High,Resolved,05-05-2026
+C0770,"Our floor washroom has smelled awful for two days now, its unusable at this point.",Public,B,Second,21,Washroom,3 days,15,High,In Progress,10-07-2026
+C0772,"There is a water leakage from the ceiling in my room every time it rains, since 30 minutes.",Public,C,Third,34,Leakage,3 days,3,High,In Progress,29-05-2026
+C0773,"The pipe behind the washroom wall is leaking and the floor stays wet all the time, for the last few days.",Public,C,Ground,4,Leakage,1 day,2,High,Pending,27-07-2026
+C0774,"Fan in my room hasnt worked for a couple of days now, really tough sleeping in this heat.",Public,C,Ground,10,Fan,1 day,2,High,Rejected,24-06-2026
+C0776,Mess timing keeps changing without any notice and we end up missing meals.,Public,C,Second,29,Mess,2 hours,18,Medium,Pending,15-07-2026
+C0777,"Theres a constant leak near the washroom entrance, floor is always wet and slippery.",Public,A,Second,28,Washroom,12 days,17,High,Pending,29-07-2026
+C0778,One of the washroom doors wont latch shut properly anymore.,Public,C,Third,34,Washroom,6 hours,9,Medium,In Progress,03-07-2026
+C0779,"No matter how long you wait, the common bathroom shower only puts out cold water.",Public,B,Second,26,Washroom,2 days,2,Medium,In Progress,31-05-2026
+C0781,The mess menu has repeated for four straight days now.,Public,A,Fourth,44,Mess,1 week,17,Medium,In Progress,22-05-2026
+C0783,"The washroom on our floor hasnt been cleaned properly in a while, for a month now.",Public,A,First,14,Washroom,2 hours,10,Medium,Resolved,27-05-2026
+C0784,There's a constant buzzing coming from the floors electrical panel.,Public,A,Second,27,Electricity,6 days,11,High,In Progress,18-07-2026
+C0785,Window in the common room cracked after last nights wind.,Public,B,First,16,Window,1 day,1,Medium,Pending,12-05-2026
+C0787,The common bathroom shower has stopped giving hot water entirely.,Public,A,First,15,Washroom,1 day,8,Medium,Pending,08-07-2026
+C0789,My rooms tube light has been flickering nonstop for two days straight.,Public,C,Second,28,Light,1 day,2,Medium,In Progress,22-06-2026
+C0790,Laundry bag i submitted got mixed up with someone elses this time.,Public,C,First,17,Laundry,12 days,2,Low,Resolved,17-06-2026
+C0792,"Got someone elses laundry bag by mistake again, mine got mixed up.",Public,C,First,17,Laundry,4 weeks,0,Low,Resolved,21-01-2026
+C0793,"Mess served just one curry today, felt like less than the usual variety.",Public,A,Third,33,Mess,6 hours,3,Low,Resolved,29-03-2026
+C0794,Theres a buildup of cobwebs in the corridor corner that hasnt been addressed.,Public,A,First,20,Cleanliness,6 days,1,Low,Pending,11-07-2026
+C0796,"Theres a faint rattle coming from my fan blade, not serious yet but noticeable.",Public,B,First,20,Fan,2 days,1,Low,In Progress,29-05-2026
+C0797,Rooms in the corner get noticeably weaker wifi signal compared to the rest of the floor.,Public,C,Second,24,WiFi,4 days,3,Low,Resolved,18-04-2026
+C0799,Common areas dustbin disappeared last week and hasnt been replaced.,Public,A,First,17,Furniture,6 days,1,Low,Pending,15-07-2026
+C0800,Loud music from some students rooms has been going on till 2am all week.,Public,C,Fourth,49,Noise,6 days,32,High,Resolved,20-05-2026
+C0801,The AC in our room switches off on its own after running for about ten minutes.,Public,C,First,12,AC,2 hours,4,Medium,Resolved,24-07-2026
+C0802,Water is leaking from the AC unit and pooling near the study table.,Public,A,Second,25,AC,1 day,9,High,Pending,14-03-2026
+C0803,"AC has been making a loud rattling noise whenever it's switched on, since last night.",Public,B,First,13,AC,1 day,7,Medium,In Progress,08-07-2026
+C0804,"We've been asking for the AC gas refill for two weeks now, it just blows room-temperature air.",Public,B,Ground,9,AC,3 hours,6,Medium,Resolved,16-06-2026
+C0805,"The remote for the room AC is missing, so we can't control the temperature at all.",Public,B,Ground,7,AC,3 days,0,Low,Resolved,23-01-2026
+C0807,"The AC filter looks like it hasn't been cleaned in months, dust comes out every time it's switched on.",Public,A,Ground,9,AC,12 days,3,Low,Pending,22-01-2026
+C0808,AC installed in our room over a month ago still hasn't been connected to power.,Public,C,Ground,9,AC,4 days,4,Medium,Resolved,18-07-2026
+C0809,The AC in the common room hasn't cooled properly all summer despite multiple complaints.,Public,C,Second,29,AC,3 days,6,High,Pending,13-03-2026
+C0810,There's a constant dripping sound from the AC vent at night that's affecting sleep.,Public,A,Second,28,AC,4 weeks,7,Medium,Resolved,28-03-2026
+C0812,"The thermostat on the AC doesn't respond, it's stuck showing 16 degrees no matter what we set.",Public,A,Second,27,AC,6 days,3,Low,Resolved,28-03-2026
+C0813,AC on my roommate's side of the room works fine but the vent on my side barely blows any air.,Public,A,Ground,3,AC,4 days,12,Medium,Pending,30-07-2026
+C0814,Since the AC was serviced last week it's been leaking even more than before.,Public,C,Third,36,AC,1 day,11,High,Pending,08-02-2026
+C0815,The AC compressor outside our window runs all night and is extremely loud.,Public,A,Fourth,47,AC,1 day,9,Medium,In Progress,17-04-2026
+C0816,"AC power cable looks frayed near the switchboard, a bit worried about using it.",Public,A,Ground,6,AC,12 days,18,High,Pending,24-03-2026
+C0817,"Requesting an AC for our room as promised during admission, it's been three months.",Public,A,Fourth,41,AC,8 days,4,Low,In Progress,13-05-2026
+C0818,AC in the reading room has been off for weeks and it gets unbearably hot by afternoon.,Public,A,Second,29,AC,1 day,5,Medium,Pending,22-04-2026
+C0819,"The AC only cools if you stand directly under the vent, rest of the room stays warm.",Public,B,Ground,2,AC,8 days,2,Low,Resolved,01-04-2026
+C0820,"Mould has started forming around the AC vent in the ceiling, possibly from the leakage.",Public,A,First,20,AC,2 days,9,High,Resolved,12-06-2026
+C0821,"The fire alarm on our floor didn't go off during yesterday's drill, not sure if it's even connected.",Public,A,First,14,Fire Safety,6 hours,17,High,In Progress,27-01-2026
+C0822,Fire extinguisher near the stairwell looks like it expired over a year ago.,Public,C,Second,24,Fire Safety,2 days,13,High,Pending,05-02-2026
+C0828,Fire extinguisher is missing from its usual spot near the lift on the Fourth floor.,Public,C,Fourth,43,Fire Safety,1 week,16,High,In Progress,21-07-2026
+C0829,Exposed wiring is hanging loose from the ceiling near the water cooler on our floor.,Public,A,First,14,Fire Safety,5 hours,14,High,Pending,14-05-2026
+C0830,The emergency exit sign near the staircase hasn't been lit for weeks now.,Public,A,Fourth,47,Fire Safety,4 days,15,Medium,Resolved,28-06-2026
+C0831,"During the mock fire drill, the alarm was barely audible from our end of the corridor.",Public,B,First,19,Fire Safety,2 days,3,Medium,In Progress,10-07-2026
+C0833,"The fire hose reel box on the Second floor is empty, there's no hose inside.",Public,A,Second,21,Fire Safety,4 days,13,High,Pending,28-04-2026
+C0835,"Nobody seems to know where the assembly point is in case of a fire, there's no signage.",Public,C,Fourth,50,Fire Safety,1 week,6,Medium,Resolved,11-03-2026
+C0836,The fire extinguisher pin is missing on the one kept near the reception.,Public,C,Fourth,48,Fire Safety,2 days,6,Medium,Pending,29-06-2026
+C0837,Wires from the corridor light fitting are exposed and hanging just above head height.,Public,C,Ground,8,Fire Safety,2 hours,14,High,Pending,24-03-2026
+C0838,"During the power cut last night, none of the emergency lights near the exits came on.",Public,A,First,13,Fire Safety,1 day,11,High,In Progress,25-07-2026
+C0839,The staircase door meant for emergency exit sticks and takes a while to force open.,Private,B,Ground,9,Fire Safety,8 days,0,Medium,In Progress,24-03-2026
+C0841,"A long crack has appeared across the wall behind my cupboard, seems to be getting wider.",Public,A,Ground,7,Structural,2 days,4,Medium,Resolved,13-03-2026
+C0842,Plaster keeps falling off the wall near the window every time it rains.,Public,C,Ground,3,Structural,2 days,13,High,Resolved,22-05-2026
+C0844,A section of the staircase railing on the Ground floor has come completely unscrewed from the wall.,Public,C,Ground,3,Structural,5 hours,12,High,Pending,09-07-2026
+C0845,"There's visible water seepage on the wall shared with the bathroom, it's always damp.",Public,A,First,17,Structural,6 hours,9,Medium,Resolved,24-04-2026
+C0846,"One of the floor tiles near the entrance has cracked and sticks up, tripped over it twice.",Public,C,Second,27,Structural,2 weeks,4,Medium,Resolved,31-05-2026
+C0847,The wall in the corner of our room has a damp patch that smells musty.,Public,A,Ground,5,Structural,2 weeks,5,Medium,Resolved,18-01-2026
+C0849,The staircase steps near the First floor landing feel uneven and slightly cracked.,Public,C,First,16,Structural,1 day,2,Medium,In Progress,01-04-2026
+C0850,Roof of the terrace has a visible crack and lets rainwater seep into the floor below.,Private,A,Ground,7,Structural,5 hours,0,High,In Progress,12-05-2026
+C0851,The handrail on the First floor staircase came completely loose from the wall today.,Public,A,First,11,Structural,4 days,17,High,Rejected,24-05-2026
+C0852,There are hairline cracks spreading across the ceiling in the common room.,Private,A,Fourth,43,Structural,6 days,0,Low,In Progress,12-02-2026
+C0853,Water seepage from the floor above has left a large brown patch on our ceiling.,Public,B,First,15,Structural,2 days,14,High,In Progress,20-06-2026
+C0854,The outer wall near the balcony has started flaking paint and showing damp cracks.,Public,A,Fourth,44,Structural,4 days,5,Low,Pending,21-04-2026
+C0856,The wall between our room and the next one has a crack running from floor to ceiling.,Private,C,Ground,6,Structural,2 days,0,High,In Progress,20-01-2026
+C0857,Floor near the washroom entrance has sunk slightly and water collects there.,Private,A,Third,32,Structural,2 days,0,Medium,In Progress,04-04-2026
+C0858,The false ceiling tile above the study table has visible water stains and looks weak.,Public,C,Third,34,Structural,8 hours,9,Medium,Rejected,18-03-2026
+C0859,Bricks are visible where the plaster has completely come off near the stairwell window.,Public,B,Ground,10,Structural,3 hours,7,Medium,Resolved,06-02-2026
+C0860,"The room above ours seems to have a leak, our ceiling has damp brown rings all over it.",Public,B,Second,28,Structural,6 hours,16,High,In Progress,29-07-2026
+C0861,A junior in our block mentioned feeling pressured by seniors to do their laundry and errands every night.,Private,A,First,19,Ragging/Harassment,1 hour,0,High,Pending,17-02-2026
+C0862,There have been repeated instances of a few seniors mocking and isolating a first-year student during meals.,Public,B,Ground,8,Ragging/Harassment,6 days,13,High,In Progress,27-02-2026
+C0864,A resident reported being constantly taunted about their accent and background by roommates.,Private,B,Fourth,49,Ragging/Harassment,4 days,0,Medium,Pending,17-07-2026
+C0865,Reporting that a group of seniors has been forcing juniors to avoid the common washroom during certain hours.,Private,B,Ground,5,Ragging/Harassment,2 days,0,Medium,Pending,06-07-2026
+C0866,One of the freshers said they're being threatened with consequences if they report a minor rule that seniors are breaking.,Private,A,First,16,Ragging/Harassment,1 week,0,High,In Progress,28-05-2026
+C0867,There's a pattern of a few residents being left out and openly ridiculed in the corridor group chat.,Private,B,First,18,Ragging/Harassment,1 day,0,Medium,Pending,20-03-2026
+C0869,"Reporting late-night knocking and shouting outside a fresher's door by a group of students, seems intentional.",Public,B,First,11,Ragging/Harassment,2 weeks,15,High,Pending,06-06-2026
+C0870,A junior was allegedly pressured into giving up their bed to a senior during a recent inspection week.,Private,B,Third,34,Ragging/Harassment,4 weeks,0,Medium,In Progress,13-03-2026
+C0871,Some seniors have reportedly been collecting money from juniors under the guise of a 'welcome fund'.,Private,A,First,11,Ragging/Harassment,6 hours,0,High,Resolved,16-07-2026
+C0872,A student confided that they're being repeatedly called demeaning nicknames by their wing-mates.,Private,C,Second,21,Ragging/Harassment,2 days,0,Medium,Pending,02-02-2026
+C0874,"A group of freshers reported being pressured into extra chores in the mess as 'initiation', despite refusing.",Private,A,Ground,9,Ragging/Harassment,1 day,0,High,Resolved,28-03-2026
+C0875,One student mentioned persistent online harassment from batchmates in the hostel group chat.,Private,B,First,18,Ragging/Harassment,4 days,0,Medium,Resolved,03-06-2026
+C0877,I was allotted a triple-sharing room despite requesting a double as per my application.,Private,A,Second,28,Room Allocation,1 week,0,Medium,Pending,05-03-2026
+C0878,"My roommate and I have completely mismatched schedules and it's leading to constant friction, requesting reallocation.",Public,A,Fourth,42,Room Allocation,1 day,11,Medium,Resolved,03-07-2026
+C0879,I've been waiting three weeks for the room change I requested after the original allotment was incorrect.,Public,A,Ground,7,Room Allocation,4 days,7,Medium,Resolved,04-05-2026
+C0880,Was placed in a different block even though I specifically requested proximity to my department.,Private,B,First,17,Room Allocation,4 weeks,0,Low,In Progress,21-07-2026
+C0881,"My roommate smokes in the room despite the rules, requesting a transfer to another room.",Private,B,Second,21,Room Allocation,1 day,0,High,Resolved,31-01-2026
+C0882,The room I was allotted already had someone else's belongings in it when I moved in.,Private,C,Ground,7,Room Allocation,4 days,0,Medium,Pending,12-02-2026
+C0883,"Requesting a single room on medical grounds, I submitted the doctor's certificate two weeks ago.",Private,A,Second,24,Room Allocation,6 hours,0,High,Resolved,05-03-2026
+C0884,"Four of us are currently squeezed into a room meant for three, it's quite cramped.",Private,A,Third,39,Room Allocation,8 days,0,Medium,Resolved,20-02-2026
+C0885,"My allotted room number doesn't match what's on the hostel portal, causing confusion at the gate.",Private,B,Second,27,Room Allocation,4 days,0,Low,Resolved,28-03-2026
+C0886,I was allocated a First floor room despite requesting an upper floor for better ventilation.,Private,B,First,18,Room Allocation,2 days,0,Low,In Progress,04-02-2026
+C0887,There's been no response to my room swap request even though the other student has agreed to it.,Public,C,Third,38,Room Allocation,2 weeks,12,Medium,Rejected,10-02-2026
+C0888,My roommate moved out last month and I still haven't been assigned a new one or informed about it.,Public,C,Ground,1,Room Allocation,4 weeks,4,Low,In Progress,03-06-2026
+C0889,Requesting reallocation as my current roommate's guests visit late at night frequently without permission.,Private,A,Ground,1,Room Allocation,3 hours,0,Medium,Pending,27-07-2026
+C0890,"The room allotted to me has no working furniture at all, was told it would be fixed before move-in.",Private,B,First,14,Room Allocation,2 days,0,Medium,Rejected,30-04-2026
+C0891,"Most of the tube lights in the study room have stopped working, it's quite dim in the evenings.",Public,A,First,18,Study Room,12 days,7,Medium,Pending,11-03-2026
+C0892,The study room on the First floor gets extremely noisy after 9pm because it's also used as a hangout spot.,Public,B,First,17,Study Room,8 hours,7,Medium,Pending,27-02-2026
+C0893,"Half the chairs in the study room have broken backrests, uncomfortable to sit for long hours.",Public,B,Fourth,47,Study Room,4 days,3,Low,Pending,25-04-2026
+C0894,The fan in the study room only works on the lowest speed no matter the setting.,Public,A,Second,25,Study Room,12 days,2,Low,Pending,12-05-2026
+C0895,"Study room is always full during exam week, we need more seating or a second room opened up.",Public,A,Second,25,Study Room,6 days,7,Medium,Resolved,13-07-2026
+C0896,There's no wifi signal at all in the study room even though it's right next to the office.,Public,C,First,19,Study Room,4 weeks,2,Medium,Pending,24-02-2026
+C0897,"The study room door doesn't lock, so people keep wandering in and out during late night sessions.",Public,B,Second,24,Study Room,1 week,4,Low,In Progress,12-03-2026
+C0898,"Plug points in the study room don't work, hard to charge laptops during long study sessions.",Public,B,Second,21,Study Room,4 weeks,11,Medium,Pending,23-07-2026
+C0899,"The AC in the study room hasn't worked all semester, it gets unbearably warm by afternoon.",Public,A,Second,29,Study Room,8 hours,6,Medium,Resolved,26-07-2026
+C0900,"Study room windows don't close properly, mosquitoes get in badly during exam season.",Private,A,Second,26,Study Room,8 hours,0,Medium,Pending,28-01-2026
+C0901,One of the study room tables is wobbly and keeps shaking whenever someone writes on it.,Public,B,Third,40,Study Room,1 week,4,Low,In Progress,24-05-2026
+C0902,The study room gets locked by 11pm even during exams when we need it the most.,Public,A,Ground,9,Study Room,2 days,6,Medium,Resolved,30-01-2026
+C0903,There aren't enough study room chairs for the Second floor block during peak hours.,Public,B,Second,29,Study Room,2 days,4,Low,Pending,04-03-2026
+C0904,"The whiteboard in the group study room is unusable, the marker doesn't erase properly anymore.",Public,B,Ground,2,Study Room,12 days,3,Low,Pending,02-02-2026
+C0906,The first aid box in our block is missing basic items like bandages and antiseptic.,Private,C,Ground,10,Medical,2 days,0,Medium,In Progress,13-06-2026
+C0908,The hostel nurse hasn't visited in over two weeks despite several students falling sick.,Public,C,Ground,2,Medical,3 days,10,High,Rejected,03-07-2026
+C0909,"Requesting the medical room be kept open longer, it currently closes before most students are back from class.",Public,C,First,20,Medical,12 days,6,Medium,Pending,29-05-2026
+C0911,"The medicine stock in the infirmary seems outdated, some strips have expired dates on them.",Public,C,Second,26,Medical,1 day,13,High,Pending,24-03-2026
+C0912,No doctor has visited the hostel for the scheduled monthly health checkup this month.,Private,C,Ground,7,Medical,4 days,0,Medium,Pending,06-07-2026
+C0914,The wheelchair kept in the medical room for emergencies has a flat tyre and hasn't been fixed.,Private,B,First,12,Medical,1 hour,0,Medium,Rejected,13-05-2026
+C0915,"Requesting a nebulizer or basic emergency equipment be kept on each floor, not just in the main office.",Private,B,Fourth,50,Medical,12 days,0,Medium,Resolved,10-02-2026
+C0916,A student was denied entry to the infirmary after hours despite having a high fever.,Private,C,Ground,2,Medical,1 week,0,High,Resolved,11-03-2026
+C0917,The ambulance contact number listed on the noticeboard is out of service.,Private,A,Third,39,Medical,4 days,0,High,In Progress,18-02-2026
+C0919,"Internet has been completely down across the hostel since yesterday evening, can't submit my assignment.",Public,B,First,16,Internet,2 days,9,High,In Progress,25-02-2026
+C0920,"Ethernet port in my room hasn't worked since I moved in, been surviving on mobile data.",Public,C,Ground,8,Internet,8 days,9,Medium,Resolved,15-07-2026
+C0921,"The internet keeps dropping every few minutes during my online classes, extremely frustrating.",Public,C,Second,25,Internet,4 weeks,16,High,Resolved,02-07-2026
+C0922,"LAN connection in the study room is dead, the cable looks physically damaged.",Public,B,Second,29,Internet,1 hour,6,Medium,In Progress,05-07-2026
+C0923,Internet has been unavailable for three days straight right when my online exams are scheduled.,Public,C,Ground,9,Internet,1 week,16,High,Pending,04-07-2026
+C0924,My room's internet port works but speeds are so slow that video calls keep freezing.,Private,C,Second,22,Internet,4 days,0,Medium,In Progress,24-03-2026
+C0925,There's no internet connectivity on the entire Ground floor since the router was replaced last week.,Public,C,Ground,2,Internet,1 day,14,High,Pending,25-07-2026
+C0927,"The internet cable running along the corridor is exposed and looks like it's been chewed through, possibly by rats.",Public,C,Fourth,45,Internet,4 days,3,Medium,Pending,18-07-2026
+C0928,"Requesting a fixed schedule for internet maintenance, it randomly goes down without any notice.",Public,C,Second,26,Internet,2 days,4,Low,Pending,10-07-2026
+C0929,"Internet has worked maybe two days this entire week, it's becoming impossible to attend classes online.",Public,A,Second,25,Internet,2 days,6,High,Resolved,21-05-2026
+C0930,The internet router in our wing keeps resetting itself every couple of hours.,Public,A,Fourth,45,Internet,8 hours,10,Medium,Pending,08-02-2026
+C0931,"The mattress in my room has a broken spring poking through, it's uncomfortable to sleep on.",Public,C,First,17,Mattress,4 days,10,Medium,Resolved,27-01-2026
+C0932,My mattress has a musty smell that won't go away even after airing it out for days.,Public,B,Second,21,Mattress,6 days,1,Low,Resolved,18-02-2026
+C0933,There's a visible sag in the middle of the mattress after just two months of use.,Public,B,Ground,5,Mattress,4 days,1,Low,Pending,24-07-2026
+C0934,The mattress cover is torn and stuffing is coming out from one corner.,Public,B,First,18,Mattress,8 days,0,Low,Pending,15-07-2026
+C0935,"Requesting a mattress replacement, mine has stains that won't come out no matter how it's cleaned.",Public,B,First,17,Mattress,8 days,4,Low,In Progress,18-01-2026
+C0936,"The mattress is noticeably thinner than my roommate's, must be an older stock one.",Public,C,Ground,2,Mattress,2 days,2,Low,Resolved,11-07-2026
+C0937,"Found small bite marks on my skin after sleeping, suspecting bed bugs in the mattress.",Public,A,Ground,3,Mattress,1 week,12,High,In Progress,25-01-2026
+C0938,"The foam in my mattress has completely flattened on one side, barely any cushioning left.",Public,B,Ground,6,Mattress,4 weeks,6,Medium,In Progress,06-06-2026
+C0939,My mattress got soaked during the ceiling leak and now smells of damp even after drying.,Public,C,Ground,3,Mattress,6 days,8,Medium,Resolved,17-02-2026
+C0940,Edges of the mattress are fraying badly and bits of foam scatter on the floor every morning.,Public,B,Third,31,Mattress,1 week,3,Low,Pending,19-04-2026
+C0941,"Requesting an extra mattress for guests during parents' visiting weekend, was told it's possible last year.",Public,C,Ground,1,Mattress,8 days,3,Low,Resolved,10-03-2026
+C0942,The new mattress issued last month already has a dent exactly where I sleep.,Public,B,First,14,Mattress,1 week,5,Low,Resolved,11-02-2026
+C0943,"Someone keeps parking their bike right in front of the entrance ramp, blocking wheelchair access.",Public,A,Ground,6,Parking,2 weeks,8,Medium,Resolved,30-04-2026
+C0944,"The parking area floods completely during rain, my cycle was half submerged this morning.",Private,C,First,20,Parking,3 days,0,Medium,Resolved,17-03-2026
+C0945,"There aren't enough marked spots for two-wheelers, people end up parking on the walking path.",Public,A,Ground,3,Parking,12 days,4,Low,Resolved,02-03-2026
+C0946,The parking shed roof has a hole that lets rain straight through onto the bikes below.,Public,B,First,17,Parking,2 hours,8,Medium,Rejected,02-03-2026
+C0947,"My cycle's tyre was punctured, looks like it was done deliberately in the parking area.",Public,A,Ground,6,Parking,1 week,8,Medium,Pending,06-07-2026
+C0948,"Requesting CCTV coverage of the parking area, two bikes have gone missing this semester.",Public,B,Second,24,Parking,3 days,12,High,Resolved,25-02-2026
+C0949,"The parking area gate has been left open overnight for the past week, feels unsafe.",Public,A,Third,32,Parking,2 days,4,Medium,Pending,25-01-2026
+C0950,"Barely any lighting in the parking zone at night, hard to find your own bike.",Public,C,First,18,Parking,2 days,6,Medium,Rejected,08-03-2026
+C0951,Cars from outside seem to be parking inside the hostel parking area regularly now.,Public,B,Third,38,Parking,8 days,3,Low,Pending,04-04-2026
+C0952,"The parking area is overcrowded, my bike got scratched trying to squeeze it in yesterday.",Public,A,Second,24,Parking,2 days,3,Low,In Progress,22-01-2026
+C0953,"Requesting a designated spot for delivery riders, they currently block resident bikes near the gate.",Public,C,Ground,4,Parking,2 weeks,7,Low,Resolved,10-04-2026
+C0954,Loose gravel in the parking area has been causing people to skid on their bikes.,Public,A,Second,25,Parking,6 hours,6,Medium,Rejected,28-03-2026
+C0955,The water cooler on the Third floor hasn't been cooling for almost a week now.,Public,C,Third,36,Water Cooler,1 week,11,Medium,In Progress,28-04-2026
+C0956,There's a strange metallic taste to the water from the cooler near the mess.,Public,B,First,19,Water Cooler,4 days,7,Medium,In Progress,23-01-2026
+C0957,The water cooler tap on the second floor is broken and water just keeps dripping.,Public,B,Second,22,Water Cooler,2 days,4,Low,In Progress,02-03-2026
+C0958,"Filter in the water cooler looks like it hasn't been changed in a long time, water comes out cloudy.",Public,B,First,20,Water Cooler,2 days,7,Medium,Pending,25-01-2026
+C0959,The RO water cooler near the study room displays a red light and has stopped dispensing water.,Public,A,Fourth,42,Water Cooler,6 days,5,Medium,Pending,14-04-2026
+C0960,Long queues form at the only working water cooler on our floor every evening.,Public,C,First,16,Water Cooler,12 days,4,Low,In Progress,20-06-2026
+C0961,Water cooler near the entrance makes a loud buzzing noise whenever it's running.,Public,C,Ground,9,Water Cooler,1 week,3,Low,In Progress,24-04-2026
+C0962,The water cooler on the Fourth floor has been leaking onto the floor for two days.,Public,B,Fourth,50,Water Cooler,4 days,9,Medium,In Progress,22-03-2026
+C0963,"There is no cold water at all from the cooler by afternoon, seems the compressor isn't working.",Public,C,Third,31,Water Cooler,6 days,7,Medium,In Progress,16-01-2026
+C0964,"The bottle refill nozzle on the water cooler is broken, water sprays sideways instead of down.",Public,A,Second,29,Water Cooler,12 days,3,Low,Pending,02-06-2026
+C0965,Water from the cooler near the washroom has a slight yellow tinge to it.,Public,B,Second,24,Water Cooler,2 days,9,High,In Progress,06-05-2026
+C0966,"Requesting a second water cooler on our floor, the single one isn't enough for this many students.",Public,A,Fourth,42,Water Cooler,1 week,6,Low,Pending,10-04-2026
+C0967,"My room door doesn't latch shut properly, it swings open on its own at night.",Public,A,Second,30,Door,1 week,4,Medium,Pending,04-07-2026
+C0968,The hinge on our door has come loose and the door scrapes against the floor now.,Public,B,Ground,2,Door,8 days,2,Low,In Progress,02-04-2026
+C0969,"Main entrance door to the block doesn't close automatically anymore, stays propped open.",Private,B,Second,29,Door,2 days,0,Medium,In Progress,05-07-2026
+C0970,"The washroom door lock in the common bathroom is broken, no privacy at all.",Public,C,Ground,7,Door,4 days,8,High,Pending,29-04-2026
+C0971,"Door to the terrace access has been jammed shut for weeks, can't be opened.",Private,B,Second,25,Door,8 days,0,Low,Pending,17-02-2026
+C0972,My cupboard's door came off one of its hinges while I was opening it this morning.,Public,B,Fourth,44,Door,12 days,3,Low,Resolved,05-07-2026
+C0973,The door handle in our room is loose and wobbles every time it's turned.,Public,C,Third,37,Door,1 week,1,Low,Pending,26-07-2026
+C0974,"Common room door doesn't shut fully, lets mosquitoes in from the corridor at night.",Public,A,First,13,Door,12 days,11,Medium,Resolved,03-04-2026
+C0975,"The fire exit door on our floor has been stuck for over a month, needs oiling or repair.",Public,B,Third,37,Door,6 days,15,High,Pending,16-01-2026
+C0976,"Requesting the mess entrance door be fixed, it slams shut hard and has almost hit people.",Public,A,First,15,Door,3 days,11,Medium,In Progress,10-03-2026
+C0977,"The door to the laundry room doesn't lock, clothes have gone missing a couple of times.",Public,B,Ground,7,Door,4 weeks,2,Medium,Rejected,20-06-2026
+C0978,"Our room door key doesn't turn smoothly anymore, sometimes takes several tries to open.",Public,B,Fourth,46,Door,4 weeks,3,Low,In Progress,09-05-2026
+C0979,One of the window panes in my room is cracked and lets in cold air at night.,Public,B,Second,28,Window,4 days,4,Medium,Rejected,26-05-2026
+C0980,The window latch is broken so it doesn't stay shut during windy weather.,Public,C,Second,28,Window,12 days,1,Low,Pending,23-07-2026
+C0981,"Mosquito mesh on the window has torn in one corner, mosquitoes get in badly.",Public,C,Ground,3,Window,3 hours,8,Medium,Pending,29-03-2026
+C0982,"My window doesn't open at all, seems to have been painted shut.",Public,A,First,19,Window,1 week,5,Low,In Progress,27-06-2026
+C0983,"The window in the common room is missing a pane entirely, just covered with cardboard right now.",Private,A,Ground,10,Window,4 days,0,Medium,Pending,08-02-2026
+C0984,Rainwater seeps in through the window frame every time it rains heavily.,Public,C,Second,24,Window,2 days,6,Medium,Pending,14-03-2026
+C0985,Window grill in our room has started rusting and one bar looks loose.,Public,B,Second,24,Window,4 days,4,Low,Rejected,22-01-2026
+C0986,The sliding window in the washroom is stuck halfway and won't close fully.,Public,C,First,11,Window,2 days,3,Low,Resolved,17-05-2026
+C0987,Curtain rod above the window fell down along with the curtain last night.,Public,B,Second,30,Window,2 weeks,3,Low,In Progress,03-02-2026
+C0988,"The window latch is missing entirely, we've been using a book to keep it shut.",Public,B,Second,28,Window,1 week,4,Medium,Pending,26-06-2026
+C0989,"Glass on the corridor window near the staircase is cracked, looks like it could shatter.",Public,C,Fourth,50,Window,6 hours,10,High,In Progress,18-07-2026
+C0990,"Window in the study room doesn't lock, feels unsafe leaving belongings there overnight.",Private,A,Second,27,Window,4 weeks,0,Medium,Pending,28-04-2026
+C0991,"The ceiling fan in our room wobbles quite a bit at higher speeds, worried it might come loose.",Public,C,First,14,Fan,2 hours,13,High,Pending,02-07-2026
+C0992,Fan in the common room has stopped working completely since last week's power surge.,Public,C,Second,21,Fan,1 day,9,Medium,Resolved,04-05-2026
+C0993,"Our fan makes a ticking sound throughout the night, making it hard to sleep.",Public,A,Ground,4,Fan,4 days,3,Low,In Progress,13-07-2026
+C0994,"The exhaust fan in the washroom hasn't worked in months, gets really humid in there.",Public,A,Fourth,49,Fan,2 weeks,9,Medium,Resolved,28-01-2026
+C0995,"Fan regulator in my room is stuck between speeds, either too slow or too fast.",Private,C,Third,39,Fan,2 days,0,Low,Rejected,16-02-2026
+C0996,"One blade of the ceiling fan looks bent, causing it to wobble noticeably.",Public,A,Ground,8,Fan,4 days,9,Medium,Pending,14-05-2026
+C0997,The fan in the mess hall isn't strong enough to cool the whole hall during lunch hours.,Public,C,Second,29,Fan,8 days,3,Low,Pending,17-06-2026
+C0998,"Table fan provided in our room stopped oscillating, only blows in one direction now.",Public,C,Second,26,Fan,2 weeks,1,Low,Resolved,09-05-2026
+C0999,The fan in the study room switches off randomly on its own every few minutes.,Public,C,Second,30,Fan,1 week,5,Medium,Resolved,05-05-2026
+C1000,Ceiling fan in the corridor outside our room has been making a grinding noise for days.,Public,A,Second,29,Fan,8 days,8,Medium,Resolved,25-02-2026
+C1001,My roommate's side fan works fine but mine barely spins even on full speed.,Public,B,Second,28,Fan,4 weeks,2,Low,In Progress,23-03-2026
+C1002,There's a slow drip from the pipe joint under the washbasin that's been going on for days.,Public,A,Second,24,Leakage,4 days,8,Medium,Resolved,31-07-2026
+C1003,"Water is leaking from the wall behind the shower, the tiles nearby feel damp constantly.",Public,B,Third,39,Leakage,4 weeks,4,Medium,Resolved,25-06-2026
+C1004,A pipe near the water tank on the terrace has started leaking and wasting a lot of water.,Public,A,First,14,Leakage,3 days,10,High,Pending,08-05-2026
+C1005,The overhead tank overflow pipe leaks constantly onto the roof below.,Public,C,Second,22,Leakage,3 days,11,Medium,Pending,17-03-2026
+C1006,"Noticed water seeping under the door from the washroom into the room, not sure of the source.",Public,A,First,15,Leakage,4 days,4,Medium,Resolved,07-04-2026
+C1007,There's a leak near the geyser connection that's slowly damaging the wall paint.,Public,C,First,19,Leakage,3 hours,16,High,Resolved,20-02-2026
+C1008,Water drips from the exposed pipe in the corridor ceiling every time someone uses the floor above's washroom.,Public,A,First,13,Leakage,2 days,7,Medium,Pending,24-04-2026
+C1010,The kitchen sink pipe under the mess counter has been leaking for a few days now.,Public,C,Ground,7,Leakage,1 week,6,Medium,Pending,10-04-2026
+C1011,The tube light in our room flickers constantly and makes a faint buzzing sound.,Private,A,Fourth,49,Light,4 weeks,0,Low,Resolved,02-05-2026
+C1012,"Corridor lights on the Second floor have been off for almost a week now, quite dark at night.",Public,C,Second,21,Light,4 days,6,Medium,Pending,03-05-2026
+C1013,The bathroom light switch gives a slight shock every time it's touched.,Public,C,First,17,Light,2 weeks,13,High,Pending,13-07-2026
+C1014,Light in the common room keeps tripping the whole floor's circuit when switched on.,Public,A,Ground,1,Light,8 days,16,High,In Progress,23-04-2026
+C1015,One of the two tube lights in our room has stopped working entirely.,Public,C,Third,38,Light,4 days,1,Low,In Progress,16-04-2026
+C1016,The staircase light between the second and third floor has been out for over a week.,Public,B,First,15,Light,2 days,8,Medium,In Progress,03-05-2026
+C1017,Study table lamp provided in the room doesn't turn on at all.,Public,A,First,19,Light,8 days,2,Low,Pending,23-07-2026
+C1018,Emergency light near the exit hasn't worked during the last two power cuts.,Public,B,Second,29,Light,12 days,9,High,Resolved,13-03-2026
+C1019,"Light sensor near the main gate seems faulty, stays on even during the day.",Public,B,Ground,8,Light,2 days,2,Low,Pending,26-03-2026
+C1021,Lift doors don't close properly and it takes several tries before it actually starts moving.,Public,B,Ground,7,Lift,4 days,10,High,In Progress,06-07-2026
+C1022,The lift button panel on the Second floor is not lighting up when pressed.,Public,B,Second,27,Lift,2 days,10,Medium,Pending,15-05-2026
+C1023,"Lift has been out of service for four days now, elderly visitors are really struggling with the stairs.",Public,B,Third,33,Lift,4 weeks,8,High,In Progress,01-06-2026
+C1024,There's a loud grinding noise from the lift every time it moves between floors.,Public,C,Third,31,Lift,4 days,14,High,Pending,16-06-2026
+C1025,"The lift overshoots the floor level slightly, making it a bit of a step up or down to exit.",Public,A,First,20,Lift,2 hours,5,Medium,Resolved,06-02-2026
+C1027,"Lift has been running extremely slowly since yesterday, taking almost a minute between floors.",Public,A,First,13,Lift,3 days,3,Low,Pending,23-03-2026
+C1028,The drain outside our block has been overflowing with dirty water since yesterday's rain.,Public,C,First,17,Drainage,4 days,14,High,In Progress,11-03-2026
+C1029,There's a persistent bad smell from the drain near the washroom entrance.,Public,C,First,18,Drainage,1 week,5,Medium,Pending,12-04-2026
+C1030,Water from the kitchen drain backs up into the corridor whenever the mess is in full use.,Public,C,Ground,7,Drainage,3 days,10,High,Resolved,27-07-2026
+C1031,The open drain near the parking area is a breeding ground for mosquitoes.,Public,A,First,17,Drainage,2 days,8,Medium,Resolved,05-02-2026
+C1032,Drain cover near the entrance is broken and it's easy to step into it in the dark.,Public,A,Second,28,Drainage,2 hours,11,High,Resolved,26-07-2026
+C1033,"Rainwater isn't draining properly near the staircase entrance, forms a big puddle every time.",Public,C,First,19,Drainage,8 hours,5,Medium,Resolved,15-04-2026
+C1034,"The drainage pipe from the washroom seems blocked, water is draining very slowly.",Public,C,Fourth,44,Drainage,6 hours,6,Medium,Resolved,01-07-2026
+C1036,Found a small piece of plastic wrapper mixed into the rice served at lunch today.,Private,A,Second,24,Mess,2 hours,0,High,Pending,24-06-2026
+C1037,"The dal today tasted off, almost sour, a few of us stopped eating it midway.",Private,B,Third,33,Mess,2 days,0,Medium,In Progress,17-02-2026
+C1038,Water served with meals in the mess has a cloudy appearance the last couple of days.,Private,B,Third,38,Mess,1 day,0,High,Pending,09-06-2026
+C1040,"Noticed the vegetables looked wilted and possibly spoiled during today's lunch prep, visible from the counter.",Public,B,Third,35,Mess,2 days,7,Medium,In Progress,27-02-2026
+C1041,The chutney served this morning had a strange fermented smell that wasn't normal.,Public,B,Fourth,50,Mess,1 day,6,Medium,Pending,26-02-2026
+C1043,Found a hair strand and what looked like an insect leg in today's sambar.,Public,A,Ground,1,Mess,1 week,9,High,Pending,12-06-2026
+C1044,The milk provided at breakfast smelled spoiled and a few students who drank it felt nauseous by noon.,Public,B,Third,37,Mess,4 days,12,High,Resolved,18-07-2026
+C1046,The WiFi password was changed without any notice and nobody's told us the new one yet.,Private,A,Fourth,44,WiFi,1 week,0,Low,In Progress,13-07-2026
+C1047,Wifi router near the common room keeps overheating and shutting off every couple of hours.,Public,B,Second,25,WiFi,1 day,4,Medium,In Progress,09-06-2026
+C1048,"Entire block has had no WiFi access for two days now, several of us have online submissions due.",Public,A,First,11,WiFi,2 days,13,High,Pending,01-06-2026
+C1049,WiFi works fine in the corridor but barely reaches inside the rooms on our floor.,Private,B,First,17,WiFi,2 days,0,Medium,In Progress,02-02-2026
+C1050,"During my online viva yesterday the WiFi dropped three times, had to reconnect mid-exam.",Public,C,Second,29,WiFi,4 days,10,High,Pending,19-01-2026
+C1051,"The WiFi has been unusable during peak hours, drops every few minutes between 8 and 11pm.",Public,B,Fourth,47,WiFi,4 weeks,6,Medium,Pending,12-02-2026
+C1052,The MCB in our room trips almost every time we use the iron and phone charger together.,Public,B,First,17,Electricity,2 days,4,Medium,Resolved,27-06-2026
+C1053,"There's noticeable voltage fluctuation in the evenings, my charger light keeps flickering.",Public,C,Third,38,Electricity,6 days,3,Low,Resolved,24-02-2026
+C1054,One of the wall sockets in our room sparked slightly when I plugged in my laptop charger.,Public,C,Second,27,Electricity,8 hours,11,High,In Progress,22-07-2026
+C1055,Power in half our floor went out last night while the rest of the hostel had electricity.,Public,C,Second,29,Electricity,3 days,14,High,Pending,22-06-2026
+C1056,"The switchboard cover in the corridor is missing, wires are visible from outside.",Public,C,Ground,9,Electricity,4 days,10,High,Pending,15-05-2026
+C1057,My phone charger got damaged after a sudden voltage spike last week.,Public,B,Second,27,Electricity,4 weeks,1,Low,Pending,22-07-2026
+C1059,"Main electricity meter room door has been left unlocked for days, seems risky.",Public,C,First,14,Electricity,3 hours,2,Medium,In Progress,28-03-2026
+C1060,"No water at all in the taps since early this morning, missed my bath before class.",Public,C,Ground,8,Water Supply,1 day,11,High,Resolved,27-07-2026
+C1061,"Water pressure has been extremely low in the mornings, takes forever to fill a single bucket.",Public,A,Fourth,48,Water Supply,12 days,10,Medium,In Progress,21-06-2026
+C1062,"The water from the tap in our washroom looks slightly brown, especially first thing in the morning.",Public,C,Second,27,Water Supply,4 days,11,High,Pending,23-01-2026
+C1063,"Hot water supply timing was changed without notice, missed it completely today.",Public,B,Ground,8,Water Supply,6 days,4,Low,Pending,03-03-2026
+C1064,There's been no water supply on the Second floor for over six hours now.,Public,B,Second,28,Water Supply,3 hours,17,High,In Progress,16-04-2026
+C1065,"The geyser takes almost 40 minutes to heat water now, used to be much quicker.",Public,B,Ground,5,Water Supply,4 days,7,Medium,Resolved,28-03-2026
+C1066,My hostel ID card stopped working at the main gate scanner since yesterday.,Public,A,Second,30,Security,4 days,11,Medium,Pending,07-06-2026
+C1067,The CCTV camera near the back entrance has been facing the wrong direction for weeks.,Public,B,First,11,Security,6 days,10,Medium,Resolved,05-03-2026
+C1069,The security guard's cabin near the gate has been empty every night this week.,Public,B,Ground,7,Security,2 days,14,High,Resolved,07-06-2026
+C1070,CCTV footage request for the theft last week hasn't been provided even after three follow-ups.,Public,B,First,14,Security,12 days,4,Medium,Rejected,30-06-2026
+C1072,"My room key went missing along with a set of documents, worried someone else might have them.",Public,A,Second,22,Security,2 days,14,High,Resolved,13-03-2026
+C1073,The common washroom hasn't been cleaned in what feels like three days now.,Public,B,Ground,7,Cleanliness,1 day,6,High,In Progress,04-04-2026
+C1074,"Garbage bins on our floor haven't been emptied since the weekend, starting to smell.",Public,A,First,20,Cleanliness,2 days,6,Medium,In Progress,17-05-2026
+C1075,There's a lingering sewage smell near the Second floor washroom that won't go away.,Public,A,Second,29,Cleanliness,2 days,6,High,Pending,14-04-2026
+C1076,Dust and cobwebs have built up in the corners of the common room ceiling.,Private,C,First,17,Cleanliness,8 days,0,Low,In Progress,05-06-2026
+C1077,The dustbin outside the mess is overflowing and attracting flies.,Public,B,Second,26,Cleanliness,4 days,7,Medium,Resolved,14-07-2026
+C1078,One of the washing machines has been leaking soapy water onto the floor for days.,Public,C,Second,28,Laundry,4 days,8,Medium,In Progress,04-04-2026
+C1079,My shirt came out of the washing machine with a large tear that wasn't there before.,Public,A,Second,25,Laundry,2 days,0,Medium,In Progress,15-02-2026
+C1080,The drying area railings are rusted and have left stains on a couple of my clothes.,Public,C,First,14,Laundry,6 days,2,Low,Pending,15-02-2026
+C1081,Only two of the five washing machines in the laundry room are actually working right now.,Public,A,First,19,Laundry,1 week,10,Medium,Resolved,06-03-2026
+C1082,"The laundry room light has been out for a week, hard to sort clothes in the dark.",Public,B,First,14,Laundry,8 days,1,Low,Pending,19-05-2026
+C1083,Construction work near the hostel starts as early as 6am and makes it impossible to sleep in.,Private,C,Second,25,Noise,4 weeks,0,Medium,In Progress,29-07-2026
+C1084,Some students in the room next door play loud music well past midnight on weekdays.,Public,B,First,19,Noise,3 days,4,Medium,Resolved,10-02-2026
+C1085,The generator noise from the building next door gets really loud during study hours.,Public,C,Third,34,Noise,1 week,4,Low,Resolved,15-03-2026
+C1086,Found several cockroaches near the kitchen sink area in the mess this morning.,Public,A,First,16,Pest Control,8 hours,14,High,Pending,03-04-2026
+C1087,Ant trails have appeared along the wall near the window in our room over the past few days.,Public,C,First,11,Pest Control,6 days,3,Low,Pending,01-06-2026
+C1088,Mosquito problem has gotten worse since the drain outside started overflowing.,Public,A,First,13,Pest Control,4 days,4,Medium,Pending,27-01-2026
+C1089,The common washroom on our floor has only one working shower out of four.,Public,B,First,11,Washroom,2 weeks,5,Medium,Resolved,31-03-2026
+C1090,Bathroom tiles near the shower are broken and have sharp edges sticking out.,Public,C,Second,23,Washroom,2 days,7,High,Resolved,11-02-2026
+C1091,There's no soap dispenser refill in the common washroom for over a week now.,Public,A,Ground,1,Washroom,2 weeks,0,Low,Pending,29-03-2026
+C1092,"The study chair in our room has a broken wheel, keeps tipping to one side.",Public,B,First,18,Furniture,1 week,1,Low,Pending,08-05-2026
+C1093,One of the cupboard shelves collapsed while I was placing my books on it.,Public,C,Fourth,46,Furniture,1 week,6,Medium,Pending,29-01-2026
+C1094,"The bed frame creaks loudly with every movement, worried it might give way.",Public,B,Ground,5,Furniture,12 days,9,Medium,In Progress,14-02-2026
+C1095,Table drawer in my room is jammed shut and won't open no matter how hard I pull.,Public,A,Ground,2,Furniture,2 weeks,3,Low,Resolved,21-05-2026
+C1096,"There's a strong smell of gas near the mess kitchen area, it's been noticeable since this morning.",Public,C,Ground,5,Fire Safety,8 hours,9,High,Pending,03-06-2026
+C1097,"The fire extinguisher pin near the Second floor staircase is missing, so the extinguisher can't be used in an emergency.",Public,A,Second,24,Fire Safety,2 days,6,High,In Progress,05-06-2026
+C1098,"Emergency exit signage on the Third floor has stopped lighting up, hard to spot it in a power cut.",Public,B,Third,34,Fire Safety,8 days,4,Medium,Pending,07-06-2026
+C1099,"Exposed wiring is hanging near the washing machines in the laundry area, anyone could accidentally touch it.",Public,C,Ground,6,Electricity,1 day,11,High,In Progress,09-06-2026
+C1100,Paint on my room ceiling is peeling in large flakes and falling onto the bed while I sleep.,Private,A,Third,32,Structural,12 days,0,Medium,Pending,10-06-2026
+C1101,Plaster keeps falling from the corridor ceiling on the Fourth floor whenever someone walks past.,Public,B,Fourth,44,Structural,3 days,5,Medium,Pending,11-06-2026
+C1102,"Water has started seeping through the wall behind my cupboard, the paint is bubbling up.",Private,C,First,13,Leakage,1 week,0,Medium,Pending,12-06-2026
+C1103,One of my roommates has had a high fever for two days and there's no first-aid kit available on our floor.,Private,A,Second,26,Medical,2 days,0,High,In Progress,13-06-2026
+C1104,The medical room was locked during visiting hours today when a friend needed a bandage.,Public,B,Ground,8,Medical,3 hours,3,Low,Resolved,14-06-2026
+C1105,"A senior has been forcing first-years to do their laundry and errands, it's starting to feel like harassment.",Private,C,Second,29,Ragging/Harassment,13 days,0,High,Pending,15-06-2026
+C1106,"Some seniors keep mocking a junior's accent in the common room, it's happened a few times now.",Private,A,First,17,Ragging/Harassment,1 week,0,Medium,In Progress,16-06-2026
+C1107,I was allotted a room on a floor different from what I requested during the counselling round.,Private,B,Third,37,Room Allocation,4 weeks,0,Low,Pending,17-06-2026
+C1108,"My roommate was changed without any prior notice or explanation, I found out only when I saw new luggage in the room.",Private,C,Fourth,48,Room Allocation,2 days,0,Medium,Pending,18-06-2026
+C1109,"The study room projector hasn't worked in weeks, we can't use it for group presentations anymore.",Public,A,Second,23,Study Room,12 days,6,Low,Pending,19-06-2026
+C1110,"Study room AC has been leaking water onto the carpet, it's starting to smell musty in there.",Public,B,First,15,Study Room,1 week,4,Medium,In Progress,20-06-2026
+C1111,"The treadmill in the gym has stopped working, the display just shows an error code now.",Public,C,Ground,2,Structural,6 days,9,Low,Pending,21-06-2026
+C1112,"Gym mirror has a long crack running across it, feels unsafe to be near it while exercising.",Public,A,Ground,4,Structural,3 days,3,Medium,Pending,22-06-2026
+C1113,"The UPS backup for our floor's corridor lights doesn't kick in at all during outages, we're left in complete darkness.",Public,B,Second,27,Electricity,1 day,10,High,In Progress,23-06-2026
+C1114,"Generator fumes are entering through the ground floor windows whenever it's switched on, it's giving people headaches.",Public,C,Ground,7,Electricity,2 days,13,High,Pending,24-06-2026
+C1115,The circuit breaker for our room keeps cutting power whenever the AC and heater run at the same time.,Private,A,Third,33,Electricity,8 days,0,Medium,Pending,25-06-2026
+C1116,"Voltage keeps fluctuating in the evenings, my laptop charger already got damaged because of it.",Private,B,Fourth,45,Electricity,13 days,0,Medium,In Progress,26-06-2026
+C1117,"The geyser in the common washroom takes almost 40 minutes to heat up now, everyone ends up late for classes.",Public,C,Second,28,Water Supply,6 days,8,Medium,Pending,27-06-2026
+C1118,"There's a constant sewage smell coming from the drain near the Third floor washroom, it's unbearable by evening.",Public,A,Third,35,Drainage,1 week,12,High,In Progress,28-06-2026
+C1119,"The bathroom drain in my room gets fully blocked every few days, water pools around my feet while showering.",Private,B,Ground,9,Drainage,4 days,0,Medium,Pending,29-06-2026
+C1120,"One of the beds in my room has a broken frame, it creaks loudly and sags in the middle whenever I sit on it.",Private,C,First,14,Furniture,6 days,0,Low,Pending,01-07-2026
+C1121,The reading lamp on my desk keeps flickering and once gave a small shock when I touched the switch.,Private,A,Fourth,42,Electricity,1 day,0,High,In Progress,02-07-2026
+C1122,"Cold food is being served for dinner almost every day this week, it's clearly sitting out before being plated.",Public,B,Second,22,Mess,3 days,15,Medium,Pending,03-07-2026
+C1123,"Found a small worm in the salad served at lunch today, honestly put me off eating there for a while.",Public,C,Third,39,Mess,5 hours,18,High,In Progress,04-07-2026
+C1124,"There wasn't enough food left by the time our batch reached the mess, we had to skip dinner entirely.",Public,A,Ground,1,Mess,1 day,22,Medium,Pending,05-07-2026
+C1125,The common washroom has only cold water even though the geyser indicator light shows it's on.,Public,B,Third,36,Washroom,3 days,6,Medium,Pending,06-07-2026
+C1126,"Door of the washroom stall doesn't have a working latch, had to hold it shut the whole time.",Public,C,Fourth,47,Washroom,2 days,3,Low,Pending,07-07-2026
+C1127,"There's a swarm of ants near the washbasin every morning, seems like there's a sugar spill somewhere behind it.",Public,A,First,19,Pest Control,8 days,5,Low,In Progress,08-07-2026
+C1128,"Found bed bug bites on my arm this morning, I think they're coming from the mattress seams.",Private,B,Fourth,46,Pest Control,8 hours,0,High,Pending,09-07-2026
+C1129,"Wasps have built a nest right outside my window, it's making me nervous to even open it for air.",Private,C,Second,25,Pest Control,6 days,0,Medium,Pending,10-07-2026
+C1130,"The common room WiFi router keeps rebooting every hour, drops every video call I'm on.",Public,A,Ground,3,WiFi,4 days,11,Medium,In Progress,11-07-2026
+C1131,"Internet works fine during the day but completely stops between midnight and 6am, right when I need to submit assignments.",Private,B,First,16,Internet,13 days,0,Medium,Pending,12-07-2026
+C1132,"Someone propped open the back gate near Block C last night and it stayed open till morning, no one from security noticed.",Public,C,Ground,10,Security,1 day,14,High,In Progress,13-07-2026
+C1133,"My cycle went missing from the parking area even though it was locked, the chain was found cut nearby.",Private,A,Ground,5,Parking,1 day,0,High,Pending,14-07-2026
+C1134,"The access card reader at the main entrance has stopped reading cards properly, we have to tap five or six times to get in.",Public,B,Ground,6,Security,2 days,8,Medium,Pending,15-07-2026
+C1135,"Water cooler on our floor is dispensing water that tastes metallic, I think the filter needs replacing.",Public,C,First,12,Water Cooler,6 days,6,Medium,Pending,16-07-2026
+C1136,"The washing machine drum makes a banging noise on spin cycle, worried it might damage clothes eventually.",Public,A,Second,21,Laundry,3 days,3,Low,Pending,17-07-2026
+C1137,"Balcony railing outside the common room feels loose when leaned on, could be dangerous if someone isn't careful.",Public,B,Third,38,Structural,1 week,7,High,In Progress,18-07-2026
+C1138,AC in the reading hall is leaking water that's pooling under one of the study desks.,Public,C,Fourth,49,AC,4 days,5,Medium,Pending,19-07-2026
+C1139,"The mosquito mesh on my window has torn loose from one corner, mosquitoes get in every evening.",Private,A,First,20,Window,2 days,0,Low,Pending,20-07-2026

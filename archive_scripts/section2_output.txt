@@ -1,0 +1,157 @@
+﻿=================================================================
+  SECTION 2: DATASET QUALITY VALIDATION + EDA
+=================================================================
+
+  Dataset: DATASET.CSV
+  Shape  : 857 rows x 12 columns
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  [A] QUALITY VALIDATION
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+[A1] Missing Values:
+  Γ£à No missing values in any column.
+
+[A2] Duplicate Rows: 0
+  Γ£à No duplicate rows.
+
+[A3] Duplicate Complaint_IDs: 0
+  Γ£à All IDs are unique.
+
+[A4] Empty Complaint_Text rows: 0
+  Γ£à No empty complaints.
+
+[A5] Extremely Short Complaints (< 5 words): 0
+  Γ£à No extremely short complaints.
+
+[A6] Repeated Complaint Text (exact duplicates): 0
+  Γ£à No repeated complaint texts.
+
+[A7] Potentially Templated Complaints (same opening, count > 2):
+    Count=4: 'The washroom on our floor hasnt been cle...'
+    Count=3: 'Flush in the washroom near the stairs ha...'
+    Count=3: 'The wifi on our floor becomes almost unu...'
+    Count=3: 'The pipe behind the washroom wall is lea...'
+    Count=3: 'Dust has settled thick on the window sil...'
+    Count=3: 'The switchboard cover in my room is crac...'
+
+[A8] Invalid Priority Values: 0
+  Unique Priority values found: ['High', 'Low', 'Medium']
+  Γ£à All Priority values are valid (High / Medium / Low).
+
+[A9] Category Values (29 unique):
+  Category
+Security              82
+Furniture             58
+Washroom              55
+Mess                  53
+Electricity           49
+Cleanliness           41
+Laundry               35
+Water Supply          34
+WiFi                  32
+Pest Control          30
+Light                 28
+Noise                 27
+Window                26
+Fan                   26
+Door                  24
+Drainage              24
+Water Cooler          23
+Leakage               22
+Parking               22
+Structural            22
+Mattress              19
+AC                    19
+Lift                  18
+Internet              16
+Room Allocation       16
+Study Room            16
+Fire Safety           15
+Ragging/Harassment    14
+Medical               11
+
+[A10] Complaint_Type Values (2 unique):
+  Complaint_Type
+Public     728
+Private    129
+
+[A11] Block Values: ['A', 'B', 'C']
+      Floor Values: ['First', 'Fourth', 'Ground', 'Second', 'Third']
+
+[A12] Support_Count range: min=0, max=65, mean=7.5, median=5.0
+
+[A13] Support_Count by Priority (data integrity check, NOT ML feature):
+          count   mean    std  min   25%   50%   75%   max
+Priority                                                  
+High      260.0  12.67  11.32  0.0  4.75  11.0  16.0  65.0
+Low       238.0   2.72   4.31  0.0  0.00   1.0   4.0  42.0
+Medium    359.0   6.99   6.14  0.0  2.00   6.0  10.0  42.0
+
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  [B] EXPLORATORY DATA ANALYSIS (EDA)
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+[EDA-1] Priority Class Distribution
+  Saved: eda2_priority_distribution.png
+    High  : 260 samples  (30.3%)
+    Medium: 359 samples  (41.9%)
+    Low   : 238 samples  (27.8%)
+
+[EDA-2] Category vs Priority
+  Saved: eda2_category_priority.png
+
+[EDA-3] Complaint Type vs Priority
+  Saved: eda2_complaint_type_priority.png
+
+[EDA-4] Block & Floor vs Priority
+  Saved: eda2_block_floor_priority.png
+
+[EDA-5] Complaint Text Length Analysis
+  Saved: eda2_text_length.png
+
+  Average word count by Priority:
+           mean  min  max   std
+Priority                       
+High      15.07    6   25  2.72
+Medium    14.84    9   24  2.70
+Low       15.00    6   24  2.88
+
+[EDA-6] Support_Count Distribution (DATA INTEGRITY ONLY ΓÇö not an ML feature)
+  ΓÜá  NOTE: Support_Count belongs to the MATHEMATICAL ESCALATION system, not ML prediction.
+          count   mean    std  min   25%   50%   75%   max
+Priority                                                  
+High      260.0  12.67  11.32  0.0  4.75  11.0  16.0  65.0
+Medium    359.0   6.99   6.14  0.0  2.00   6.0  10.0  42.0
+Low       238.0   2.72   4.31  0.0  0.00   1.0   4.0  42.0
+  Saved: eda2_support_count_info.png
+
+=================================================================
+  SECTION 2 COMPLETE ΓÇö SUMMARY
+=================================================================
+
+  Dataset Quality Checks:
+    Missing values         : Γ£à None
+    Duplicate rows         : Γ£à None
+    Duplicate IDs          : Γ£à None
+    Empty complaints       : Γ£à None
+    Very short (<5 words)  : Γ£à None
+    Repeated text          : Γ£à None
+    Invalid Priority values: Γ£à None (only High/Medium/Low)
+    Students_Affected      : Γ£à ABSENT from dataset (correctly removed)
+    Support_Count          : ΓÜá  Present but EXCLUDED from ML features
+
+  Priority Distribution:
+    High   : 260 (30.3%)
+    Medium : 359 (41.9%)
+    Low    : 238 (27.8%)
+
+  EDA Plots Saved:
+    eda2_priority_distribution.png
+    eda2_category_priority.png
+    eda2_complaint_type_priority.png
+    eda2_block_floor_priority.png
+    eda2_text_length.png
+    eda2_support_count_info.png
+

@@ -1,0 +1,194 @@
+﻿Executing Section 3: cells 53 to 69
+
+>>> Cell 56 (exec #20)
+Sample Raw Complaint Texts (Before Any Preprocessing):
+======================================================================
+
+--- High Priority ---
+  [1] The milk served at breakfast smelled slightly off this morning.
+  [2] Since yesterday, bunk bed ladder in my room feels really loose, kind of unsafe to climb.
+  [3] Theres been no drinking water in the cooler on Second floor since this morning.
+
+--- Medium Priority ---
+  [1] Mess timing keeps changing without any notice, we end up missing dinner.
+  [2] Theres cobwebs all over the staircase, doesnt look like anyone has cleaned it in ages, since Monday.
+  [3] Carrom board in the common room is missing four coins so we cant even play properly, since yesterday.
+
+--- Low Priority ---
+  [1] Theres cobwebs all over the staircase.
+  [2] My washroom door doesnt lock properly because the pipe fitting behind it is loose and jammed.
+  [3] Study table drawer in Room 24 is stuck and just wont open, since Wednesday.
+
+
+>>> Cell 58 (exec #21)
+Γ£à NLP preprocessing function defined.
+   Standard stopwords : 198
+   Domain stopwords   : 23
+   Force-kept words   : ['cannot', 'cant', 'doesnt', 'hasnt', 'havent', 'isnt', 'never', 'no', 'not', 'wasnt', 'wont', 'wouldnt']
+   Total stopwords    : 218
+   Min word length    : >= 2  (was > 2 in old model)
+
+
+>>> Cell 60 (exec #22)
+Original: The milk served at breakfast smelled slightly off this morning.
+
+Step 1 [lowercase]    : the milk served at breakfast smelled slightly off this morning.
+Step 2 [normalize]    : the milk served at breakfast smelled slightly off this morning.
+Step 3 [no punct]     : the milk served at breakfast smelled slightly off this morning 
+Step 4 [no digits]    : the milk served at breakfast smelled slightly off this morning 
+Step 5 [clean spaces] : the milk served at breakfast smelled slightly off this morning
+Step 6 [filter]       : ['milk', 'served', 'breakfast', 'smelled', 'slightly', 'morning']
+Step 7 [lemmatize]    : ['milk', 'served', 'breakfast', 'smelled', 'slightly', 'morning']
+
+Final cleaned text    : milk served breakfast smelled slightly morning
+
+Word count: 10 ΓåÆ 6
+
+--- Negation Preservation Test ---
+  Original : there is no water in the cooler
+  Cleaned  : no water cooler
+  Negation preserved: Γ£à
+
+  Original : the fan is not working
+  Cleaned  : fan not working
+  Negation preserved: Γ£à
+
+  Original : we cannot sleep due to noise
+  Cleaned  : cannot sleep due noise
+  Negation preserved: Γ£à
+
+
+
+>>> Cell 62 (exec #23)
+Γ£à Preprocessing complete in 0.07s
+   Rows processed: 857
+   Empty Cleaned_Text rows: 0
+   Null  Cleaned_Text rows: 0
+   Avg word count: 15.0 ΓåÆ 8.9 (reduction: 39.8%)
+
+
+>>> Cell 64 (exec #24)
+BEFORE vs AFTER PREPROCESSING
+======================================================================
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  HIGH PRIORITY
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  Original : The milk served at breakfast smelled slightly off this morning.
+  Cleaned  : milk served breakfast smelled slightly morning
+
+  Original : Since yesterday, bunk bed ladder in my room feels really loose, kind of unsafe t
+  Cleaned  : since yesterday bunk bed ladder room feel really loose kind unsafe climb
+
+  Original : Theres been no drinking water in the cooler on Second floor since this morning.
+  Cleaned  : there no drinking water cooler second floor since morning
+
+  Original : Someone keeps banging on doors late at night as some kind of prank, for 4 days n
+  Cleaned  : someone keep banging door late night kind prank day
+
+  Original : Backup power only seems to work for the corridor lights, rooms stay completely d
+  Cleaned  : backup power seems work corridor light room stay completely dark cut
+
+  Original : Two of my friends fell sick after dinner yesterday, the food might have been sta
+  Cleaned  : two friend fell sick dinner yesterday food might stale
+
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  MEDIUM PRIORITY
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  Original : Mess timing keeps changing without any notice, we end up missing dinner.
+  Cleaned  : mess timing keep changing without notice end missing dinner
+
+  Original : Theres cobwebs all over the staircase, doesnt look like anyone has cleaned it in
+  Cleaned  : there cobweb staircase doesnt like anyone cleaned age since monday
+
+  Original : Carrom board in the common room is missing four coins so we cant even play prope
+  Cleaned  : carrom board common room missing four coin cant even play properly since yesterday
+
+  Original : Theres a moldy smell coming from the bathroom ceiling.
+  Cleaned  : there moldy smell coming bathroom ceiling
+
+  Original : Since Tuesday, theres a long crack running across the ceiling of my room, gettin
+  Cleaned  : since tuesday there long crack running across ceiling room getting bit worried
+
+  Original : Since last night, my bed frame is creaking really badly and one leg feels loose.
+  Cleaned  : since last night bed frame creaking really badly one leg feel loose
+
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  LOW PRIORITY
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  Original : Theres cobwebs all over the staircase.
+  Cleaned  : there cobweb staircase
+
+  Original : My washroom door doesnt lock properly because the pipe fitting behind it is loos
+  Cleaned  : washroom door doesnt lock properly pipe fitting behind loose jammed
+
+  Original : Study table drawer in Room 24 is stuck and just wont open, since Wednesday.
+  Cleaned  : study table drawer room stuck wont open since wednesday
+
+  Original : For the past 3 days, dropped my wallet somewhere between the library and Block A
+  Cleaned  : past day dropped wallet somewhere library block anyone find let know
+
+  Original : Lost my phone charger somewhere near Block B, would really appreciate any help f
+  Cleaned  : lost phone charger somewhere near block would really appreciate help finding
+
+  Original : Cant open the drawer of my study table anymore, it just wont budge.
+  Cleaned  : cant open drawer study table anymore wont budge
+
+
+
+>>> Cell 66 (exec #25)
+Severity Word Preservation Test:
+------------------------------------------------------------
+Expected: High
+Original: There is no electricity in the room, it is dangerous and unsafe
+Cleaned : no electric room dangerous unsafe
+Signal words preserved: ['dangerous', 'unsafe', 'no']
+
+Expected: High
+Original: Electrical shock from the broken socket, emergency situation
+Cleaned : electrical shock broken socket emergency situation
+Signal words preserved: ['emergency', 'broken', 'shock']
+
+Expected: High
+Original: Severe leakage flooding the corridor, urgent attention needed
+Cleaned : severe leaking flooding corridor urgent attention needed
+Signal words preserved: ['urgent', 'severe', 'leaking']
+
+Expected: Medium
+Original: The fan in my room is not working since yesterday
+Cleaned : fan room not working since yesterday
+Signal words preserved: ['not']
+
+Expected: Low
+Original: There are cobwebs in the staircase corner
+Cleaned : cobweb staircase corner
+Signal words preserved: []
+
+"no" preservation test: "no water no electric"
+"no" in cleaned: True  (Γ£à correct)
+
+
+>>> Cell 68 (exec #26)
+
+Top 10 words by priority:
+HIGH                      MEDIUM                    LOW                      
+---------------------------------------------------------------------------
+floor(67)                room(97)                 room(84)                 
+near(46)                 day(59)                  one(32)                  
+water(42)                floor(58)                floor(28)                
+day(39)                  water(55)                block(26)                
+room(37)                 washroom(46)             broken(25)               
+since(33)                common(38)               door(23)                 
+washroom(31)             week(35)                 common(23)               
+night(28)                keep(33)                 day(22)                  
+week(24)                 properly(33)             area(21)                 
+door(22)                 near(33)                 water(20)                
+
+  -> Figure captured
+
+============================================================
+Γ£à Section 3 complete.
+   Cleaned_Text added to df: True
+   Sample cleaned text: there cobweb staircase

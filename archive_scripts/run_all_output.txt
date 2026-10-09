@@ -1,0 +1,655 @@
+﻿Total cells: 106
+
+>>> Cell   3 (exec #  1)  ---
+Γ£à All libraries imported successfully!
+   pandas  : 3.0.5
+   numpy   : 2.5.1
+   sklearn : imported
+   Classes : ['High', 'Medium', 'Low']
+
+>>> Cell   6 (exec #  2)  ---
+Γ£à Dataset loaded: Dataset_duration.csv
+   Shape : 857 rows x 12 columns
+   Memory: 539.2 KB
+
+>>> Cell   9 (exec #  3)  ---
+--- First 5 rows ---
+
+>>> Cell  10 (exec #  4)  ---
+--- Last 5 rows ---
+
+>>> Cell  12 (exec #  5)  ---
+Dataset Shape : (857, 12)
+  Rows (complaints) : 857
+  Columns (features): 12
+
+>>> Cell  14 (exec #  6)  ---
+Column Names:
+----------------------------------------
+  [ 0] Complaint_ID ΓåÉ will be dropped
+  [ 1] Complaint_Text ΓåÉ PRIMARY ML SIGNAL
+  [ 2] Complaint_Type
+  [ 3] Block
+  [ 4] Floor
+  [ 5] Room_No ΓåÉ will be dropped
+  [ 6] Category
+  [ 7] Duration_Standardized
+  [ 8] Support_Count ΓåÉ excluded from ML (escalation only)
+  [ 9] Priority ΓåÉ TARGET VARIABLE
+  [10] Status ΓåÉ will be dropped
+  [11] Complaint_Date ΓåÉ will be dropped
+
+>>> Cell  17 (exec #  7)  ---
+Data Types:
+----------------------------------------
+Complaint_ID               str
+Complaint_Text             str
+Complaint_Type             str
+Block                      str
+Floor                      str
+Room_No                  int64
+Category                   str
+Duration_Standardized      str
+Support_Count            int64
+Priority                   str
+Status                     str
+Complaint_Date             str
+dtype: object
+
+Object columns (text/categorical): ['Complaint_ID', 'Complaint_Text', 'Complaint_Type', 'Block', 'Floor', 'Category', 'Duration_Standardized', 'Priority', 'Status', 'Complaint_Date']
+Numeric columns                  : ['Room_No', 'Support_Count']
+
+>>> Cell  19 (exec #  8)  ---
+Γ£à No missing values in any column ΓÇö dataset is complete.
+
+>>> Cell  21 (exec #  9)  ---
+Number of duplicate rows: 0
+Γ£à No duplicate rows found ΓÇö every complaint is unique.
+
+>>> Cell  23 (exec # 10)  ---
+Priority Distribution:
+----------------------------------------
+  High  : 260 (30.3%)  ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê
+  Medium: 359 (41.9%)  ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê
+  Low   : 238 (27.8%)  ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê
+
+Total complaints: 857
+Unique Priority values: ['High', 'Low', 'Medium']
+
+Γ£à Critical class present: False  (expected: False)
+Γ£à Only High / Medium / Low ΓÇö 3-class problem confirmed.
+
+>>> Cell  26 (exec # 11)  ---
+Statistical Summary (Numerical Columns):
+       Room_No  Support_Count
+count   857.00         857.00
+mean     21.72           6.91
+std      13.02           8.75
+min       1.00           0.00
+25%      11.00           0.00
+50%      20.00           4.00
+75%      30.00          10.00
+max      50.00          65.00
+
+Note: Support_Count will NOT be used as an ML feature.
+      It belongs to the mathematical escalation system.
+
+>>> Cell  28 (exec # 12)  ---
+Unique Values per Column:
+-------------------------------------------------------
+  Complaint_ID        : 857 unique  (e.g. C0001...)
+  Complaint_Text      : 857 unique  (e.g. Theres cobwebs all over the staircase....)
+  Complaint_Type      :   2 unique  ['Private', 'Public']
+  Block               :   3 unique  ['A', 'B', 'C']
+  Floor               :   5 unique  ['First', 'Fourth', 'Ground', 'Second', 'Third']
+  Room_No             :  50 unique  (e.g. 15...)
+  Category            :  29 unique  (e.g. Cleanliness...)
+  Duration_Standardized:  18 unique  (e.g. 3 hours...)
+  Support_Count       :  45 unique  (e.g. 2...)
+  Priority            :   3 unique  ['High', 'Low', 'Medium']
+  Status              :   4 unique  ['In Progress', 'Pending', 'Rejected', 'Resolved']
+  Complaint_Date      : 183 unique  (e.g. 01-05-2026...)
+
+>>> Cell  32 (exec # 13)  ---
+============================================================
+  Loaded: Dataset_duration.csv
+  Shape : 857 rows x 12 columns
+============================================================
+
+[A1] Missing Values per Column:
+  Γ£à No missing values in any column.
+
+[A2] Duplicate Rows: 0 Γ£à
+[A3] Duplicate Complaint_IDs: 0 Γ£à
+[A4] Empty Complaint_Text: 0 Γ£à
+[A5] Very Short Complaints (<5 words): 0 Γ£à
+[A6] Repeated Complaint Text (exact): 0 Γ£à
+
+[A7] Potentially Templated Complaints (same opening, count > 2):
+    Count=4: "The washroom on our floor hasnt been cle..."
+    Count=3: "Flush in the washroom near the stairs ha..."
+    Count=3: "The wifi on our floor becomes almost unu..."
+    Count=3: "The pipe behind the washroom wall is lea..."
+    Count=3: "Dust has settled thick on the window sil..."
+    Count=3: "The switchboard cover in my room is crac..."
+
+  Note: 6 repeated openings found.
+  These are likely real complaints about the same recurring issue,
+  NOT data quality problems. All have different Complaint_IDs and text.
+
+[A8] Priority Unique Values: ['High', 'Low', 'Medium']
+     Invalid Priority rows: 0 Γ£à
+
+[A9] Students_Affected present: False Γ£à (correctly absent)
+  ... (5 more lines)
+
+>>> Cell  35 (exec # 14)  ---
+Priority Distribution:
+  High  : 260 samples  (30.3%)
+  Medium: 359 samples  (41.9%)
+  Low   : 238 samples  (27.8%)
+  -> Figure captured
+
+>>> Cell  38 (exec # 15)  ---
+Top categories by proportion of HIGH priority complaints:
+Category
+Lift                  0.611
+Fire Safety           0.600
+Drainage              0.542
+Electricity           0.531
+Water Supply          0.529
+Leakage               0.500
+Pest Control          0.500
+Ragging/Harassment    0.500
+  -> Figure captured
+
+>>> Cell  41 (exec # 16)  ---
+Complaint Type normalized distribution:
+Priority         High  Medium   Low
+Complaint_Type                     
+Private         0.240   0.380  0.38
+Public          0.315   0.426  0.26
+  -> Figure captured
+
+>>> Cell  44 (exec # 17)  ---
+Block - normalized priority distribution:
+Priority   High  Medium    Low
+Block                         
+A         0.330   0.421  0.249
+B         0.257   0.430  0.313
+C         0.323   0.406  0.271
+
+Floor - normalized priority distribution:
+Priority   High  Medium    Low
+Floor                         
+Ground    0.376   0.337  0.287
+First     0.256   0.449  0.295
+Second    0.319   0.392  0.289
+Third     0.310   0.480  0.210
+Fourth    0.219   0.521  0.260
+  -> Figure captured
+
+>>> Cell  47 (exec # 18)  ---
+Average word count statistics by Priority:
+           mean  min  max   std
+Priority                       
+High      15.07    6   25  2.72
+Medium    14.84    9   24  2.70
+Low       15.00    6   24  2.88
+  -> Figure captured
+
+>>> Cell  50 (exec # 19)  ---
+Support_Count Statistics by Priority:
+(For data integrity check only ΓÇö NOT an ML input feature)
+-------------------------------------------------------
+          count   mean    std  min  25%   50%   75%   max
+Priority                                                 
+High      260.0  11.75  11.73  0.0  1.0  10.0  16.0  65.0
+Medium    359.0   6.36   6.42  0.0  1.0   5.0   9.5  42.0
+Low       238.0   2.46   4.22  0.0  0.0   1.0   3.0  42.0
+
+=======================================================
+  ARCHITECTURE NOTE:
+=======================================================
+
+  ML Prediction Flow (at submission time):
+    Student submits complaint
+      -> Support_Count = 0  (nobody has voted yet)
+      -> Complaint_Text + Category + Type + Block + Floor
+      -> ML Model
+      -> Initial Priority: High / Medium / Low
+
+  Mathematical Escalation Flow (after voting):
+    Students vote / support the complaint
+      -> Support_Count increases
+      -> escalate_priority(ml_priority, support_count)
+      -> Priority may escalate one level
+
+  Support_Count is EXCLUDED from ML features.
+
+
+>>> Cell  54 (exec # 20)  ---
+Duration_Standardized ΓÇö Unique Values and Counts:
+=======================================================
+  2 days         :  113  (13.2%)
+  4 days         :  107  (12.5%)
+  1 day          :   85  (9.9%)
+  1 week         :   71  (8.3%)
+  6 days         :   69  (8.1%)
+  3 days         :   56  (6.5%)
+  8 days         :   50  (5.8%)
+  5 hours        :   44  (5.1%)
+  4 weeks        :   42  (4.9%)
+  12 days        :   39  (4.6%)
+  2 weeks        :   31  (3.6%)
+  8 hours        :   30  (3.5%)
+  2 hours        :   29  (3.4%)
+  6 hours        :   25  (2.9%)
+  3 hours        :   24  (2.8%)
+  1 hour         :   21  (2.5%)
+  4 hours        :   11  (1.3%)
+  13 days        :   10  (1.2%)
+
+Total unique values: 18
+Missing values     : 0
+
+>>> Cell  55 (exec # 21)  ---
+Duration_Standardized -> Duration_Hours (preview):
+Duration_Standardized  Duration_Hours
+               1 hour             1.0
+              2 hours             2.0
+              3 hours             3.0
+              4 hours             4.0
+              5 hours             5.0
+              6 hours             6.0
+              8 hours             8.0
+                1 day            24.0
+               2 days            48.0
+               3 days            72.0
+               4 days            96.0
+               6 days           144.0
+               1 week           168.0
+               8 days           192.0
+              12 days           288.0
+              13 days           312.0
+              2 weeks           336.0
+              4 weeks           672.0
+
+Min duration : 1.0 hours
+Max duration : 672.0 hours (4.0 weeks)
+
+>>> Cell  56 (exec # 22)  ---
+  !! ERROR: Axes.boxplot() got an unexpected keyword argument 'labels'. Did you mean 'label'?
+
+>>> Cell  60 (exec # 23)  ---
+Sample Raw Complaint Texts (Before Any Preprocessing):
+======================================================================
+
+--- High Priority ---
+  [1] The milk served at breakfast smelled slightly off this morning.
+  [2] Since yesterday, bunk bed ladder in my room feels really loose, kind of unsafe to climb.
+  [3] Theres been no drinking water in the cooler on Second floor since this morning.
+
+--- Medium Priority ---
+  [1] Mess timing keeps changing without any notice, we end up missing dinner.
+  [2] Theres cobwebs all over the staircase, doesnt look like anyone has cleaned it in ages, since Monday.
+  [3] Carrom board in the common room is missing four coins so we cant even play properly, since yesterday.
+
+--- Low Priority ---
+  [1] Theres cobwebs all over the staircase.
+  [2] My washroom door doesnt lock properly because the pipe fitting behind it is loose and jammed.
+  [3] Study table drawer in Room 24 is stuck and just wont open, since Wednesday.
+
+>>> Cell  62 (exec # 24)  ---
+Γ£à NLP preprocessing function defined.
+   Standard stopwords : 198
+   Domain stopwords   : 23
+   Force-kept words   : ['cannot', 'cant', 'doesnt', 'hasnt', 'havent', 'isnt', 'never', 'no', 'not', 'wasnt', 'wont', 'wouldnt']
+   Total stopwords    : 218
+   Min word length    : >= 2  (was > 2 in old model)
+
+>>> Cell  64 (exec # 25)  ---
+Original: The milk served at breakfast smelled slightly off this morning.
+
+Step 1 [lowercase]    : the milk served at breakfast smelled slightly off this morning.
+Step 2 [normalize]    : the milk served at breakfast smelled slightly off this morning.
+Step 3 [no punct]     : the milk served at breakfast smelled slightly off this morning 
+Step 4 [no digits]    : the milk served at breakfast smelled slightly off this morning 
+Step 5 [clean spaces] : the milk served at breakfast smelled slightly off this morning
+Step 6 [filter]       : ['milk', 'served', 'breakfast', 'smelled', 'slightly', 'morning']
+Step 7 [lemmatize]    : ['milk', 'served', 'breakfast', 'smelled', 'slightly', 'morning']
+
+Final cleaned text    : milk served breakfast smelled slightly morning
+
+Word count: 10 ΓåÆ 6
+
+--- Negation Preservation Test ---
+  Original : there is no water in the cooler
+  Cleaned  : no water cooler
+  Negation preserved: Γ£à
+
+  Original : the fan is not working
+  Cleaned  : fan not working
+  Negation preserved: Γ£à
+
+  Original : we cannot sleep due to noise
+  Cleaned  : cannot sleep due noise
+  Negation preserved: Γ£à
+
+
+>>> Cell  66 (exec # 26)  ---
+Γ£à Preprocessing complete in 0.07s
+   Rows processed: 857
+   Empty Cleaned_Text rows: 0
+   Null  Cleaned_Text rows: 0
+   Avg word count: 15.0 ΓåÆ 8.9 (reduction: 39.4%)
+
+>>> Cell  68 (exec # 27)  ---
+BEFORE vs AFTER PREPROCESSING
+======================================================================
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  HIGH PRIORITY
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  Original : The milk served at breakfast smelled slightly off this morning.
+  Cleaned  : milk served breakfast smelled slightly morning
+
+  Original : Since yesterday, bunk bed ladder in my room feels really loose, kind of unsafe t
+  Cleaned  : since yesterday bunk bed ladder room feel really loose kind unsafe climb
+
+  Original : Theres been no drinking water in the cooler on Second floor since this morning.
+  Cleaned  : there no drinking water cooler second floor since morning
+
+  Original : Someone keeps banging on doors late at night as some kind of prank, for 4 days n
+  Cleaned  : someone keep banging door late night kind prank day
+
+  Original : Backup power only seems to work for the corridor lights, rooms stay completely d
+  Cleaned  : backup power seems work corridor light room stay completely dark cut
+
+  Original : Two of my friends fell sick after dinner yesterday, the food might have been sta
+  Cleaned  : two friend fell sick dinner yesterday food might stale
+
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  MEDIUM PRIORITY
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+  Original : Mess timing keeps changing without any notice, we end up missing dinner.
+  Cleaned  : mess timing keep changing without notice end missing dinner
+  ... (38 more lines)
+
+>>> Cell  70 (exec # 28)  ---
+Severity and Negation Word Preservation Test
+=================================================================
+PURPOSE: Verify words survive NLP preprocessing only.
+         This does NOT predict ML model output.
+=================================================================
+
+  [PASS Γ£à]
+  Original : there is no water in the cooler
+  Cleaned  : no water cooler
+  Expected words : ['no']
+  Words found    : ['no']
+
+  [PASS Γ£à]
+  Original : the fan is not working since yesterday
+  Cleaned  : fan not working since yesterday
+  Expected words : ['not']
+  Words found    : ['not']
+
+  [PASS Γ£à]
+  Original : we cannot sleep because of the noise
+  Cleaned  : cannot sleep noise
+  Expected words : ['cannot']
+  Words found    : ['cannot']
+
+  [PASS Γ£à]
+  Original : the AC won't turn on
+  Cleaned  : ac wont turn
+  Expected words : ['wont']
+  Words found    : ['wont']
+
+  ... (43 more lines)
+
+>>> Cell  72 (exec # 29)  ---
+
+Top 10 words by priority:
+HIGH                      MEDIUM                    LOW                      
+---------------------------------------------------------------------------
+floor(67)                room(97)                 room(84)                 
+near(46)                 day(59)                  one(32)                  
+water(42)                floor(58)                not(28)                  
+day(39)                  water(55)                floor(28)                
+room(37)                 washroom(46)             block(26)                
+since(33)                common(38)               broken(25)               
+washroom(31)             week(35)                 door(23)                 
+night(28)                keep(33)                 common(23)               
+week(24)                 properly(33)             day(22)                  
+door(22)                 near(33)                 area(21)                 
+  -> Figure captured
+
+>>> Cell  76 (exec # 30)  ---
+Duration_Hours created from Duration_Standardized:
+  Null values : 0  Γ£ô
+  Dtype       : float64
+  Min         : 1 hours
+  Median      : 72 hours
+  Mean        : 124.9 hours
+  Max         : 672 hours (4.0 weeks)
+
+Γ£à Duration_Hours ready for StandardScaler.
+
+>>> Cell  78 (exec # 31)  ---
+Feature Selection:
+======================================================================
+  Γ£à INCLUDE (text)     | Cleaned_Text             | Primary ML signal -> TF-IDF
+  Γ£à INCLUDE (cat)      | Category                 | Known at submission time
+  Γ£à INCLUDE (cat)      | Complaint_Type           | Known at submission time
+  Γ£à INCLUDE (cat)      | Block                    | Known at submission time
+  Γ£à INCLUDE (cat)      | Floor                    | Known at submission time
+  Γ£à INCLUDE (num)      | Duration_Hours           | Parsed from Duration_Standardized; scaled via StandardScaler
+  Γ¥î EXCLUDE            | Support_Count            | Escalation system only (=0 for all new complaints)
+  Γ¥î EXCLUDE            | Room_No                  | High-cardinality identifier; risk of memorization
+  Γ¥î EXCLUDE            | Status                   | Post-submission field; unavailable at prediction time
+  Γ¥î EXCLUDE            | Complaint_Date           | Not a consistent prediction-time signal
+  Γ¥î EXCLUDE            | Complaint_ID             | Identifier only
+  Γ¥î EXCLUDE            | Duration_Standardized    | Source text used to create Duration_Hours; raw text not needed
+
+Text    : Cleaned_Text
+Cat     : ['Category', 'Complaint_Type', 'Block', 'Floor']
+Numeric : ['Duration_Hours']
+Target  : Priority  (classes: ['High', 'Medium', 'Low'])
+
+>>> Cell  80 (exec # 32)  ---
+Train / Test Split (Stratified 80/20):
+  Total : 857
+  Train : 685 (79.9%)
+  Test  : 172 (20.1%)
+
+Class    | Train | Test | Train%  | Test%
+------------------------------------------
+High     |  208  |  52  |  30.4%  |  30.2%
+Medium   |  287  |  72  |  41.9%  |  41.9%
+Low      |  190  |  48  |  27.7%  |  27.9%
+
+Max proportion diff: 0.0017  (Γ£à stratification verified)
+
+>>> Cell  82 (exec # 33)  ---
+ColumnTransformer defined:
+  [tfidf]  TfidfVectorizer  -> Cleaned_Text
+           ngram=(1,2), max_features=5000, sublinear_tf=True
+  [ohe]    OneHotEncoder    -> ['Category', 'Complaint_Type', 'Block', 'Floor']
+  [scaler] StandardScaler   -> ['Duration_Hours']
+  [drop]   All other columns dropped
+
+Γ£à Preprocessor defined. Will be fitted on X_train only.
+
+>>> Cell  84 (exec # 34)  ---
+Feature Matrix Summary:
+==================================================
+  X_train : (685, 1537)
+  X_test  : (172, 1537)
+
+Breakdown:
+  TF-IDF features         : 1497
+  OHE features            : 39
+  Numerical (StandardScaler): 1  (Duration_Hours)
+  Total features          : 1537
+
+Duration_Hours after StandardScaler:
+  Mean  : 0.0000  (expected ~0.0)
+  Std   : 1.0000   (expected ~1.0)
+
+Γ£à Preprocessor fitted on X_train only ΓÇö no data leakage.
+
+>>> Cell  86 (exec # 35)  ---
+Label Encoding (Priority -> Integer):
+  High     -> 0
+  Low      -> 1
+  Medium   -> 2
+
+  Shapes: y_train=(685,), y_test=(172,)
+  Reversible: True Γ£à
+
+>>> Cell  88 (exec # 36)  ---
+Leakage Verification:
+==================================================
+  Index overlap          : 0  Γ£à
+  TF-IDF vocab           : 1497 terms (from train only)  Γ£à
+  Preprocessor fitted on : X_train (685 samples)  Γ£à
+  Support_Count used     : False  Γ£à
+  Students_Affected used : False  Γ£à
+  Duration_Standardized  : Excluded (Duration_Hours used instead)  Γ£à
+
+Γ£à No data leakage detected. Pipeline is clean.
+
+>>> Cell  92 (exec # 37)  ### 5.1 ΓÇö Train Multiple Classifiers
+Training 5 classifiers on (685, 1537) ...
+========================================================================
+Model                  | Train Acc  | Test Acc   | Test F1    | Time
+------------------------------------------------------------------------
+Logistic Regression    |   0.8964   |   0.6105   |   0.6088   | 0.24s
+LinearSVC              |   0.9927   |   0.6628   |   0.6627   | 0.03s
+Random Forest          |   1.0000   |   0.6337   |   0.6338   | 0.54s
+Gradient Boosting      |   0.9839   |   0.5988   |   0.5964   | 12.24s
+Naive Bayes            |   0.9474   |   0.6163   |   0.6153   | 0.02s
+
+Γÿà Best model: LinearSVC  (Test F1=0.6627)
+
+>>> Cell  94 (exec # 38)  ### 5.2 ΓÇö Comparison Chart
+  -> Figure captured
+
+>>> Cell  96 (exec # 39)  ---
+Best Model: LinearSVC
+=======================================================
+  Train Accuracy : 0.9927
+  Test  Accuracy : 0.6628
+  Test  F1 (wt)  : 0.6627
+  Overfit gap: 0.3299  (ΓÜá High)
+
+Classification Report (Test Set):
+              precision    recall  f1-score   support
+
+        High       0.67      0.67      0.67        52
+         Low       0.67      0.69      0.68        48
+      Medium       0.65      0.64      0.64        72
+
+    accuracy                           0.66       172
+   macro avg       0.66      0.67      0.67       172
+weighted avg       0.66      0.66      0.66       172
+
+
+>>> Cell  97 (exec # 40)  ---
+Per-class recall (normalized diagonal):
+  High    : 0.673  (35/52 correct)
+  Low     : 0.688  (33/48 correct)
+  Medium  : 0.639  (46/72 correct)
+  -> Figure captured
+
+>>> Cell  98 (exec # 41)  ---
+Train vs Test Accuracy ΓÇö Overfitting Check:
+==============================================================
+Model                  | Train Acc  | Test Acc  | Gap     | Status
+--------------------------------------------------------------
+Logistic Regression    |   0.8964   |  0.6105  | 0.2859  | Γ¥î Overfit
+LinearSVC              |   0.9927   |  0.6628  | 0.3299  | Γ¥î Overfit  <-- BEST
+Random Forest          |   1.0000   |  0.6337  | 0.3663  | Γ¥î Overfit
+Gradient Boosting      |   0.9839   |  0.5988  | 0.3851  | Γ¥î Overfit
+Naive Bayes            |   0.9474   |  0.6163  | 0.3312  | Γ¥î Overfit
+
+>>> Cell 100 (exec # 42)  ---
+5-Fold Stratified CV ΓÇö LinearSVC
+Running...
+
+  CV Accuracy  : 0.7048 ┬▒ 0.0119
+  CV F1 (wt)   : 0.7043 ┬▒ 0.0124
+  Train Acc CV : 0.9924 ┬▒ 0.0017
+  Per-fold     : [0.7151, 0.6919, 0.6901, 0.7193, 0.7076]
+
+Γ£à CV complete.
+
+>>> Cell 102 (exec # 43)  ---
+Γ£à Saved to saved_model/:
+  .ipynb_checkpoints                   0.0 KB
+  domain_stopwords.pkl                 0.3 KB
+  feature_config.json                  0.7 KB
+  hostel_priority_model.pkl            75.8 KB
+  label_encoder.pkl                    0.4 KB
+  model.pkl                            36.8 KB
+  model_metadata.json                  0.6 KB
+  preprocessor.pkl                     61.2 KB
+
+>>> Cell 103 (exec # 44)  ---
+Saved model verification:
+==================================================
+  Category : Water Cooler          Duration: 8.0h
+  Text     : no water cooler second floor since morning
+  Predicted: High
+
+  Category : Cleanliness           Duration: 2.0h
+  Text     : cobweb staircase corner
+  Predicted: Low
+
+  Category : Fire Safety           Duration: 1.0h
+  Text     : fire risk generator room emergency
+  Predicted: High
+
+Γ£à Saved model loads and predicts correctly.
+
+>>> Cell 105 (exec # 45)  ---
+Final Verification Checklist:
+=================================================================
+  Γ£à  Dataset loaded from Dataset_duration.csv
+  Γ£à  Duration_Standardized parsed -> Duration_Hours
+  Γ£à  Duration_Hours is numerical (float)
+  Γ£à  Duration_Hours in feature set
+  Γ£à  Cleaned_Text uses TF-IDF
+  Γ£à  Category uses OHE
+  Γ£à  Complaint_Type uses OHE
+  Γ£à  Block uses OHE
+  Γ£à  Floor uses OHE
+  Γ£à  Support_Count excluded
+  Γ£à  Room_No excluded
+  Γ£à  Status excluded
+  Γ£à  Complaint_Date excluded
+  Γ£à  Complaint_ID excluded
+  Γ£à  Priority is the target
+  Γ£à  No preprocessing leakage
+  Γ£à  Train/test split stratified
+  Γ£à  Model trained on updated feature set
+  Γ£à  Evaluation performed on updated model
+
+=================================================================
+  Γ£à ALL CHECKS PASSED ΓÇö notebook is complete and consistent.
+=================================================================
+
+Final feature list: ['Cleaned_Text', 'Category', 'Complaint_Type', 'Block', 'Floor', 'Duration_Hours']
+Target: Priority  |  Classes: ['High', 'Medium', 'Low']
+
+=================================================================
+Execution complete.
+  Total code cells executed: 45
+  Errors encountered       : 1
+
+  Error summary:
+    Cell 56 (exec #22): Axes.boxplot() got an unexpected keyword argument 'labels'. Did you mean 'label'?
+  Notebook saved: hostel_complaint_prioritization.ipynb

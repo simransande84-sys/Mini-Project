@@ -1,0 +1,127 @@
+﻿Running Section 1: cells 0 to 29
+
+--- Cell 3 (exec #1) ---
+Γ£à All libraries imported successfully!
+   pandas  : 3.0.5
+   numpy   : 2.5.1
+   sklearn : imported
+   Classes : ['High', 'Medium', 'Low']
+
+
+--- Cell 6 (exec #2) ---
+Γ£à Dataset loaded: DATASET.CSV
+   Shape : 857 rows x 12 columns
+   Memory: 547.2 KB
+
+
+--- Cell 9 (exec #3) ---
+--- First 5 rows ---
+
+  -> DataFrame displayed
+
+--- Cell 10 (exec #4) ---
+--- Last 5 rows ---
+
+  -> DataFrame displayed
+
+--- Cell 12 (exec #5) ---
+Dataset Shape : (857, 12)
+  Rows (complaints) : 857
+  Columns (features): 12
+
+
+--- Cell 14 (exec #6) ---
+Column Names:
+----------------------------------------
+  [ 0] Complaint_ID ΓåÉ will be dropped
+  [ 1] Complaint_Text ΓåÉ PRIMARY ML SIGNAL
+  [ 2] Complaint_Type
+  [ 3] Block
+  [ 4] Floor
+  [ 5] Room_No ΓåÉ will be dropped
+  [ 6] Category
+  [ 7] Duration
+  [ 8] Support_Count ΓåÉ excluded from ML (escalation only)
+  [ 9] Priority ΓåÉ TARGET VARIABLE
+  [10] Status ΓåÉ will be dropped
+  [11] Complaint_Date ΓåÉ will be dropped
+
+
+--- Cell 17 (exec #7) ---
+Data Types:
+----------------------------------------
+Complaint_ID        str
+Complaint_Text      str
+Complaint_Type      str
+Block               str
+Floor               str
+Room_No           int64
+Category            str
+Duration            str
+Support_Count     int64
+Priority            str
+Status              str
+Complaint_Date      str
+dtype: object
+
+Object columns (text/categorical): ['Complaint_ID', 'Complaint_Text', 'Complaint_Type', 'Block', 'Floor', 'Category', 'Duration', 'Priority', 'Status', 'Complaint_Date']
+Numeric columns                  : ['Room_No', 'Support_Count']
+
+
+--- Cell 19 (exec #8) ---
+Γ£à No missing values in any column ΓÇö dataset is complete.
+
+
+--- Cell 21 (exec #9) ---
+Number of duplicate rows: 0
+Γ£à No duplicate rows found ΓÇö every complaint is unique.
+
+
+--- Cell 23 (exec #10) ---
+Priority Distribution:
+----------------------------------------
+  High  : 260 (30.3%)  ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê
+  Medium: 359 (41.9%)  ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê
+  Low   : 238 (27.8%)  ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê
+
+Total complaints: 857
+Unique Priority values: ['High', 'Low', 'Medium']
+
+Γ£à Critical class present: False  (expected: False)
+Γ£à Only High / Medium / Low ΓÇö 3-class problem confirmed.
+
+
+--- Cell 26 (exec #11) ---
+Statistical Summary (Numerical Columns):
+       Room_No  Support_Count
+count   857.00         857.00
+mean     21.72           7.53
+std      13.02           8.62
+min       1.00           0.00
+25%      11.00           1.00
+50%      20.00           5.00
+75%      30.00          11.00
+max      50.00          65.00
+
+Note: Support_Count will NOT be used as an ML feature.
+      It belongs to the mathematical escalation system.
+
+
+--- Cell 28 (exec #12) ---
+Unique Values per Column:
+-------------------------------------------------------
+  Complaint_ID        : 857 unique  (e.g. C0001...)
+  Complaint_Text      : 857 unique  (e.g. Theres cobwebs all over the staircase....)
+  Complaint_Type      :   2 unique  ['Private', 'Public']
+  Block               :   3 unique  ['A', 'B', 'C']
+  Floor               :   5 unique  ['First', 'Fourth', 'Ground', 'Second', 'Third']
+  Room_No             :  50 unique  (e.g. 15...)
+  Category            :  29 unique  (e.g. Cleanliness...)
+  Duration            :  32 unique  (e.g. since this evening...)
+  Support_Count       :  46 unique  (e.g. 2...)
+  Priority            :   3 unique  ['High', 'Low', 'Medium']
+  Status              :   4 unique  ['In Progress', 'Pending', 'Rejected', 'Resolved']
+  Complaint_Date      : 183 unique  (e.g. 01-05-2026...)
+
+
+Γ£à Section 1 cells executed. Notebook saved.

@@ -1,0 +1,1452 @@
+﻿Total cells: 254
+Cell 0 [markdown]: # ? AI-Based Hostel Complaint Prioritization System
+### B.Tech Mini Project ? Machine Learning Module
+
+**Objective:** Predict the Priority (High / Medium / Low) of hostel complaints using NLP and Mach
+
+Cell 1 [markdown]: ## ? SECTION 1: Import Libraries, Load Dataset & Initial Exploration
+
+In this section, we will:
+1. Import all necessary Python libraries
+2. Load the dataset from CSV
+3. Explore its structure ? shape, 
+
+Cell 2 [markdown]: ### 1.1 ? Import All Required Libraries
+
+We organize imports into logical groups:
+- **Data handling:** `pandas`, `numpy` ? for loading, manipulating, and computing on data.
+- **Visualization:** `matpl
+
+Cell 3 [code]: # ============================================================
+# 1.1  IMPORT ALL REQUIRED LIBRARIES
+# ============================================================
+
+# --- Data Handling ---
+import panda
+
+Cell 4 [markdown]: **? Interpretation:**  
+If you see `? All libraries imported successfully!` with no errors, your environment is ready.  
+If any library is missing, install it with `!pip install <library_name>` and re
+
+Cell 5 [markdown]: ---
+### 1.2 ? Load the Dataset
+
+We use `pd.read_csv()` to load the CSV file into a **DataFrame** ? a table-like structure where:
+- Each **row** is one hostel complaint.
+- Each **column** is a feature 
+
+Cell 6 [code]: # ============================================================
+# 1.2  LOAD THE DATASET
+# ============================================================
+
+# Load the CSV file into a pandas DataFrame
+df = 
+
+Cell 7 [markdown]: **? Interpretation:**  
+- **800 rows** = 800 individual hostel complaints.  
+- **13 columns** = 13 attributes describing each complaint (text + structured data + target label).
+
+Cell 8 [code]: df.head()
+
+Cell 9 [markdown]: ---
+### 1.3 ? Display the First Few Rows
+
+`df.head()` shows the top 5 rows. This is always the **first thing you should do** after loading data ? it gives you a quick visual feel for what each column 
+
+Cell 10 [code]: # ============================================================
+# 1.3  DISPLAY FIRST FEW ROWS
+# ============================================================
+
+# Show top 5 rows to get a quick look at th
+
+Cell 11 [markdown]: **Observation:**
+- The heatmap displays Pearson correlation coefficients between the three numerical features.
+- `Students_Affected` and `Support_Count` show a positive correlation (see exact value in
+
+Cell 12 [markdown]: ---
+### 1.4 ? Dataset Shape
+
+`.shape` returns a tuple `(number_of_rows, number_of_columns)`. This confirms the size of our dataset.
+
+Cell 13 [code]: # ============================================================
+# 1.4  DATASET SHAPE
+# ============================================================
+
+print(f'Dataset Shape: {df.shape}')
+print(f'  ? {df.
+
+Cell 14 [markdown]: ---
+### 1.5 ? Column Names
+
+List all column names to verify nothing unexpected was loaded.
+
+Cell 15 [code]: # ============================================================
+# 1.5  COLUMN NAMES
+# ============================================================
+
+print('Column Names:')
+print('?' * 40)
+for i, col in 
+
+Cell 16 [markdown]: **? Interpretation:**  
+We have 13 columns. Before model training, we will:
+- **Drop** `Complaint_ID` (just an identifier, not a feature).
+- **Drop** `Status` and `Complaint_Date` (they are operationa
+
+Cell 17 [markdown]: ---
+### 1.6 ? Data Types
+
+`.dtypes` tells us how pandas interpreted each column. This matters because:
+- `object` = text/string ? needs encoding before ML.
+- `int64` / `float64` = numbers ? can be use
+
+Cell 18 [code]: # ============================================================
+# 1.6  DATA TYPES
+# ============================================================
+
+print('Data Types:')
+print('?' * 40)
+print(df.dtypes)
+p
+
+Cell 19 [markdown]: **? Interpretation:**  
+- Most columns are `object` (text/categorical) ? they will need **encoding** (OneHotEncoding or TF-IDF).
+- `Room_No`, `Students_Affected`, `Support_Count` are `int64` (numerica
+
+Cell 20 [markdown]: ---
+### 1.7 ? Missing Values Check
+
+Missing values can break ML models or bias predictions. We **must** check and handle them before training.
+
+> **Best Practice:** Always check for nulls immediately 
+
+Cell 21 [code]: # ============================================================
+# 1.7  MISSING VALUES
+# ============================================================
+
+missing = df.isnull().sum()
+missing_pct = (df.isnul
+
+Cell 22 [markdown]: **? Interpretation:**  
+- If all counts are **0** ? the dataset is clean with no missing values. No imputation needed.
+- If any column has missing values ? we would need to decide: drop those rows, or
+
+Cell 23 [markdown]: ---
+### 1.8 ? Duplicate Rows Check
+
+Duplicate rows can inflate model performance artificially. If the same complaint appears in both training and test sets, the model "memorizes" instead of "learning"
+
+Cell 24 [code]: # ============================================================
+# 1.8  DUPLICATE ROWS
+# ============================================================
+
+duplicate_count = df.duplicated().sum()
+
+print(f'Nu
+
+Cell 25 [markdown]: **? Interpretation:**  
+- **0 duplicates** means every complaint in the dataset is unique ? exactly what we want.
+- If duplicates were found, the code automatically removes them and resets the row ind
+
+Cell 26 [markdown]: ---
+### 1.9 ? Class Distribution (Target Variable: `Priority`)
+
+This is one of the **most important checks** in any classification problem.
+
+**Why?** If one class (e.g., "Low") has 700 samples and ano
+
+Cell 27 [code]: # ============================================================
+# 1.9  CLASS DISTRIBUTION OF TARGET VARIABLE
+# ============================================================
+
+# Count and percentage of ea
+
+Cell 28 [markdown]: **? Interpretation:**
+
+Look at the bar chart and percentages:
+
+- If the three classes (High, Medium, Low) are **roughly balanced** (each ~25?40%), our models should learn all three classes fairly well
+
+Cell 29 [markdown]: ---
+### 1.10 ? Quick Statistical Summary
+
+`.describe()` shows summary statistics (mean, std, min, max, quartiles) for numerical columns. This helps spot **outliers** or **unusual ranges**.
+
+Cell 30 [code]: # ============================================================
+# 1.10  STATISTICAL SUMMARY (NUMERICAL COLUMNS)
+# ============================================================
+
+print('Statistical Summar
+
+Cell 31 [markdown]: **? Interpretation:**
+
+| Metric | What to look for |
+|---|---|
+| `mean` vs `50%` (median) | If they differ a lot ? data is **skewed** |
+| `min` and `max` | Check for impossible values (e.g., negative 
+
+Cell 32 [markdown]: ---
+### 1.11 ? Unique Values per Column
+
+This helps us understand the **cardinality** (number of unique values) of each column, which is crucial for deciding encoding strategies.
+
+Cell 33 [code]: # ============================================================
+# 1.11  UNIQUE VALUES PER COLUMN
+# ============================================================
+
+print('Unique Values per Column:')
+print
+
+Cell 34 [markdown]: **Observation:**
+- The heatmap shows the count of complaints for each Category-Priority combination.
+- Some categories have their complaints concentrated in specific priority levels, while others are 
+
+Cell 35 [markdown]: ---
+## ? SECTION 2: Exploratory Data Analysis (EDA)
+
+EDA is the process of **visually and statistically examining** data before building models. It helps us:
+1. Understand distributions and relationsh
+
+Cell 36 [markdown]: ---
+### 2.1 ? Complaint Category Distribution
+
+Which types of complaints are most common? This tells us what problems students face most frequently.
+
+Cell 37 [code]: # ============================================================
+# 2.1  COMPLAINT CATEGORY DISTRIBUTION
+# ============================================================
+
+fig, ax = plt.subplots(figsize=(12
+
+Cell 38 [markdown]: **? Insight:**
+- **Observation:** The bar chart shows the frequency of each complaint category. Refer to the chart above for exact counts.
+- The categories with the highest counts represent the most r
+
+Cell 39 [markdown]: ---
+### 2.2 ? Complaint Type Distribution (Public vs Private)
+
+Is the complaint visible to everyone (Public) or only to the warden (Private)? This might influence priority.
+
+Cell 40 [code]: # ============================================================
+# 2.2  COMPLAINT TYPE: PUBLIC vs PRIVATE
+# ============================================================
+
+fig, axes = plt.subplots(1, 2, f
+
+Cell 41 [markdown]: **Observation:**
+- The pie chart shows the proportion of Public vs Private complaints (see percentages above).
+- The stacked bar chart shows how priority is distributed within each complaint type.
+- T
+
+Cell 42 [markdown]: ---
+### 2.3 ? Block and Floor Distribution
+
+Which hostel blocks and floors generate the most complaints? Are there hotspots?
+
+Cell 43 [code]: # ============================================================
+# 2.3  BLOCK AND FLOOR DISTRIBUTION
+# ============================================================
+
+fig, axes = plt.subplots(1, 2, figsiz
+
+Cell 44 [markdown]: **Observation:**
+- The bar charts show the number of complaints per Block and per Floor, broken down by priority.
+- Refer to the charts above for exact counts.
+
+**Interpretation:**
+- The complaint cou
+
+Cell 45 [markdown]: ---
+### 2.4 ? Numerical Features Distribution
+
+Let's examine the distribution of `Students_Affected` and `Support_Count` ? these are likely **strong predictors** of priority.
+
+Cell 46 [code]: # ============================================================
+# 2.4  NUMERICAL FEATURES: DISTRIBUTIONS & BOXPLOTS
+# ============================================================
+
+fig, axes = plt.subpl
+
+Cell 47 [markdown]: **Observation:**
+- The histograms show the distribution of `Students_Affected` and `Support_Count` for each priority level.
+- The boxplots show the median, interquartile range, and outliers for each p
+
+Cell 48 [markdown]: ---
+### 2.5 ? Correlation Heatmap (Numerical Features)
+
+A correlation heatmap shows how strongly numerical features are related to each other. Values range from **-1** (strong negative) to **+1** (str
+
+Cell 49 [code]: # ============================================================
+# 2.5  CORRELATION HEATMAP
+# ============================================================
+
+# Select only numerical columns for correlatio
+
+Cell 50 [markdown]: **? Insight:**
+- **Observation:** `Students_Affected` and `Support_Count` show a positive correlation (refer to the heatmap for the exact value).
+- **Observation:** `Room_No` has near-zero correlation
+
+Cell 51 [markdown]: ---
+### 2.6 ? Category vs Priority Heatmap
+
+Which complaint categories tend to be High, Medium, or Low priority? This is a crucial insight for understanding the data.
+
+Cell 52 [code]: # ============================================================
+# 2.6  CATEGORY vs PRIORITY HEATMAP
+# ============================================================
+
+# Create crosstab of Category vs Prio
+
+Cell 53 [markdown]: **? Insight:**
+- **Observation:** The heatmap shows the count of complaints for each Category-Priority combination. Certain categories have higher counts in specific priority levels (refer to the heat
+
+Cell 54 [markdown]: ---
+### 2.7 ? Word Cloud of Complaint Text (by Priority)
+
+Which words appear most frequently in High, Medium, and Low priority complaints? Word clouds give a quick **visual summary** of the most commo
+
+Cell 55 [code]: # ============================================================
+# 2.7  WORD CLOUDS BY PRIORITY LEVEL
+# ============================================================
+
+# Install wordcloud if not already i
+
+Cell 56 [markdown]: **Observation:**
+- The word clouds display the most frequently occurring words in complaint texts for each priority level, **after removing** both standard English stopwords and domain-specific filler
+
+Cell 57 [markdown]: ---
+### 2.8 ? Status Distribution
+
+Although we won't use `Status` as a feature (to avoid data leakage), let's visualize it for understanding the operational side.
+
+Cell 58 [code]: # ============================================================
+# 2.8  STATUS DISTRIBUTION & STATUS vs PRIORITY
+# ============================================================
+
+fig, axes = plt.subplots(
+
+Cell 59 [markdown]: **? Insight:**
+- **Observation:** The status distribution shows the count of complaints in each status category (refer to the chart for exact numbers).
+- **Observation:** The stacked bar shows how sta
+
+Cell 60 [markdown]: ---
+### 2.9 ? Complaint Text Length Analysis
+
+Do longer complaints tend to have higher priority? Let's check the relationship between text length and priority.
+
+Cell 61 [code]: # ============================================================
+# 2.9  TEXT LENGTH ANALYSIS
+# ============================================================
+
+# Create text length features
+df['text_length
+
+Cell 62 [markdown]: **? Insight:**
+- **Observation:** The boxplots show the distribution of text length and word count across priority levels. Refer to the printed averages for exact values.
+- **ML Relevance:** If text l
+
+Cell 63 [markdown]: ---
+## Section 2 Complete - EDA Summary
+
+### Key Findings from EDA:
+
+| Finding | Evidence |
+|---|---|
+| **Numerical features show separation** | Boxplots of `Students_Affected` and `Support_Count` sho
+
+Cell 64 [markdown]: ---
+## SECTION 3: NLP Preprocessing
+
+Before feeding text to a machine learning model, we must **clean and standardize** it. Raw text contains noise (punctuation, numbers, stopwords) that adds no predi
+
+Cell 65 [markdown]: ---
+### 3.1 - Display Original Text (Before Preprocessing)
+
+Let us first look at a few raw complaint texts to understand what needs cleaning.
+
+Cell 66 [code]: # ============================================================
+# 3.1  DISPLAY ORIGINAL COMPLAINT TEXT (BEFORE CLEANING)
+# ============================================================
+
+print('Sample Ra
+
+Cell 67 [markdown]: **Observation:**
+- Text has **mixed case** (uppercase and lowercase)
+- Contains **punctuation** (commas, periods, apostrophes)
+- Contains **numbers** (room numbers, durations)
+- Has **stopwords** (*th
+
+Cell 68 [markdown]: ---
+### 3.2 - Build the NLP Preprocessing Function
+
+We create a **single reusable function** that applies all cleaning steps in order. This is a best practice because:
+- It keeps the code **modular an
+
+Cell 69 [code]: # ============================================================
+# 3.2  NLP PREPROCESSING FUNCTION
+# ============================================================
+
+# Initialize tools
+stop_words = set(sto
+
+Cell 70 [markdown]: **Explanation of Each Step:**
+
+| Step | What it does | Example | Why it helps the model |
+|---|---|---|---|
+| **Lowercase** | Converts all characters to lowercase | `Broken` -> `broken` | Without this
+
+Cell 71 [markdown]: ---
+### 3.3 - Demonstrate Preprocessing (Step-by-Step)
+
+Let us show the transformation at **each step** for one example complaint so you can see exactly what happens.
+
+Cell 72 [code]: # ============================================================
+# 3.3  STEP-BY-STEP DEMONSTRATION
+# ============================================================
+
+# Pick a sample complaint
+sample = df['
+
+Cell 73 [markdown]: **Interpretation:**
+- The original text was a messy, natural-language sentence.
+- After preprocessing, we have **only the meaningful words in their base form**.
+- This cleaned text is what TF-IDF will
+
+Cell 74 [markdown]: ---
+### 3.4 - Apply Preprocessing to the Entire Dataset
+
+Now we apply our `preprocess_text()` function to every complaint in the dataset using `.apply()`.
+
+Cell 75 [code]: # ============================================================
+# 3.4  APPLY PREPROCESSING TO ALL COMPLAINTS
+# ============================================================
+
+# Create a new column with c
+
+Cell 76 [markdown]: ---
+### 3.5 - Before vs After Comparison
+
+Let us compare the original and cleaned text side by side for several complaints.
+
+Cell 77 [code]: # ============================================================
+# 3.5  BEFORE vs AFTER COMPARISON
+# ============================================================
+
+print('BEFORE vs AFTER PREPROCESSING')
+
+
+Cell 78 [markdown]: **Interpretation:**
+- Every complaint is now **shorter and cleaner** - only meaningful words remain.
+- The **word count is reduced** significantly (typically 30-50% reduction).
+- Priority-related word
+
+Cell 79 [markdown]: ---
+### 3.6 - Verify Cleaning Quality
+
+Let us run some sanity checks to make sure preprocessing worked correctly.
+
+Cell 80 [code]: # ============================================================
+# 3.6  VERIFY PREPROCESSING QUALITY
+# ============================================================
+
+# Check 1: No empty strings after cle
+
+Cell 81 [markdown]: **Interpretation:**
+- **No empty texts** - every complaint still has meaningful content after cleaning.
+- **No null values** - the function handled all rows correctly.
+- The word reduction percentage 
+
+Cell 82 [markdown]: ---
+### 3.7 - Top Words After Preprocessing (by Priority)
+
+Let us see which words appear most frequently in each priority class after cleaning. This confirms that meaningful, priority-relevant words s
+
+Cell 83 [code]: # ============================================================
+# 3.7  TOP WORDS BY PRIORITY (AFTER PREPROCESSING)
+# ============================================================
+
+from collections impor
+
+Cell 84 [markdown]: **Observation:**
+- The bar charts show the 15 most frequent words in each priority class after full preprocessing (including domain-specific stopword removal).
+- The printed table provides exact word 
+
+Cell 85 [markdown]: ---
+## Section 3 Complete - NLP Preprocessing Summary
+
+### What We Did:
+| Step | Purpose | Impact |
+|---|---|---|
+| Lowercase | Uniformity | `Broken` = `broken` ? prevents duplicate features |
+| Remov
+
+Cell 86 [markdown]: ---
+## SECTION 4: TF-IDF Vectorization
+
+Machine learning models cannot work with raw text. They need **numerical input**. TF-IDF (Term Frequency - Inverse Document Frequency) is a technique that conve
+
+Cell 87 [markdown]: ---
+### 4.1 - Apply TF-IDF Vectorization
+
+We use scikit-learn's `TfidfVectorizer` to transform the `Cleaned_Text` column into a numerical feature matrix.
+
+**Key Parameters:**
+- `max_features=1000`: Ke
+
+Cell 88 [code]: # ============================================================
+# 4.1  APPLY TF-IDF VECTORIZATION
+# ============================================================
+
+# Initialize the TF-IDF Vectorizer with
+
+Cell 89 [markdown]: **Observation:**
+- The TF-IDF matrix has **800 rows** (one per complaint) and up to **1000 columns** (one per word/bigram feature).
+- The matrix is **sparse** ? most entries are zero because each comp
+
+Cell 90 [markdown]: ---
+### 4.2 - Examine the TF-IDF Vocabulary
+
+Let us see what words/bigrams TF-IDF selected as features and examine a sample of the feature matrix.
+
+Cell 91 [code]: # ============================================================
+# 4.2  EXAMINE TF-IDF VOCABULARY AND FEATURES
+# ============================================================
+
+# Get the list of feature n
+
+Cell 92 [markdown]: **Observation:**
+- The vocabulary contains both single words (unigrams) and two-word phrases (bigrams).
+- Features are sorted alphabetically. The exact count depends on the `max_features` parameter an
+
+Cell 93 [markdown]: ---
+### 4.3 - Visualize Top TF-IDF Features
+
+Let us identify which words have the highest average TF-IDF scores across all complaints. These are the words that TF-IDF considers most informative overal
+
+Cell 94 [code]: # ============================================================
+# 4.3  TOP TF-IDF FEATURES (HIGHEST AVERAGE SCORES)
+# ============================================================
+
+# Calculate mean TF-I
+
+Cell 95 [markdown]: **Observation:**
+- The bar chart shows the top 25 TF-IDF features ranked by their mean score across all complaints.
+- These are the words/bigrams that TF-IDF considers most informative overall.
+
+**Int
+
+Cell 96 [markdown]: ---
+### 4.4 - Top TF-IDF Features by Priority Level
+
+To understand which words are most distinctive for each priority class, let us compute the mean TF-IDF score per priority level.
+
+Cell 97 [code]: # ============================================================
+# 4.4  TOP TF-IDF FEATURES PER PRIORITY CLASS
+# ============================================================
+
+fig, axes = plt.subplots(1,
+
+Cell 98 [markdown]: **Observation:**
+- Each chart shows the top 15 TF-IDF features for one priority class, ranked by mean TF-IDF score within that class.
+- The three charts show visually different feature rankings.
+
+**In
+
+Cell 99 [markdown]: ---
+### 4.5 - Sample TF-IDF Vectors
+
+Let us look at the actual TF-IDF representation of a few complaints to understand what the model will see as input.
+
+Cell 100 [code]: # ============================================================
+# 4.5  SAMPLE TF-IDF VECTORS
+# ============================================================
+
+# Show TF-IDF representation for 3 sample co
+
+Cell 101 [markdown]: **Observation:**
+- Each complaint is represented by a sparse vector where most values are zero.
+- Only the words present in that specific complaint have non-zero TF-IDF scores.
+- Scores are higher for
+
+Cell 102 [markdown]: ---
+## Section 4 Complete - TF-IDF Summary
+
+### What We Did:
+| Step | Detail |
+|---|---|
+| Vectorizer | `TfidfVectorizer` from scikit-learn |
+| Max features | 1000 (top words by TF-IDF score) |
+| N-gr
+
+Cell 103 [markdown]: ---
+## SECTION 5: Feature Engineering & Combining Features
+
+Our dataset has **two types of features**:
+1. **Text feature** (`Complaint_Text`) - already converted to TF-IDF numbers in Section 4.
+2. **S
+
+Cell 104 [markdown]: ---
+### 5.1 - Drop Unnecessary Columns
+
+Before building features, we remove columns that should not be used for training.
+
+Cell 105 [code]: # ============================================================
+# 5.1  DROP UNNECESSARY COLUMNS
+# ============================================================
+
+# Columns to drop and reasons:
+drop_cols 
+
+Cell 106 [markdown]: **Observation:**
+- We dropped 6 columns that are either identifiers, metadata, or data-leakage risks.
+- The remaining columns are the ones we will use for model training.
+
+**Interpretation:**
+- `Clean
+
+Cell 107 [markdown]: ---
+### 5.2 - Identify Feature Types
+
+Let us clearly separate categorical and numerical features.
+
+Cell 108 [code]: # ============================================================
+# 5.2  IDENTIFY FEATURE TYPES
+# ============================================================
+
+# Define feature groups
+categorical_feature
+
+Cell 109 [markdown]: **Observation:**
+- We have 4 categorical features with relatively low cardinality (2-15 unique values each).
+- We have 2 numerical features with different scales and ranges.
+
+**Interpretation:**
+- Cat
+
+Cell 110 [markdown]: ---
+### 5.3 - Encode Categorical Features (OneHotEncoding)
+
+**What is OneHotEncoding?**
+- Converts each category into a separate binary column.
+- Example: `Block` with values [A, B, C] becomes 3 colum
+
+Cell 111 [code]: # ============================================================
+# 5.3  ENCODE CATEGORICAL FEATURES
+# ============================================================
+
+# Demonstrate OneHotEncoding on a smal
+
+Cell 112 [markdown]: ---
+### 5.4 - Scale Numerical Features (StandardScaler)
+
+**What is StandardScaler?**
+- Transforms each numerical feature so that it has **mean = 0** and **standard deviation = 1**.
+- Formula: $z = \fr
+
+Cell 113 [code]: # ============================================================
+# 5.4  DEMONSTRATE SCALING
+# ============================================================
+
+print('Numerical Features - Before Scaling:')
+
+
+Cell 114 [markdown]: ---
+### 5.5 - Encode the Target Variable (Priority)
+
+The target variable `Priority` has 3 text labels: High, Medium, Low. We need to convert these to numbers for the ML model using `LabelEncoder`.
+
+Cell 115 [code]: # ============================================================
+# 5.5  ENCODE TARGET VARIABLE
+# ============================================================
+
+# Initialize LabelEncoder
+label_encoder = L
+
+Cell 116 [markdown]: **Observation:**
+- LabelEncoder assigned a number (0, 1, or 2) to each priority class.
+- The mapping is alphabetical by default (High=0, Low=1, Medium=2).
+
+**Interpretation:**
+- The encoded labels wil
+
+Cell 117 [markdown]: ---
+### 5.6 - Build the ColumnTransformer
+
+Now we combine all feature types into a single preprocessing pipeline using `ColumnTransformer`.
+
+**What is ColumnTransformer?**
+- It applies **different tra
+
+Cell 118 [code]: # ============================================================
+# 5.6  BUILD COLUMN TRANSFORMER
+# ============================================================
+
+# Define the ColumnTransformer with three
+
+Cell 119 [markdown]: ---
+### 5.7 - Prepare the Feature Matrix (X) and Target (y)
+
+Now let us define X (features) and y (target), and fit the ColumnTransformer to see the final combined feature matrix.
+
+Cell 120 [code]: # ============================================================
+# 5.7  PREPARE X AND y
+# ============================================================
+
+# X contains all feature columns (text + categoric
+
+Cell 121 [markdown]: **Observation:**
+- The ColumnTransformer has combined all feature types into a single matrix.
+- The total number of features = TF-IDF features + OneHotEncoded columns + 2 numerical features.
+- The fea
+
+Cell 122 [markdown]: ---
+### 5.8 - Verify the Combined Feature Matrix
+
+Let us run quick sanity checks on the combined feature matrix.
+
+Cell 123 [code]: # ============================================================
+# 5.8  VERIFY COMBINED FEATURES
+# ============================================================
+
+from scipy.sparse import issparse
+
+print(
+
+Cell 124 [markdown]: ---
+## Section 5 Complete - Feature Engineering Summary
+
+### What We Did:
+| Step | Detail |
+|---|---|
+| Dropped columns | `Complaint_ID`, `Room_No`, `Duration`, `Status`, `Complaint_Date`, `Complaint_
+
+Cell 125 [markdown]: ---
+## SECTION 6: Train-Test Split & Logistic Regression
+
+In this section we:
+1. Split the dataset into training and test sets (80/20)
+2. Fit the ColumnTransformer **only on training data** (prevents 
+
+Cell 126 [markdown]: ---
+### 6.1 - Train-Test Split
+
+We split the data 80% for training and 20% for testing.
+
+**Key parameters:**
+- `test_size=0.20` ? 20% of data (160 complaints) reserved for evaluation
+- `random_state=4
+
+Cell 127 [code]: # ============================================================
+# 6.1  TRAIN-TEST SPLIT
+# ============================================================
+
+# IMPORTANT: Split BEFORE applying any transforma
+
+Cell 128 [markdown]: **Observation:**
+- The class distribution percentages are approximately equal across the full dataset, training set, and test set.
+
+**Interpretation:**
+- `stratify=y` successfully preserved the class 
+
+Cell 129 [markdown]: ---
+### 6.2 - Fit the Preprocessor and Transform Data
+
+Now we fit the ColumnTransformer **only on the training data**, then transform both sets.
+
+Cell 130 [code]: # ============================================================
+# 6.2  FIT PREPROCESSOR ON TRAIN, TRANSFORM BOTH SETS
+# ============================================================
+
+# Reinitialize a fr
+
+Cell 131 [markdown]: **Why `fit_transform` on train and `transform` on test?**
+- `fit_transform` on train: The TF-IDF vectorizer **learns the vocabulary** from training text. The OneHotEncoder **learns the categories**. S
+
+Cell 132 [markdown]: ---
+### 6.3 - Logistic Regression: Algorithm Explanation
+
+**What is Logistic Regression?**
+- Despite its name, Logistic Regression is a **classification** algorithm, not regression.
+- It models the **
+
+Cell 133 [code]: # ============================================================
+# 6.3  TRAIN LOGISTIC REGRESSION
+# ============================================================
+
+# Initialize Logistic Regression
+lr_mode
+
+Cell 134 [markdown]: ---
+### 6.4 - Make Predictions and Evaluate
+
+We evaluate the model using multiple metrics ? accuracy alone is not sufficient.
+
+Cell 135 [code]: # ============================================================
+# 6.4  PREDICTIONS AND EVALUATION METRICS
+# ============================================================
+
+# Make predictions on the test 
+
+Cell 136 [markdown]: **What do these metrics mean?**
+
+| Metric | Formula | What it measures |
+|---|---|---|
+| **Accuracy** | Correct predictions / Total predictions | Overall percentage of correct classifications |
+| **Pr
+
+Cell 137 [markdown]: ---
+### 6.5 - Classification Report
+
+Cell 138 [code]: # ============================================================
+# 6.5  CLASSIFICATION REPORT (PER CLASS)
+# ============================================================
+
+# Full per-class breakdown
+print
+
+Cell 139 [markdown]: **How to read the Classification Report:**
+- Each row represents one class (High, Low, Medium).
+- **support** = number of actual samples of that class in the test set.
+- **macro avg** = simple average
+
+Cell 140 [markdown]: ---
+### 6.6 - Confusion Matrix
+
+Cell 141 [code]: # ============================================================
+# 6.6  CONFUSION MATRIX
+# ============================================================
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+
+
+Cell 142 [markdown]: **How to read the Confusion Matrix:**
+
+```
+                 Predicted
+              High  Low  Medium
+Actual High  [ TP ] [FN]  [FN]
+       Low   [ FP ] [TP]  [FP]
+       Medium[ FP ] [FP]  [TP]
+```
+
+
+
+Cell 143 [markdown]: ---
+### 6.7 - Store Results for Model Comparison
+
+We save Logistic Regression's results in a dictionary so we can compare all models in Section 10.
+
+Cell 144 [code]: # ============================================================
+# 6.7  STORE RESULTS FOR COMPARISON
+# ============================================================
+
+# Dictionary to store all model resul
+
+Cell 145 [markdown]: ---
+## Section 6 Complete - Logistic Regression Summary
+
+### What We Did:
+| Step | Detail |
+|---|---|
+| Train-Test Split | 80/20 split with `stratify=y` to preserve class distribution |
+| Preprocessin
+
+Cell 146 [markdown]: ---
+## SECTION 7: Random Forest Classifier
+
+### How does Random Forest work?
+
+Random Forest is an **ensemble learning** algorithm ? it combines the predictions of many individual **Decision Trees** to
+
+Cell 147 [markdown]: ---
+### 7.1 - Train Random Forest
+
+Cell 148 [code]: # ============================================================
+# 7.1  TRAIN RANDOM FOREST
+# ============================================================
+
+# Note: X_train and X_test are already transfo
+
+Cell 149 [markdown]: ---
+### 7.2 - Evaluate Random Forest
+
+Cell 150 [code]: # ============================================================
+# 7.2  PREDICT AND EVALUATE
+# ============================================================
+
+y_pred_rf = rf_model.predict(X_test)
+
+acc_rf 
+
+Cell 151 [markdown]: ---
+### 7.3 - Confusion Matrix
+
+Cell 152 [code]: # ============================================================
+# 7.3  CONFUSION MATRIX
+# ============================================================
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+
+
+Cell 153 [markdown]: **Observation:**
+- The confusion matrix shows the count of correct and incorrect predictions per class.
+- The row-normalized version shows the recall for each class on the diagonal.
+- Refer to the pri
+
+Cell 154 [markdown]: ---
+### 7.4 - Feature Importances (Top 20)
+
+Random Forest can compute **feature importances** ? how much each feature contributed to reducing impurity (uncertainty) during tree splits. This is a usefu
+
+Cell 155 [code]: # ============================================================
+# 7.4  FEATURE IMPORTANCES
+# ============================================================
+
+# Get feature names from each transformer in t
+
+Cell 156 [markdown]: **Observation:**
+- The bar chart shows the top 20 features ranked by Mean Decrease in Impurity (MDI) importance.
+- Features can be TF-IDF words, OneHotEncoded categories, or numerical features.
+- Refe
+
+Cell 157 [markdown]: ---
+### 7.5 - Store Results
+
+Cell 158 [code]: # ============================================================
+# 7.5  STORE RESULTS FOR COMPARISON
+# ============================================================
+
+results['Random Forest'] = {
+    'Acc
+
+Cell 159 [markdown]: ---
+## Section 7 Complete - Random Forest Summary
+
+### How Random Forest Works (Summary):
+| Concept | Explanation |
+|---|---|
+| Ensemble method | Combines many Decision Trees |
+| Bootstrap sampling | 
+
+Cell 160 [markdown]: ---
+## SECTION 8: Linear SVM (LinearSVC)
+
+### How does a Support Vector Machine (SVM) work?
+
+SVM is a **boundary-based** classifier. It tries to find the **optimal hyperplane** that separates classes 
+
+Cell 161 [markdown]: ---
+### 8.1 - Train Linear SVM
+
+Cell 162 [code]: # ============================================================
+# 8.1  TRAIN LINEAR SVM
+# ============================================================
+
+# LinearSVC is the most efficient SVM implementat
+
+Cell 163 [markdown]: ---
+### 8.2 - Evaluate LinearSVC
+
+Cell 164 [code]: # ============================================================
+# 8.2  PREDICT AND EVALUATE
+# ============================================================
+
+y_pred_svm = svm_model.predict(X_test)
+
+acc_s
+
+Cell 165 [markdown]: ---
+### 8.3 - Confusion Matrix
+
+Cell 166 [code]: # ============================================================
+# 8.3  CONFUSION MATRIX
+# ============================================================
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+
+
+Cell 167 [markdown]: **Observation:**
+- The confusion matrices show the count and row-normalized proportions of correct and incorrect predictions per class.
+- Diagonal values in the normalized matrix represent per-class r
+
+Cell 168 [markdown]: ---
+### 8.4 - Top Discriminative Words per Class (SVM Coefficients)
+
+One unique advantage of LinearSVC is that we can inspect its **coefficients** (weights) for the TF-IDF features. Features with the 
+
+Cell 169 [code]: # ============================================================
+# 8.4  TOP DISCRIMINATIVE WORDS PER CLASS (SVM COEFFICIENTS)
+# ============================================================
+
+# Get TF-IDF
+
+Cell 170 [markdown]: **Observation:**
+- Each chart shows the 15 TF-IDF words/bigrams with the highest SVM coefficients for that class.
+- A high positive coefficient means the presence of that word strongly pushes the mode
+
+Cell 171 [markdown]: ---
+### 8.5 - Store Results
+
+Cell 172 [code]: # ============================================================
+# 8.5  STORE RESULTS FOR COMPARISON
+# ============================================================
+
+results['Linear SVM'] = {
+    'Accura
+
+Cell 173 [markdown]: ---
+## Section 8 Complete - Linear SVM Summary
+
+### Why LinearSVC is effective for TF-IDF text classification:
+| Reason | Explanation |
+|---|---|
+| High-dimensional sparse data | TF-IDF produces thous
+
+Cell 174 [markdown]: ---
+## SECTION 9: Multinomial Naive Bayes
+
+### Why Naive Bayes is a Standard Baseline for Text Classification
+
+Naive Bayes is often the **first algorithm tried** on text classification problems. Here 
+
+Cell 175 [markdown]: ---
+### 9.1 - Prepare TF-IDF Only Features for Naive Bayes
+
+Since `MultinomialNB` requires non-negative features, we extract only the TF-IDF portion from our combined feature matrix.
+
+Cell 176 [code]: # ============================================================
+# 9.1  PREPARE TFIDF-ONLY FEATURES FOR NAIVE BAYES
+# ============================================================
+
+from scipy.sparse impo
+
+Cell 177 [markdown]: **Observation:**
+- We extract only the TF-IDF portion (first N columns) from the combined feature matrix.
+- All TF-IDF values are >= 0, satisfying MultinomialNB's requirement.
+
+**ML Relevance:**
+- Thi
+
+Cell 178 [markdown]: ---
+### 9.2 - Train Multinomial Naive Bayes
+
+Cell 179 [code]: # ============================================================
+# 9.2  TRAIN MULTINOMIAL NAIVE BAYES
+# ============================================================
+
+nb_model = MultinomialNB(
+    alpha=
+
+Cell 180 [markdown]: **What is Laplace Smoothing (`alpha=1.0`)?**
+- Without smoothing, if a word in the test set never appeared in training, its probability would be zero, making the entire product zero.
+- Adding alpha (s
+
+Cell 181 [markdown]: ---
+### 9.3 - Evaluate Multinomial Naive Bayes
+
+Cell 182 [code]: # ============================================================
+# 9.3  PREDICT AND EVALUATE
+# ============================================================
+
+y_pred_nb = nb_model.predict(X_test_nb)
+
+acc_
+
+Cell 183 [markdown]: ---
+### 9.4 - Confusion Matrix
+
+Cell 184 [code]: # ============================================================
+# 9.4  CONFUSION MATRIX
+# ============================================================
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+
+
+Cell 185 [markdown]: **Observation:**
+- The confusion matrices show counts and row-normalized proportions of predictions per class.
+- Refer to the classification report for exact per-class precision, recall, and F1.
+
+**In
+
+Cell 186 [markdown]: ---
+### 9.5 - Top Predictive Words per Class (Log Probabilities)
+
+Naive Bayes stores the **log probability of each word given each class**. Words with the highest log probability for a class are the o
+
+Cell 187 [code]: # ============================================================
+# 9.5  TOP PREDICTIVE WORDS PER CLASS (LOG PROBABILITIES)
+# ============================================================
+
+tfidf_feat_name
+
+Cell 188 [markdown]: **Observation:**
+- Each chart shows the 15 TF-IDF features with the highest log probability P(word | class) for each priority level.
+- Log probabilities are negative ? values closer to 0 indicate high
+
+Cell 189 [markdown]: ---
+### 9.6 - Store Results
+
+Cell 190 [code]: # ============================================================
+# 9.6  STORE RESULTS FOR COMPARISON
+# ============================================================
+
+results['Naive Bayes'] = {
+    'Accur
+
+Cell 191 [markdown]: ---
+## Section 9 Complete - Naive Bayes Summary
+
+### Why Naive Bayes is a Standard Baseline:
+| Property | Detail |
+|---|---|
+| Speed | Extremely fast ? training is just counting word frequencies |
+| S
+
+Cell 192 [markdown]: ---
+## SECTION 10: Model Comparison
+
+We have trained four classifiers on the same train/test split:
+- **Logistic Regression** ? all features (TF-IDF + categorical + numerical)
+- **Random Forest** ? al
+
+Cell 193 [markdown]: ---
+### 10.1 - Summary Metrics Table
+
+Cell 194 [code]: # ============================================================
+# 10.1  SUMMARY METRICS TABLE
+# ============================================================
+
+# Build a clean comparison DataFrame
+compar
+
+Cell 195 [markdown]: ---
+### 10.2 - Grouped Bar Chart: All Metrics per Model
+
+Cell 196 [code]: # ============================================================
+# 10.2  GROUPED BAR CHART
+# ============================================================
+
+metrics = ['Accuracy', 'Precision', 'Recall', '
+
+Cell 197 [markdown]: **Observation:**
+- The grouped bar chart shows all four metrics (Accuracy, Precision, Recall, F1-Score) for each model side by side.
+- Exact values are labeled on each bar.
+
+**Interpretation:**
+- The 
+
+Cell 198 [markdown]: ---
+### 10.3 - F1-Score Ranking (Primary Metric)
+
+Cell 199 [code]: # ============================================================
+# 10.3  F1-SCORE RANKING
+# ============================================================
+
+f1_values  = [results[m]['F1-Score'] for m in mo
+
+Cell 200 [markdown]: **Observation:**
+- The horizontal bar chart ranks all models from best to worst by weighted F1-Score.
+- The gold-outlined bar indicates the best-performing model.
+- The dashed line at 0.80 serves as a
+
+Cell 201 [markdown]: ---
+### 10.4 - Side-by-Side Confusion Matrices
+
+Cell 202 [code]: # ============================================================
+# 10.4  SIDE-BY-SIDE NORMALIZED CONFUSION MATRICES
+# ============================================================
+
+model_preds = {
+    'L
+
+Cell 203 [markdown]: **Observation:**
+- All four row-normalized confusion matrices are shown side by side.
+- Each matrix shows the recall for each class on the diagonal.
+- The F1-Score for each model is shown in the title
+
+Cell 204 [markdown]: ---
+### 10.5 - Radar Chart: Multi-Metric Comparison
+
+Cell 205 [code]: # ============================================================
+# 10.5  RADAR / SPIDER CHART
+# ============================================================
+
+metrics_radar = ['Accuracy', 'Precision', 'R
+
+Cell 206 [markdown]: **Observation:**
+- The radar chart plots all four metrics simultaneously for each model.
+- A larger shaded area indicates consistently higher performance across all metrics.
+
+**Interpretation:**
+- A m
+
+Cell 207 [markdown]: ---
+### 10.6 - Final Model Selection
+
+Cell 208 [code]: # ============================================================
+# 10.6  FINAL MODEL SELECTION
+# ============================================================
+
+# Select the best model by F1-Score
+# (excl
+
+Cell 209 [markdown]: **Observation:**
+- The model with the highest weighted F1-Score among those trained on all features is selected.
+- Refer to the printed output above for the exact selected model and its metrics.
+
+**In
+
+Cell 210 [markdown]: ---
+## Section 10 Complete - Model Comparison Summary
+
+### What We Did:
+| Step | Detail |
+|---|---|
+| Metrics Table | Compared Accuracy, Precision, Recall, F1-Score for all 4 models |
+| Grouped Bar Ch
+
+Cell 211 [markdown]: ---
+## SECTION 11: Cross-Validation & Hyperparameter Tuning
+
+### Why do we need this after already evaluating on a test set?
+
+The single train-test split in Section 6-10 gives **one estimate** of mode
+
+Cell 212 [markdown]: ---
+### 11.1 - 5-Fold Cross-Validation on All Models
+
+We use `Pipeline` to chain the preprocessor and model together, ensuring no data leakage during each fold.
+
+Cell 213 [code]: # ============================================================
+# 11.1  5-FOLD CROSS-VALIDATION
+# ============================================================
+
+from sklearn.pipeline import Pipeline
+fro
+
+Cell 214 [markdown]: **Observation:**
+- Each model was evaluated across 5 folds. The mean and standard deviation of F1-Score are reported.
+- A lower standard deviation indicates more **consistent** performance across fold
+
+Cell 215 [markdown]: ---
+### 11.2 - Cross-Validation Score Visualization
+
+Cell 216 [code]: # ============================================================
+# 11.2  CROSS-VALIDATION SCORE VISUALIZATION
+# ============================================================
+
+fig, axes = plt.subplots(1, 
+
+Cell 217 [markdown]: **Observation:**
+- The box plot shows the spread of F1 scores across 5 folds for each model.
+- The bar chart shows mean F1 with error bars representing +/- one standard deviation.
+
+**Interpretation:**
+
+Cell 218 [markdown]: ---
+### 11.3 - Hyperparameter Tuning (GridSearchCV)
+
+We apply `GridSearchCV` to tune the hyperparameters of the best-performing model(s).
+
+**What is GridSearchCV?**
+- It takes a list of hyperparameter
+
+Cell 219 [code]: # ============================================================
+# 11.3  GRIDSEARCHCV - LOGISTIC REGRESSION
+# ============================================================
+
+from sklearn.model_selection i
+
+Cell 220 [code]: # ============================================================
+# 11.4  GRIDSEARCHCV - LINEAR SVM
+# ============================================================
+
+svm_pipe = Pipeline([
+    ('preprocesso
+
+Cell 221 [markdown]: ---
+### 11.4 - Evaluate Tuned Models on the Test Set
+
+Cell 222 [code]: # ============================================================
+# 11.5  EVALUATE TUNED MODELS ON TEST SET
+# ============================================================
+
+# Logistic Regression - tuned
+y
+
+Cell 223 [markdown]: **Observation:**
+- The table shows the default vs tuned performance for both Logistic Regression and Linear SVM.
+
+**Interpretation:**
+- If the tuned model's F1-Score is higher than the default, tuning
+
+Cell 224 [markdown]: ---
+### 11.5 - Select and Store the Final Best Model
+
+Cell 225 [code]: # ============================================================
+# 11.6  SELECT FINAL BEST MODEL
+# ============================================================
+
+# Compare tuned models and select the bes
+
+Cell 226 [markdown]: ---
+## Section 11 Complete - Cross-Validation & Tuning Summary
+
+### What We Did:
+| Step | Detail |
+|---|---|
+| 5-Fold Stratified CV | Evaluated all 3 full-feature models across 5 folds ? more reliable
+
+Cell 227 [markdown]: ---
+## SECTION 12: Save the Model
+
+### Why do we save the model?
+
+Training a machine learning model can take seconds to hours depending on data size and algorithm. Once trained, we save the model to d
+
+Cell 228 [markdown]: ---
+### 12.1 - Save the Final Model Pipeline
+
+Cell 229 [code]: # Safeguard: ensure final_model and metadata vars are defined
+if 'final_model' not in dir():
+    _best = max({k:v for k,v in results.items() if k!='Naive Bayes'}, key=lambda x: results[x]['F1-Score'])
+
+Cell 230 [markdown]: **Observation:**
+- The saved artifacts are stored in a `saved_model/` directory.
+- Three `.pkl` files and one `.json` metadata file are saved.
+
+**Interpretation:**
+- The `hostel_priority_model.pkl` co
+
+Cell 231 [markdown]: ---
+### 12.2 - Verify: Load and Test the Saved Model
+
+Always verify that the saved model loads correctly and produces the same predictions as the in-memory model.
+
+Cell 232 [code]: # ============================================================
+# 12.2  VERIFY: LOAD THE SAVED MODEL AND TEST
+# ============================================================
+
+# Load all saved artifacts
+
+
+Cell 233 [markdown]: **Observation:**
+- The loaded model produces identical predictions to the in-memory model.
+
+**Interpretation:**
+- This confirms the save/load cycle is lossless ? the model was saved and restored corre
+
+Cell 234 [markdown]: ---
+### 12.3 - List Saved Files
+
+Cell 235 [code]: # ============================================================
+# 12.3  LIST ALL SAVED FILES
+# ============================================================
+
+print('Saved Model Artifacts:')
+print('=' * 
+
+Cell 236 [markdown]: ---
+### 12.4 - How to Use the Saved Model (Usage Template)
+
+This cell shows how anyone can load and use the saved model to predict the priority of a new complaint ? without needing to retrain.
+
+Cell 237 [code]: # ============================================================
+# 12.4  HOW TO LOAD AND USE THE MODEL (USAGE TEMPLATE)
+# ============================================================
+
+# Step 1: Load sav
+
+Cell 238 [markdown]: **Observation:**
+- The template demonstrates a complete prediction workflow for one new complaint.
+- The same 6-step process can be repeated for any new complaint.
+
+**Interpretation:**
+- The model rec
+
+Cell 239 [markdown]: ---
+## Section 12 Complete - Model Saving Summary
+
+### Saved Artifacts:
+| File | Contents | Purpose |
+|---|---|---|
+| `hostel_priority_model.pkl` | Full Pipeline (preprocessor + model) | Transform + p
+
+Cell 240 [markdown]: ---
+## SECTION 13: Predict New Complaints
+
+This section demonstrates the model in action ? simulating how it would be used in a real hostel complaint management system.
+
+We will:
+1. Define a reusable 
+
+Cell 241 [markdown]: ---
+### 13.1 - Define the Prediction Function
+
+Cell 242 [code]: # ============================================================
+# 13.1  REUSABLE PREDICTION FUNCTION
+# ============================================================
+
+def predict_priority(complaint_text,
+
+Cell 243 [markdown]: ---
+### 13.2 - Batch Prediction on New Complaints
+
+We test the model on 12 realistic new complaints covering a range of categories and expected priorities.
+
+Cell 244 [code]: # ============================================================
+# 13.2  BATCH PREDICTION ON NEW COMPLAINTS
+# ============================================================
+
+new_complaints = [
+    # Expec
+
+Cell 245 [markdown]: **Observation:**
+- The model predicted priorities for 12 new complaints it had never seen before.
+- The predictions for the first 4 (expected High), next 4 (expected Medium), and next 3 (expected Low)
+
+Cell 246 [markdown]: ---
+### 13.3 - Visualize Prediction Distribution
+
+Cell 247 [code]: # ============================================================
+# 13.3  VISUALIZE PREDICTION DISTRIBUTION
+# ============================================================
+
+from collections import Counter
+
+Cell 248 [markdown]: **Observation:**
+- The bar and pie charts show how the model distributed predictions across the three priority classes for the 12 new complaints.
+
+**Interpretation:**
+- The distribution reflects the m
+
+Cell 249 [markdown]: ---
+### 13.4 - Interactive Single Prediction
+
+Try predicting the priority of your own complaint by modifying the values below.
+
+Cell 250 [code]: # ============================================================
+# 13.4  INTERACTIVE SINGLE PREDICTION (MODIFY AND RUN)
+# ============================================================
+
+# ----------------
+
+Cell 251 [markdown]: **How to use this cell:**
+- Change the values in the `my_complaint` dictionary to any new complaint.
+- Run the cell to get an instant priority prediction.
+- This simulates how the model would function
+
+Cell 252 [markdown]: ---
+## Section 13 Complete - Prediction Summary
+
+### What We Did:
+| Step | Detail |
+|---|---|
+| Prediction function | `predict_priority()` ? takes raw complaint + structured fields, returns priority l
+
+Cell 253 [code]: 
+

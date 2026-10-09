@@ -1,0 +1,106 @@
+﻿python : 
+At line:1 char:1
++ python -X utf8 experiment_xgboost.py 2>&1 | Out-File -FilePath "xgb_o ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[notice] A new release of pip is available: 26.0.1 -> 26.2.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+XGBoost not installed. Installing...
+XGBoost installed: 3.4.0
+
+Loading data...
+  Train: 685 | Test: 172
+  Fitting ColumnTransformer on X_train only (same as baseline)...
+  Feature matrix: X_train=(685, 1537), X_test=(172, 1537)
+
+====================================================================
+  XGBoost GridSearchCV ΓÇö Training Data Only (5-Fold Stratified CV)
+  Combinations: 18  |  Folds: 5  |  Total fits: 90
+  Scoring: f1_weighted
+====================================================================
+
+  GridSearch complete in 178.0s
+
+  Top 10 XGBoost configurations (by CV F1):
+  n_est | depth |    lr |  sub |   CV F1 |      ┬▒
+  --------------------------------------------------
+    200 |     5 |   0.1 |  0.8 |  0.6127 | 0.0270 ΓåÉ BEST
+    300 |     3 |   0.1 |  0.8 |  0.6090 | 0.0290
+    300 |     5 |   0.1 |  0.8 |  0.6088 | 0.0266
+    100 |     5 |   0.2 |  0.8 |  0.6087 | 0.0412
+    200 |     5 |   0.2 |  0.8 |  0.6067 | 0.0464
+    300 |     5 |  0.05 |  0.8 |  0.6060 | 0.0300
+    300 |     3 |   0.2 |  0.8 |  0.6027 | 0.0256
+    200 |     3 |   0.2 |  0.8 |  0.6013 | 0.0281
+    300 |     5 |   0.2 |  0.8 |  0.6009 | 0.0266
+    100 |     5 |   0.1 |  0.8 |  0.5939 | 0.0307
+
+====================================================================
+  BEST XGBOOST ΓÇö FULL EVALUATION RESULTS
+====================================================================
+
+  Best parameters:
+    colsample_bytree    : 0.7
+    learning_rate       : 0.1
+    max_depth           : 5
+    n_estimators        : 200
+    subsample           : 0.8
+
+  CV Results (on X_train, 5-fold):
+    CV Accuracy : 0.6161 ┬▒ 0.0272
+    CV F1 (wt)  : 0.6127 ┬▒ 0.0270
+    Train Acc   : 0.9923
+    Per-fold F1 : [0.6123, 0.6138, 0.5987, 0.5784, 0.6604]
+
+  Test Set Results (first time seeing test data):
+    Test Accuracy : 0.5930
+    Test F1 (wt)  : 0.5870
+    Train Acc     : 0.9869
+    Train-Test Gap: 0.3939
+    Training time : 2.56s
+
+  Classification Report (Test Set):
+              precision    recall  f1-score   support
+
+        High       0.74      0.54      0.62        52
+      Medium       0.56      0.75      0.64        72
+         Low       0.54      0.42      0.47        48
+
+    accuracy                           0.59       172
+   macro avg       0.61      0.57      0.58       172
+weighted avg       0.61      0.59      0.59       172
+
+
+====================================================================
+  XGBOOST vs LINEARSVC ΓÇö FINAL COMPARISON
+====================================================================
+
+  Metric                 | LinearSVC    | XGBoost      | Change    
+  ----------------------------------------------------------------
+  Test Accuracy          |       0.6628 |       0.5930 | ΓÜá∩╕Å Worse
+  Test F1 (wt)           |       0.6627 |       0.5870 | ΓÜá∩╕Å Worse
+  CV Accuracy            |       0.7048 |       0.6161 | ΓÜá∩╕Å Worse
+  CV F1 (wt)             |       0.7043 |       0.6127 | ΓÜá∩╕Å Worse
+  Train Accuracy         |       0.9927 |       0.9869 | ΓÜá∩╕Å Worse
+  Train-Test Gap         |       0.0416 |       0.3939 | ΓÜá∩╕Å Worse
+
+====================================================================
+  VERDICT
+====================================================================
+
+  Baseline CV F1   : 0.7043
+  XGBoost CV F1    : 0.6127
+  Baseline Test F1 : 0.6627
+  XGBoost Test F1  : 0.5870
+
+  RESULT: Γ¥î XGBoost does NOT outperform LinearSVC.
+          LinearSVC baseline is confirmed superior.
+          Production model unchanged.
+
+  Note: The saved LinearSVC production model has NOT been modified.
+        All XGBoost results are experimental only.
+====================================================================
+
+  Results saved to xgboost_experiment_results.json

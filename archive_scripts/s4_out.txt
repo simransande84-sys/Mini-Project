@@ -1,0 +1,114 @@
+﻿Executing Section 4: cells 70 to 83  (starting exec #27)
+
+>>> Cell 72 (exec #27)
+Feature Selection Decision:
+=================================================================
+  Γ£à INCLUDE | Cleaned_Text         | PRIMARY signal ΓÇö TF-IDF text features
+  Γ£à INCLUDE | Category             | Strong predictor ΓÇö known at submission time
+  Γ£à INCLUDE | Complaint_Type       | Public/Private ΓÇö known at submission time
+  Γ£à INCLUDE | Block                | Structural ΓÇö known at submission time
+  Γ£à INCLUDE | Floor                | Structural ΓÇö known at submission time
+  Γ¥î EXCLUDE | Support_Count        | Escalation system only ΓÇö 0 for every new complaint
+  Γ¥î EXCLUDE | Duration             | Free-text, high noise, inconsistent format
+  Γ¥î EXCLUDE | Room_No              | Identifier ΓÇö too many unique values, no signal
+  Γ¥î EXCLUDE | Status               | Post-submission field ΓÇö not available at prediction time
+  Γ¥î EXCLUDE | Complaint_Date       | Not a consistent prediction-time signal
+  Γ¥î EXCLUDE | Complaint_ID         | Identifier only
+
+Text feature : Cleaned_Text
+Cat features : ['Category', 'Complaint_Type', 'Block', 'Floor']
+Target       : Priority
+Classes      : ['High', 'Medium', 'Low']
+
+
+>>> Cell 74 (exec #28)
+Train / Test Split (Stratified 80/20):
+==================================================
+  Total samples : 857
+  Train         : 685 (79.9%)
+  Test          : 172  (20.1%)
+
+Class distribution in splits:
+Class    | Train    | Test   | Train%   | Test% 
+--------------------------------------------------
+High     |    208   |   52   |  30.4%  |  30.2%
+Medium   |    287   |   72   |  41.9%  |  41.9%
+Low      |    190   |   48   |  27.7%  |  27.9%
+
+Max class proportion difference (train vs test): 0.0020
+Γ£à Stratification verified.
+
+
+>>> Cell 76 (exec #29)
+ColumnTransformer defined:
+  [tfidf] TfidfVectorizer -> Cleaned_Text
+          ngram_range=(1,2), max_features=5000, sublinear_tf=True
+  [ohe]   OneHotEncoder   -> Category, Complaint_Type, Block, Floor
+  [drop]  All other columns dropped
+
+Γ£à Preprocessor defined. Will be fitted on X_train only.
+
+
+>>> Cell 78 (exec #30)
+Feature Matrix Summary:
+=======================================================
+  X_train : (685, 1536)  (rows x features)
+  X_test  : (172, 1536)
+
+Feature breakdown:
+  TF-IDF features  : 1497
+  OHE features     : 39
+  Total features   : 1536
+
+OHE categories learned:
+  Category            : ['AC', 'Cleanliness', 'Door', 'Drainage', 'Electricity', 'Fan', 'Fire Safety', 'Furniture', 'Internet', 'Laundry', 'Leakage', 'Lift', 'Light', 'Mattress', 'Medical', 'Mess', 'Noise', 'Parking', 'Pest Control', 'Ragging/Harassment', 'Room Allocation', 'Security', 'Structural', 'Study Room', 'Washroom', 'Water Cooler', 'Water Supply', 'WiFi', 'Window']
+  Complaint_Type      : ['Private', 'Public']
+  Block               : ['A', 'B', 'C']
+  Floor               : ['First', 'Fourth', 'Ground', 'Second', 'Third']
+
+Matrix sparsity: 99.0% (expected: high, since TF-IDF is sparse)
+
+Γ£à Preprocessor fitted on X_train only ΓÇö no data leakage.
+
+
+>>> Cell 80 (exec #31)
+Label Encoding:
+  Class -> Integer mapping:
+    High     -> 0
+    Low      -> 1
+    Medium   -> 2
+
+  y_train_enc shape: (685,)
+  y_test_enc  shape: (172,)
+  Unique encoded values: [np.int64(0), np.int64(1), np.int64(2)]
+
+Verification (first 5):
+  Original : ['Low', 'High', 'Medium', 'High', 'High']
+  Encoded  : [np.int64(1), np.int64(0), np.int64(2), np.int64(0), np.int64(0)]
+  Decoded  : [np.str_('Low'), np.str_('High'), np.str_('Medium'), np.str_('High'), np.str_('High')]
+  Match    : True
+
+
+>>> Cell 82 (exec #32)
+Data Leakage Verification:
+==================================================
+  Train index count : 685
+  Test index count  : 172
+  Index overlap     : 0
+  Γ£à No index overlap.
+
+  TF-IDF fitted on  : X_train (685 samples)
+  TF-IDF vocab size : 1497 terms
+  TF-IDF NOT fitted on X_test  Γ£à
+
+  Support_Count in features: False Γ£à (excluded)
+  Students_Affected in features: False Γ£à (absent from dataset)
+
+Γ£à No data leakage detected. Pipeline is clean.
+
+
+============================================================
+Γ£à Section 4 complete.
+   X_train shape: (685, 1536)
+   X_test  shape: (172, 1536)
+   Label classes : ['High' 'Low' 'Medium']

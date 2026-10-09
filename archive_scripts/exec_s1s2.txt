@@ -1,0 +1,279 @@
+﻿python : [nltk_data] Error loading stopwords: <urlopen error pathsec.urlopen:
+At line:1 char:1
++ python -X utf8 execute_sections_1_2.py 2>&1 | Out-File -FilePath "exe ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([nltk_data] Err...athsec.urlopen::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[nltk_data]     no validated address for host
+[nltk_data]     'raw.githubusercontent.com'; refusing to connect by
+[nltk_data]     unvalidated hostname>
+[nltk_data] Error loading wordnet: <urlopen error pathsec.urlopen: no
+[nltk_data]     validated address for host
+[nltk_data]     'raw.githubusercontent.com'; refusing to connect by
+[nltk_data]     unvalidated hostname>
+[nltk_data] Error loading omw-1.4: <urlopen error pathsec.urlopen: no
+[nltk_data]     validated address for host
+[nltk_data]     'raw.githubusercontent.com'; refusing to connect by
+[nltk_data]     unvalidated hostname>
+Executing cells 0 to 52 (Sections 1 & 2)
+Dataset: DATSETminiproject.csv
+============================================================
+
+>>> Cell 3 (exec #1)
+Γ£à All libraries imported successfully!
+   pandas  : 3.0.5
+   numpy   : 2.5.1
+   sklearn : imported
+   Classes : ['High', 'Medium', 'Low']
+
+
+>>> Cell 6 (exec #2)
+Γ£à Dataset loaded: DATSETminiproject.csv
+   Shape : 857 rows x 12 columns
+   Memory: 547.2 KB
+
+
+>>> Cell 9 (exec #3)
+--- First 5 rows ---
+
+  -> DataFrame displayed
+
+>>> Cell 10 (exec #4)
+--- Last 5 rows ---
+
+  -> DataFrame displayed
+
+>>> Cell 12 (exec #5)
+Dataset Shape : (857, 12)
+  Rows (complaints) : 857
+  Columns (features): 12
+
+
+>>> Cell 14 (exec #6)
+Column Names:
+----------------------------------------
+  [ 0] Complaint_ID ΓåÉ will be dropped
+  [ 1] Complaint_Text ΓåÉ PRIMARY ML SIGNAL
+  [ 2] Complaint_Type
+  [ 3] Block
+  [ 4] Floor
+  [ 5] Room_No ΓåÉ will be dropped
+  [ 6] Category
+  [ 7] Duration
+  [ 8] Support_Count ΓåÉ excluded from ML (escalation only)
+  [ 9] Priority ΓåÉ TARGET VARIABLE
+  [10] Status ΓåÉ will be dropped
+  [11] Complaint_Date ΓåÉ will be dropped
+
+
+>>> Cell 17 (exec #7)
+Data Types:
+----------------------------------------
+Complaint_ID        str
+Complaint_Text      str
+Complaint_Type      str
+Block               str
+Floor               str
+Room_No           int64
+Category            str
+Duration            str
+Support_Count     int64
+Priority            str
+Status              str
+Complaint_Date      str
+dtype: object
+
+Object columns (text/categorical): ['Complaint_ID', 'Complaint_Text', 'Complaint_Type', 'Block', 'Floor', 'Category', 'Duration', 'Priority', 'Status', 'Complaint_Date']
+Numeric columns                  : ['Room_No', 'Support_Count']
+
+
+>>> Cell 19 (exec #8)
+Γ£à No missing values in any column ΓÇö dataset is complete.
+
+
+>>> Cell 21 (exec #9)
+Number of duplicate rows: 0
+Γ£à No duplicate rows found ΓÇö every complaint is unique.
+
+
+>>> Cell 23 (exec #10)
+Priority Distribution:
+----------------------------------------
+  High  : 260 (30.3%)  ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê
+  Medium: 359 (41.9%)  ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê
+  Low   : 238 (27.8%)  ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê
+
+Total complaints: 857
+Unique Priority values: ['High', 'Low', 'Medium']
+
+Γ£à Critical class present: False  (expected: False)
+Γ£à Only High / Medium / Low ΓÇö 3-class problem confirmed.
+
+
+>>> Cell 26 (exec #11)
+Statistical Summary (Numerical Columns):
+       Room_No  Support_Count
+count   857.00         857.00
+mean     21.72           6.91
+std      13.02           8.75
+min       1.00           0.00
+25%      11.00           0.00
+50%      20.00           4.00
+75%      30.00          10.00
+max      50.00          65.00
+
+Note: Support_Count will NOT be used as an ML feature.
+      It belongs to the mathematical escalation system.
+
+
+>>> Cell 28 (exec #12)
+Unique Values per Column:
+-------------------------------------------------------
+  Complaint_ID        : 857 unique  (e.g. C0001...)
+  Complaint_Text      : 857 unique  (e.g. Theres cobwebs all over the staircase....)
+  Complaint_Type      :   2 unique  ['Private', 'Public']
+  Block               :   3 unique  ['A', 'B', 'C']
+  Floor               :   5 unique  ['First', 'Fourth', 'Ground', 'Second', 'Third']
+  Room_No             :  50 unique  (e.g. 15...)
+  Category            :  29 unique  (e.g. Cleanliness...)
+  Duration            :  32 unique  (e.g. since this evening...)
+  Support_Count       :  45 unique  (e.g. 2...)
+  Priority            :   3 unique  ['High', 'Low', 'Medium']
+  Status              :   4 unique  ['In Progress', 'Pending', 'Rejected', 'Resolved']
+  Complaint_Date      : 183 unique  (e.g. 01-05-2026...)
+
+
+>>> Cell 32 (exec #13)
+============================================================
+  Loaded: DATSETminiproject.csv
+  Shape : 857 rows x 12 columns
+============================================================
+
+[A1] Missing Values per Column:
+  Γ£à No missing values in any column.
+
+[A2] Duplicate Rows: 0 Γ£à
+[A3] Duplicate Complaint_IDs: 0 Γ£à
+[A4] Empty Complaint_Text: 0 Γ£à
+[A5] Very Short Complaints (<5 words): 0 Γ£à
+[A6] Repeated Complaint Text (exact): 0 Γ£à
+
+[A7] Potentially Templated Complaints (same opening, count > 2):
+    Count=4: "The washroom on our floor hasnt been cle..."
+    Count=3: "Flush in the washroom near the stairs ha..."
+    Count=3: "The wifi on our floor becomes almost unu..."
+    Count=3: "The pipe behind the washroom wall is lea..."
+    Count=3: "Dust has settled thick on the window sil..."
+    Count=3: "The switchboard cover in my room is crac..."
+
+  Note: 6 repeated openings found.
+  These are likely real complaints about the same recurring issue,
+  NOT data quality problems. All have different Complaint_IDs and text.
+
+[A8] Priority Unique Values: ['High', 'Low', 'Medium']
+     Invalid Priority rows: 0 Γ£à
+
+[A9] Students_Affected present: False Γ£à (correctly absent)
+     Support_Count present: True - will be EXCLUDED from ML features
+
+============================================================
+  Γ£à Dataset is clean and ready for training.
+============================================================
+
+
+>>> Cell 35 (exec #14)
+Priority Distribution:
+  High  : 260 samples  (30.3%)
+  Medium: 359 samples  (41.9%)
+  Low   : 238 samples  (27.8%)
+
+  -> Figure captured
+
+>>> Cell 38 (exec #15)
+Top categories by proportion of HIGH priority complaints:
+Category
+Lift                  0.611
+Fire Safety           0.600
+Drainage              0.542
+Electricity           0.531
+Water Supply          0.529
+Leakage               0.500
+Pest Control          0.500
+Ragging/Harassment    0.500
+
+  -> Figure captured
+
+>>> Cell 41 (exec #16)
+Complaint Type normalized distribution:
+Priority         High  Medium   Low
+Complaint_Type                     
+Private         0.240   0.380  0.38
+Public          0.315   0.426  0.26
+
+  -> Figure captured
+
+>>> Cell 44 (exec #17)
+Block - normalized priority distribution:
+Priority   High  Medium    Low
+Block                         
+A         0.330   0.421  0.249
+B         0.257   0.430  0.313
+C         0.323   0.406  0.271
+
+Floor - normalized priority distribution:
+Priority   High  Medium    Low
+Floor                         
+Ground    0.376   0.337  0.287
+First     0.256   0.449  0.295
+Second    0.319   0.392  0.289
+Third     0.310   0.480  0.210
+Fourth    0.219   0.521  0.260
+
+  -> Figure captured
+
+>>> Cell 47 (exec #18)
+Average word count statistics by Priority:
+           mean  min  max   std
+Priority                       
+High      15.07    6   25  2.72
+Medium    14.84    9   24  2.70
+Low       15.00    6   24  2.88
+
+  -> Figure captured
+
+>>> Cell 50 (exec #19)
+Support_Count Statistics by Priority:
+(For data integrity check only ΓÇö NOT an ML input feature)
+-------------------------------------------------------
+          count   mean    std  min  25%   50%   75%   max
+Priority                                                 
+High      260.0  11.75  11.73  0.0  1.0  10.0  16.0  65.0
+Medium    359.0   6.36   6.42  0.0  1.0   5.0   9.5  42.0
+Low       238.0   2.46   4.22  0.0  0.0   1.0   3.0  42.0
+
+=======================================================
+  ARCHITECTURE NOTE:
+=======================================================
+
+  ML Prediction Flow (at submission time):
+    Student submits complaint
+      -> Support_Count = 0  (nobody has voted yet)
+      -> Complaint_Text + Category + Type + Block + Floor
+      -> ML Model
+      -> Initial Priority: High / Medium / Low
+
+  Mathematical Escalation Flow (after voting):
+    Students vote / support the complaint
+      -> Support_Count increases
+      -> escalate_priority(ml_priority, support_count)
+      -> Priority may escalate one level
+
+  Support_Count is EXCLUDED from ML features.
+
+
+
+============================================================
+Γ£à Sections 1 & 2 complete. 19 code cells executed.
+   Dataset used: DATSETminiproject.csv
+   Notebook saved: hostel_complaint_prioritization.ipynb

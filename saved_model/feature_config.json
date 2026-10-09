@@ -1,0 +1,33 @@
+{
+  "text_feature": "Cleaned_Text",
+  "cat_features": [
+    "Category",
+    "Complaint_Type",
+    "Block",
+    "Floor"
+  ],
+  "num_features": [
+    "Duration_Hours"
+  ],
+  "all_features": [
+    "Cleaned_Text",
+    "Category",
+    "Complaint_Type",
+    "Block",
+    "Floor",
+    "Duration_Hours"
+  ],
+  "target": "Priority",
+  "classes": [
+    "High",
+    "Medium",
+    "Low"
+  ],
+  "label_mapping": {
+    "High": 0,
+    "Low": 1,
+    "Medium": 2
+  },
+  "duration_source": "Duration_Standardized -> Duration_Hours (parsed in notebook)",
+  "duration_note": "At Django prediction time, calculate Duration_Hours = elapsed hours since complaint filed"
+}

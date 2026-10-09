@@ -1,0 +1,65 @@
+﻿Loading dataset...
+  Train: 685 samples | Test: 172 samples
+
+GridSearchCV ΓÇö Training data only (5-fold stratified CV)...
+=================================================================
+  Combinations: 12  |  Folds: 5  |  Total fits: 60
+  Scoring: f1_weighted
+
+  GridSearch complete in 4.8s
+
+All combinations (sorted by CV F1):
+       C | max_feat |    CV F1 |   CV Acc |  Train F1
+  -------------------------------------------------------
+     1.0 |     3000 |   0.6745 |        ΓÇö |         ΓÇö
+     1.0 |     5000 |   0.6745 |        ΓÇö |         ΓÇö
+     0.5 |     3000 |   0.6719 |        ΓÇö |         ΓÇö
+     0.5 |     5000 |   0.6719 |        ΓÇö |         ΓÇö
+     2.0 |     5000 |   0.6674 |        ΓÇö |         ΓÇö
+     2.0 |     3000 |   0.6674 |        ΓÇö |         ΓÇö
+     0.1 |     5000 |   0.6514 |        ΓÇö |         ΓÇö
+     0.1 |     3000 |   0.6514 |        ΓÇö |         ΓÇö
+    0.05 |     5000 |   0.6031 |        ΓÇö |         ΓÇö
+    0.05 |     3000 |   0.6031 |        ΓÇö |         ΓÇö
+    0.01 |     5000 |   0.5264 |        ΓÇö |         ΓÇö
+    0.01 |     3000 |   0.5264 |        ΓÇö |         ΓÇö
+
+  Best C            : 1.0
+  Best max_features : 3000
+  Best CV F1        : 0.6745
+
+=================================================================
+BASELINE vs TUNED ΓÇö COMPARISON
+=================================================================
+Metric                    | Baseline     | Tuned        | Change    
+-----------------------------------------------------------------
+  Train Accuracy          |     0.9927   |     0.9927   | ΓÇö Same
+  Test Accuracy           |     0.6628   |     0.6628   | ΓÇö Same
+  Test F1 (wt)            |     0.6627   |     0.6627   | ΓÇö Same
+  CV Accuracy             |     0.7048   |     0.6759   | ΓÜá∩╕Å Worse
+  CV F1 (wt)              |     0.7043   |     0.6745   | ΓÜá∩╕Å Worse
+  Train-Test Gap          |     0.3299   |     0.3299   | ΓÇö Same
+
+  Best C            : 1.0  (baseline: 1.0)
+  Best max_features : 3000  (baseline: 5000)
+
+  VERDICT: The tuned model does not genuinely improve generalization.
+           Baseline model is kept. Reporting findings only.
+
+=================================================================
+FINAL MODEL ΓÇö LOAD AND PREDICT VERIFICATION
+=================================================================
+
+  Loaded model type : LinearSVC
+  Coef_ shape       : (3, 1537)
+
+  Sample predictions:
+    Electricity     |   24h | There is no electricity in the room, dangerou ΓåÆ High
+    Cleanliness     |   48h | There are cobwebs all over the staircase      ΓåÆ Low
+    Fan             |   24h | The fan in my room is not working since yeste ΓåÆ Low
+    Fire Safety     |    1h | fire risk in generator room emergency         ΓåÆ High
+
+  Γ£à Final model loads and predicts correctly.
+
+Tuning summary saved to tuning_summary.json
+=================================================================
