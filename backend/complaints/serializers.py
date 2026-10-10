@@ -17,12 +17,72 @@ from rest_framework import serializers
 from .models import Complaint, ComplaintVote, StudentProfile
 
 
+def validate_complaint_text_content(value: str) -> str:
+    """
+    Validates complaint_text length and quality:
+    - Must be between 10 and 1,000 characters.
+    - Rejects excessive character repetition (e.g. 'aaaaaaa').
+    - Rejects unpronounceable gibberish tokens >= 3 letters with zero vowels ('a,e,i,o,u,y')
+      unless listed in common allowed technical abbreviations (e.g. AC, TV, RO, MCB).
+    - Rejects strings made predominantly of single-letter noise (e.g. 'm h gh g').
+    """
+    if not isinstance(value, str):
+        raise serializers.ValidationError("Complaint text must be a string.")
+
+    stripped = value.strip()
+    if len(stripped) < 10:
+        raise serializers.ValidationError("Complaint text must be at least 10 characters.")
+    if len(stripped) > 1000:
+        raise serializers.ValidationError("Complaint text cannot exceed 1,000 characters.")
+
+    import re
+    if re.search(r"(.)\1{4,}", stripped.lower()):
+        raise serializers.ValidationError("Complaint description contains invalid repeated characters.")
+
+    words = re.findall(r"\b[a-zA-Z]+\b", stripped.lower())
+    if not words:
+        raise serializers.ValidationError("Complaint text must contain valid descriptive words.")
+
+    allowed_abbreviations = {
+        "ac", "tv", "ro", "mc", "mcb", "wc", "led", "usb", "id", "dvd", "fps",
+        "rgb", "lan", "wifi", "pm", "am", "dr", "mr", "mrs", "sr", "jr", "st", "nd", "rd", "th"
+    }
+    vowel_pattern = re.compile(r"[aeiouy]")
+
+    gibberish_words = []
+    single_letter_count = 0
+
+    for w in words:
+        if len(w) >= 3 and not vowel_pattern.search(w) and w not in allowed_abbreviations:
+            gibberish_words.append(w)
+        elif len(w) == 1 and w not in {"a", "i"}:
+            single_letter_count += 1
+
+    if gibberish_words:
+        raise serializers.ValidationError("Complaint description contains invalid or meaningless text.")
+
+    if single_letter_count > 0 and single_letter_count >= len(words) / 2:
+        raise serializers.ValidationError("Complaint description contains invalid or meaningless text.")
+
+    meaningful_words = [
+        w for w in words
+        if len(w) >= 3 or w in {
+            "no", "on", "in", "at", "to", "is", "my", "ro", "ac", "tv", "a", "i",
+            "up", "or", "so", "if", "be", "do", "we", "he", "me"
+        }
+    ]
+    if not meaningful_words:
+        raise serializers.ValidationError("Complaint description contains invalid or meaningless text.")
+
+    return stripped
+
+
 class PredictOnlySerializer(serializers.Serializer):
     """
     Lightweight serializer for POST /api/predict/ — no DB save.
     Validates the fields needed for ML inference only.
     """
-    complaint_text    = serializers.CharField(min_length=10)
+    complaint_text    = serializers.CharField(min_length=10, max_length=1000)
     complaint_type    = serializers.ChoiceField(
         choices=Complaint.ComplaintType.choices,
         default=Complaint.ComplaintType.PUBLIC,
@@ -35,6 +95,9 @@ class PredictOnlySerializer(serializers.Serializer):
     floor             = serializers.ChoiceField(choices=Complaint.Floor.choices, required=False, allow_blank=True)
     students_affected = serializers.IntegerField(min_value=1, default=1)
     support_count     = serializers.IntegerField(min_value=0, default=0)
+
+    def validate_complaint_text(self, value):
+        return validate_complaint_text_content(value)
 
     def validate(self, attrs):
         request = self.context.get("request")
@@ -205,6 +268,9 @@ class ComplaintSerializer(serializers.ModelSerializer):
             ).exists()
         return False
 
+    def validate_complaint_text(self, value):
+        return validate_complaint_text_content(value)
+
 
 class ComplaintCreateSerializer(serializers.ModelSerializer):
     """
@@ -230,11 +296,7 @@ class ComplaintCreateSerializer(serializers.ModelSerializer):
         ]
 
     def validate_complaint_text(self, value):
-        if len(value.strip()) < 10:
-            raise serializers.ValidationError(
-                "Complaint text must be at least 10 characters."
-            )
-        return value.strip()
+        return validate_complaint_text_content(value)
 
     def validate_students_affected(self, value):
         if value < 1:

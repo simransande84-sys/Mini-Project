@@ -246,8 +246,17 @@ class ComplaintDetailView(RetrieveUpdateDestroyAPIView):
     PUT    /api/complaints/<id>/ — full update (admin only)
     DELETE /api/complaints/<id>/ — delete (admin only)
     """
-    queryset         = Complaint.objects.all()
     serializer_class = ComplaintSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        if not user.is_authenticated:
+            return Complaint.objects.filter(complaint_type="Public")
+        if user.is_staff:
+            return Complaint.objects.all()
+        return Complaint.objects.filter(
+            submitted_by=user
+        ) | Complaint.objects.filter(complaint_type="Public")
 
     def get_serializer_context(self):
         return {"request": self.request}

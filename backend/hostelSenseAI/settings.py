@@ -13,7 +13,8 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ── Load .env ─────────────────────────────────────────────────────────────────
-load_dotenv(BASE_DIR / ".env")
+load_dotenv(BASE_DIR / ".env", override=True)
+
 
 # ── Security ──────────────────────────────────────────────────────────────────
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-fallback-key-change-in-production")
@@ -70,25 +71,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "hostelSenseAI.wsgi.application"
 
-# ── Database — SQLite / PostgreSQL ─────────────────────────────────────────────
-if os.getenv("USE_POSTGRES", "False") == "True":
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME":     os.getenv("DB_NAME",     "hostelSenseAI_db"),
-            "USER":     os.getenv("DB_USER",     "postgres"),
-            "PASSWORD": os.getenv("DB_PASSWORD", "postgres"),
-            "HOST":     os.getenv("DB_HOST",     "localhost"),
-            "PORT":     os.getenv("DB_PORT",     "5432"),
-        }
+# ── Database — PostgreSQL Only ───────────────────────────────────────────────
+_db_password = os.getenv("DB_PASSWORD")
+if not _db_password:
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured(
+        "DB_PASSWORD environment variable must be set in backend/.env to connect to PostgreSQL."
+    )
+
+DATABASES = {
+    "default": {
+        "ENGINE":   "django.db.backends.postgresql",
+        "NAME":     os.getenv("DB_NAME",     "hostelSenseAI_db"),
+        "USER":     os.getenv("DB_USER",     "postgres"),
+        "PASSWORD": _db_password,
+        "HOST":     os.getenv("DB_HOST",     "localhost"),
+        "PORT":     os.getenv("DB_PORT",     "5432"),
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
+}
+
 
 
 # ── Password validation ───────────────────────────────────────────────────────

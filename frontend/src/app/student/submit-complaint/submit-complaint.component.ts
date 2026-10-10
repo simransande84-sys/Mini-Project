@@ -62,7 +62,8 @@ import { Complaint } from '../../core/models/complaint.model';
             <div class="field-group">
               <label class="field-label">Complaint Description <span class="req">*</span></label>
               <textarea [(ngModel)]="form.complaint_text" name="complaint_text" rows="4"
-                        placeholder="Provide exact details of the defect, location inside the room/hallway, and urgency (min. 10 characters)..."
+                        placeholder="Provide exact details of the defect, location inside the room/hallway, and urgency (10–1,000 characters)..."
+                        minlength="10" maxlength="1000"
                         required></textarea>
             </div>
 
@@ -384,6 +385,12 @@ export class SubmitComplaintComponent {
     const { complaint_text, category, complaint_type, students_affected, duration } = this.form;
     if (!complaint_text.trim() || !category || !duration) {
       this.snack.open('Please fill all required fields.', 'Close', { duration: 3000 }); return;
+    }
+    if (complaint_text.trim().length < 10) {
+      this.snack.open('Complaint description must be at least 10 characters.', 'Close', { duration: 3000 }); return;
+    }
+    if (complaint_text.trim().length > 1000) {
+      this.snack.open('Complaint description cannot exceed 1,000 characters.', 'Close', { duration: 3000 }); return;
     }
 
     this.submitting.set(true);
