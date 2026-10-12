@@ -9,6 +9,7 @@ Three models:
 """
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -32,17 +33,39 @@ class Complaint(models.Model):
         FIRST  = "First",  "First Floor"
         SECOND = "Second", "Second Floor"
         THIRD  = "Third",  "Third Floor"
+        FOURTH = "Fourth", "Fourth Floor"
 
     class Category(models.TextChoices):
-        CLEANLINESS  = "Cleanliness",  "Cleanliness"
-        MESS         = "Mess",         "Mess"
-        WASHROOM     = "Washroom",     "Washroom"
-        FURNITURE    = "Furniture",    "Furniture"
-        WATER_COOLER = "Water Cooler", "Water Cooler"
-        SECURITY     = "Security",     "Security"
-        ELECTRICITY  = "Electricity",  "Electricity"
-        WIFI         = "WiFi",         "WiFi"
-        OTHER        = "Other",        "Other"
+        AC                 = "AC",                 "AC"
+        CLEANLINESS        = "Cleanliness",        "Cleanliness"
+        DOOR               = "Door",               "Door"
+        DRAINAGE           = "Drainage",           "Drainage"
+        ELECTRICITY        = "Electricity",        "Electricity"
+        FAN                = "Fan",                "Fan"
+        FIRE_SAFETY        = "Fire Safety",        "Fire Safety"
+        FURNITURE          = "Furniture",          "Furniture"
+        INTERNET           = "Internet",           "Internet"
+        LAUNDRY            = "Laundry",            "Laundry"
+        LEAKAGE            = "Leakage",            "Leakage"
+        LIFT               = "Lift",               "Lift"
+        LIGHT              = "Light",              "Light"
+        MATTRESS           = "Mattress",           "Mattress"
+        MEDICAL            = "Medical",            "Medical"
+        MESS               = "Mess",               "Mess"
+        NOISE              = "Noise",              "Noise"
+        PARKING            = "Parking",            "Parking"
+        PEST_CONTROL       = "Pest Control",       "Pest Control"
+        RAGGING_HARASSMENT = "Ragging/Harassment", "Ragging/Harassment"
+        ROOM_ALLOCATION    = "Room Allocation",    "Room Allocation"
+        SECURITY           = "Security",           "Security"
+        STRUCTURAL         = "Structural",         "Structural"
+        STUDY_ROOM         = "Study Room",         "Study Room"
+        WASHROOM           = "Washroom",           "Washroom"
+        WATER_COOLER       = "Water Cooler",       "Water Cooler"
+        WATER_SUPPLY       = "Water Supply",       "Water Supply"
+        WIFI               = "WiFi",               "WiFi"
+        WINDOW             = "Window",             "Window"
+        OTHER              = "Other",              "Other"
 
     class Priority(models.TextChoices):
         CRITICAL = "Critical", "Critical"
@@ -104,17 +127,12 @@ class Complaint(models.Model):
         default="",
         help_text="Room number (optional).",
     )
-    students_affected = models.PositiveIntegerField(default=1)
     duration = models.CharField(
         max_length=30,
         choices=Duration.choices,
         blank=True,
         null=True,
         help_text="How long the issue has persisted. NULL for legacy complaints.",
-    )
-    support_count = models.PositiveIntegerField(
-        default=0,
-        help_text="Incremented each time a student clicks Support.",
     )
 
     # ── ML + status fields ────────────────────────────────────────────────────
@@ -147,9 +165,7 @@ class Complaint(models.Model):
 
     # ── Timestamps ────────────────────────────────────────────────────────────
     created_at = models.DateTimeField(
-        default=None,
-        null=True,
-        blank=True,
+        default=timezone.now,
         help_text="Timestamp when the complaint was submitted.",
     )
 
@@ -183,8 +199,12 @@ class ComplaintVote(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        # Database-level uniqueness — one student, one support per complaint
-        unique_together = ("complaint", "student")
+        constraints = [
+            models.UniqueConstraint(
+                fields=["complaint", "student"],
+                name="unique_vote_per_student_per_complaint"
+            )
+        ]
         verbose_name = "Complaint Support"
         verbose_name_plural = "Complaint Supports"
 

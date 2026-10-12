@@ -359,7 +359,13 @@ import { Complaint } from '../../core/models/complaint.model';
 })
 export class SubmitComplaintComponent {
   types      = ['Public', 'Private'];
-  categories = ['Cleanliness','Mess','Washroom','Furniture','Water Cooler','Security','Electricity','WiFi','Other'];
+  categories = [
+    'AC', 'Cleanliness', 'Door', 'Drainage', 'Electricity', 'Fan', 'Fire Safety',
+    'Furniture', 'Internet', 'Laundry', 'Leakage', 'Lift', 'Light', 'Mattress',
+    'Medical', 'Mess', 'Noise', 'Parking', 'Pest Control', 'Ragging/Harassment',
+    'Room Allocation', 'Security', 'Structural', 'Study Room', 'Washroom',
+    'Water Cooler', 'Water Supply', 'WiFi', 'Window', 'Other'
+  ];
 
   // Exact Duration_Standardized values from training dataset (Dataset_duration.csv)
   durationOptions = [
@@ -370,7 +376,7 @@ export class SubmitComplaintComponent {
 
   form = {
     complaint_type: 'Public', complaint_text: '', category: '',
-    duration: '', students_affected: 1
+    duration: ''
   };
 
   submitted = signal<Complaint | null>(null);
@@ -382,7 +388,7 @@ export class SubmitComplaintComponent {
     // Prevent duplicate submissions while a request is already in-flight
     if (this.submitting()) return;
 
-    const { complaint_text, category, complaint_type, students_affected, duration } = this.form;
+    const { complaint_text, category, complaint_type, duration } = this.form;
     if (!complaint_text.trim() || !category || !duration) {
       this.snack.open('Please fill all required fields.', 'Close', { duration: 3000 }); return;
     }
@@ -394,10 +400,10 @@ export class SubmitComplaintComponent {
     }
 
     this.submitting.set(true);
-    this.svc.create({ complaint_text, complaint_type: complaint_type as any, category, students_affected, duration }).subscribe({
+    this.svc.create({ complaint_text, complaint_type: complaint_type as any, category, duration }).subscribe({
       next: c => {
         // Reset form FIRST so stale data never persists on the page
-        this.form = { complaint_type: 'Public', complaint_text: '', category: '', duration: '', students_affected: 1 };
+        this.form = { complaint_type: 'Public', complaint_text: '', category: '', duration: '' };
         this.submitted.set(c);
         this.submitting.set(false);
       },
@@ -428,7 +434,7 @@ export class SubmitComplaintComponent {
   }
 
   resetForm(): void {
-    this.form = { complaint_type: 'Public', complaint_text: '', category: '', duration: '', students_affected: 1 };
+    this.form = { complaint_type: 'Public', complaint_text: '', category: '', duration: '' };
     this.submitted.set(null);
   }
 }

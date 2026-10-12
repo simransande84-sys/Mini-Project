@@ -1,0 +1,52 @@
+<USER_REQUEST>
+You are working on HostelSense AI (Django REST + PostgreSQL + Angular + trained scikit-learn model).
+Implement the approved database/schema fixes below, in phases, with verification gates.
+
+═══════════════ GLOBAL RULES ═══════════════
+- Do NOT delete, edit, or rewrite any existing migration file. Only add new ones.
+- Do NOT touch the ML artifacts in /saved_model or the training dataset/notebooks.
+- Do NOT drop, alter, or touch the table complaints_waterlevelreading.
+- Do NOT run destructive commands (flush, reset_db, DROP, TRUNCATE, import_csv --clear).
+- Do NOT change architecture or add new features.
+- Preserve all working behavior: JWT auth, public/private visibility, voting, escalation, status updates.
+- After each phase, run: python manage.py check, python manage.py makemigrations --check --dry-run (except where I say a migration is expected), and python manage.py test. Report results.
+- STOP and wait for my confirmation at every "GATE".
+
+═══════════════ DECISIONS (edit before use) ═══════════════
+D1 Block D: keep A, B, C, D as allowed choices (do not remove any block that existing rows may use).
+D2 Floors: add "Fourth" ("Fourth Floor") to the allowed floors.
+D3 Categories: extend the app's categories to the 29 values the model was trained on, and keep "Other".
+   Trained values: AC, Cleanliness, Door, Drainage, Electricity, Fan, Fire Safety, Furniture, Internet, Laundry, Leakage, Lift, Light, Mattress, Medical, Mess, Noise, Parking, Pest Control, Ragging/Harassment, Room Allocation, Security, Structural, Study Room, Washroom, Water Cooler, Water Supply, WiFi, Window.
+D4 Public feed privacy: for public complaints, hide submitted_by_username and room_no from everyone except the complaint owner and staff. Show "Anonymous" instead of the name. block and floor remain visible.
+D5 Imported complaints' old support_count values: discard (votes become the only sourc
+<truncated 8905 bytes>
+ Do NOT add CheckConstraints or extra indexes in this pass.
+
+═══════════════ FINAL REPORT (required) ═══════════════
+At the end, give me:
+1. List of every file changed.
+2. List of every migration added, with its purpose.
+3. Test results (python manage.py test) and the output of python manage.py check and makemigrations --check.
+4. Any place where the frontend and backend choices could still disagree.
+5. Anything you skipped or were unsure about.
+6. Confirmation that complaints_waterlevelreading, historical migrations, and /saved_model were not touched.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-11T00:24:16+05:30.
+
+The user's current state is as follows:
+Active Document: e:\downloads\HostelSense-main\HostelSense-main\backend\complaints\serializers.py (LANGUAGE_PYTHON)
+Cursor is on line: 299
+Other open documents:
+- e:\downloads\HostelSense-main\HostelSense-main\backend\.gitignore (LANGUAGE_UNSPECIFIED)
+- e:\downloads\HostelSense-main\HostelSense-main\backend\complaints\management\commands\import_csv.py (LANGUAGE_PYTHON)
+- e:\downloads\HostelSense-main\HostelSense-main\backend\test_duration_flow.py (LANGUAGE_PYTHON)
+- e:\downloads\HostelSense-main\HostelSense-main\frontend\src\app\student\submit-complaint\submit-complaint.component.ts (LANGUAGE_TYPESCRIPT)
+- e:\downloads\HostelSense-main\HostelSense-main\backend\complaints\serializers.py (LANGUAGE_PYTHON)
+Running terminal commands:
+- python manage.py  runserver (in e:\downloads\HostelSense-main\HostelSense-main\backend, running for 13h30m52s)
+- npm start (in e:\downloads\HostelSense-main\HostelSense-main\frontend, running for 13h29m8s)
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.6 Flash (Medium) to Claude Sonnet 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

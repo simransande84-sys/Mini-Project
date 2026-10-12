@@ -22,7 +22,7 @@ import logging
 from datetime import timedelta
 
 from django.contrib.auth.models import User
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 from django.db.models import Count
 from django.db.models.functions import TruncMonth
 from django.utils import timezone
@@ -189,13 +189,15 @@ class ComplaintListCreateView(ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
         if not user.is_authenticated:
-            return Complaint.objects.filter(complaint_type="Public")
-        if user.is_staff:
-            return Complaint.objects.all()
-        # Students see their own + all public
-        return Complaint.objects.filter(
-            submitted_by=user
-        ) | Complaint.objects.filter(complaint_type="Public")
+            qs = Complaint.objects.filter(complaint_type="Public")
+        elif user.is_staff:
+            qs = Complaint.objects.all()
+        else:
+            # Students see their own + all public
+            qs = Complaint.objects.filter(
+                submitted_by=user
+            ) | Complaint.objects.filter(complaint_type="Public")
+        return qs.annotate(votes_total=Count("votes"))
 
     def get_serializer_class(self):
         if self.request.method == "POST":
@@ -216,11 +218,23 @@ class ComplaintListCreateView(ListCreateAPIView):
             "category"       : data.get("category", "Other"),
             "duration"       : data.get("duration"),   # "N unit" format → Duration_Hours
         })
+
+        # 1c: refuse to save if the ML model is not loaded.
+        if priority == "Unknown":
+            from rest_framework.exceptions import APIException
+
+            class ServiceUnavailable(APIException):
+                status_code = 503
+                default_code = "service_unavailable"
+
+            raise ServiceUnavailable(
+                detail="ML model is currently unavailable. Please try again shortly."
+            )
+
         serializer.save(
             submitted_by=self.request.user,
             predicted_priority=priority,
             status="Pending",
-            support_count=0,
             created_at=timezone.now(),
         )
         logger.info(
@@ -233,7 +247,7 @@ class ComplaintListCreateView(ListCreateAPIView):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         # Return full representation (with predicted_priority, status, etc.)
-        instance = Complaint.objects.get(pk=serializer.instance.pk)
+        instance = Complaint.objects.annotate(votes_total=Count("votes")).get(pk=serializer.instance.pk)
         return Response(
             ComplaintSerializer(instance, context={"request": request}).data,
             status=status.HTTP_201_CREATED,
@@ -251,12 +265,14 @@ class ComplaintDetailView(RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         user = self.request.user
         if not user.is_authenticated:
-            return Complaint.objects.filter(complaint_type="Public")
-        if user.is_staff:
-            return Complaint.objects.all()
-        return Complaint.objects.filter(
-            submitted_by=user
-        ) | Complaint.objects.filter(complaint_type="Public")
+            qs = Complaint.objects.filter(complaint_type="Public")
+        elif user.is_staff:
+            qs = Complaint.objects.all()
+        else:
+            qs = Complaint.objects.filter(
+                submitted_by=user
+            ) | Complaint.objects.filter(complaint_type="Public")
+        return qs.annotate(votes_total=Count("votes"))
 
     def get_serializer_context(self):
         return {"request": self.request}
@@ -276,7 +292,7 @@ class ComplaintStatusUpdateView(APIView):
 
     def patch(self, request, pk):
         try:
-            complaint = Complaint.objects.get(pk=pk)
+            complaint = Complaint.objects.annotate(votes_total=Count("votes")).get(pk=pk)
         except Complaint.DoesNotExist:
             return Response({"error": "Complaint not found."}, status=status.HTTP_404_NOT_FOUND)
 
@@ -297,7 +313,9 @@ class MyComplaintsView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        complaints = Complaint.objects.filter(submitted_by=request.user)
+        complaints = Complaint.objects.filter(
+            submitted_by=request.user
+        ).annotate(votes_total=Count("votes"))
         serializer = ComplaintSerializer(
             complaints, many=True, context={"request": request}
         )
@@ -307,7 +325,7 @@ class MyComplaintsView(APIView):
 class PublicComplaintsView(APIView):
     """
     GET /api/complaints/public/
-    Returns all public complaints sorted by support_count descending.
+    Returns all public complaints sorted by votes_total descending.
     Accessible without authentication (for browsing trending issues).
     """
     permission_classes = [AllowAny]
@@ -315,7 +333,7 @@ class PublicComplaintsView(APIView):
     def get(self, request):
         complaints = Complaint.objects.filter(
             complaint_type="Public"
-        ).order_by("-support_count", "-created_at")
+        ).annotate(votes_total=Count("votes")).order_by("-votes_total", "-created_at")
         serializer = ComplaintSerializer(
             complaints, many=True, context={"request": request}
         )
@@ -353,9 +371,10 @@ class ComplaintVoteView(APIView):
         voted = ComplaintVote.objects.filter(
             complaint=complaint, student=request.user
         ).exists()
+        count = ComplaintVote.objects.filter(complaint=complaint).count()
         return Response({
             "user_has_voted":  voted,
-            "support_count":   complaint.support_count,
+            "support_count":   count,
         })
 
     def post(self, request, pk):
@@ -369,22 +388,24 @@ class ComplaintVoteView(APIView):
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        try:
-            ComplaintVote.objects.create(complaint=complaint, student=request.user)
-        except IntegrityError:
-            return Response(
-                {"error": "You have already supported this complaint."},
-                status=status.HTTP_409_CONFLICT,
-            )
+        with transaction.atomic():
+            try:
+                ComplaintVote.objects.create(complaint=complaint, student=request.user)
+            except IntegrityError:
+                return Response(
+                    {"error": "You have already supported this complaint."},
+                    status=status.HTTP_409_CONFLICT,
+                )
 
-        # Update support_count and re-run priority calculation
-        complaint.support_count = ComplaintVote.objects.filter(complaint=complaint).count()
-        complaint.predicted_priority = apply_priority_update(complaint)
-        complaint.save(update_fields=["support_count", "predicted_priority"])
+            count = ComplaintVote.objects.filter(complaint=complaint).count()
+            new_priority = apply_priority_update(complaint, count)
+            if new_priority != "Unknown":
+                complaint.predicted_priority = new_priority
+                complaint.save(update_fields=["predicted_priority"])
 
         return Response({
             "message":        "Support added.",
-            "support_count":  complaint.support_count,
+            "support_count":  count,
             "predicted_priority": complaint.predicted_priority,
         }, status=status.HTTP_201_CREATED)
 
@@ -393,24 +414,26 @@ class ComplaintVoteView(APIView):
         if not complaint:
             return Response({"error": "Not found."}, status=status.HTTP_404_NOT_FOUND)
 
-        deleted, _ = ComplaintVote.objects.filter(
-            complaint=complaint, student=request.user
-        ).delete()
+        with transaction.atomic():
+            deleted, _ = ComplaintVote.objects.filter(
+                complaint=complaint, student=request.user
+            ).delete()
 
-        if deleted == 0:
-            return Response(
-                {"error": "You have not supported this complaint."},
-                status=status.HTTP_404_NOT_FOUND,
-            )
+            if deleted == 0:
+                return Response(
+                    {"error": "You have not supported this complaint."},
+                    status=status.HTTP_404_NOT_FOUND,
+                )
 
-        # Recalculate support count + priority
-        complaint.support_count = ComplaintVote.objects.filter(complaint=complaint).count()
-        complaint.predicted_priority = apply_priority_update(complaint)
-        complaint.save(update_fields=["support_count", "predicted_priority"])
+            count = ComplaintVote.objects.filter(complaint=complaint).count()
+            new_priority = apply_priority_update(complaint, count)
+            if new_priority != "Unknown":
+                complaint.predicted_priority = new_priority
+                complaint.save(update_fields=["predicted_priority"])
 
         return Response({
             "message":       "Support removed.",
-            "support_count": complaint.support_count,
+            "support_count": count,
             "predicted_priority": complaint.predicted_priority,
         })
 

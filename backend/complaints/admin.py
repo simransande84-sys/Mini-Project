@@ -9,17 +9,21 @@ from .models import Complaint, ComplaintVote, StudentProfile
 
 @admin.register(Complaint)
 class ComplaintAdmin(admin.ModelAdmin):
-    list_display  = ("id", "short_text", "complaint_type", "category", "block",
-                     "floor", "duration", "predicted_priority", "status", "support_count", "created_at")
-    list_filter   = ("predicted_priority", "status", "complaint_type", "category", "block")
+    list_display  = ("id", "short_text", "submitted_by", "complaint_type", "category", "block",
+                     "floor", "room_no", "duration", "predicted_priority", "status", "votes_count", "created_at")
+    list_filter   = ("predicted_priority", "status", "complaint_type", "category", "block", "floor")
     search_fields = ("complaint_text",)
-    readonly_fields = ("predicted_priority", "support_count", "created_at")
+    readonly_fields = ("predicted_priority", "votes_count", "created_at")
     ordering      = ("-created_at",)
     list_per_page = 25
 
     def short_text(self, obj):
         return obj.complaint_text[:80] + "…" if len(obj.complaint_text) > 80 else obj.complaint_text
     short_text.short_description = "Complaint"
+
+    def votes_count(self, obj):
+        return getattr(obj, "votes_total", None) if getattr(obj, "votes_total", None) is not None else obj.votes.count()
+    votes_count.short_description = "Support Count"
 
 
 @admin.register(ComplaintVote)

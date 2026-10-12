@@ -93,7 +93,13 @@ class PredictOnlySerializer(serializers.Serializer):
     )
     block             = serializers.ChoiceField(choices=Complaint.Block.choices, required=False, allow_blank=True)
     floor             = serializers.ChoiceField(choices=Complaint.Floor.choices, required=False, allow_blank=True)
-    students_affected = serializers.IntegerField(min_value=1, default=1)
+    duration          = serializers.ChoiceField(
+        choices=Complaint.Duration.choices,
+        required=False,
+        allow_null=True,
+        allow_blank=True,
+        default=None,
+    )
     support_count     = serializers.IntegerField(min_value=0, default=0)
 
     def validate_complaint_text(self, value):
@@ -146,9 +152,12 @@ class RegisterSerializer(serializers.ModelSerializer):
         return value
 
     def validate_email(self, value):
-        if User.objects.filter(email=value).exists():
-            raise serializers.ValidationError("An account with this email already exists.")
-        return value
+        cleaned_email = (value or "").strip().lower()
+        if not cleaned_email:
+            raise serializers.ValidationError("Email is required.")
+        if User.objects.filter(email__iexact=cleaned_email).exists():
+            raise serializers.ValidationError("This email is already registered.")
+        return cleaned_email
 
     def validate_roll_no(self, value):
         if StudentProfile.objects.filter(roll_no=value).exists():
@@ -227,11 +236,19 @@ class ComplaintSerializer(serializers.ModelSerializer):
     """
     Full read serializer — used for list, detail, and admin views.
     Includes computed fields: submitted_by_username, user_has_voted.
+
+    Privacy rule (D4):
+      For PUBLIC complaints, submitted_by_username is returned as "Anonymous"
+      and room_no is blanked for everyone EXCEPT:
+        - the complaint owner (submitted_by == request.user)
+        - staff/admin (request.user.is_staff)
+      Private complaints keep their existing behaviour (already restricted
+      at the queryset level — non-owners never receive them).
     """
     submitted_by_username = serializers.SerializerMethodField()
     user_has_voted        = serializers.SerializerMethodField()
     predicted_priority    = serializers.CharField(read_only=True)
-    support_count         = serializers.IntegerField(read_only=True)
+    support_count         = serializers.SerializerMethodField()
     created_at            = serializers.DateTimeField(read_only=True)
 
     class Meta:
@@ -244,7 +261,6 @@ class ComplaintSerializer(serializers.ModelSerializer):
             "block",
             "floor",
             "room_no",
-            "students_affected",
             "duration",
             "support_count",
             "predicted_priority",
@@ -254,7 +270,24 @@ class ComplaintSerializer(serializers.ModelSerializer):
             "created_at",
         ]
 
+    def _is_privileged(self, obj):
+        """True when the requester is staff or the complaint's own submitter."""
+        request = self.context.get("request")
+        if not request or not request.user or not request.user.is_authenticated:
+            return False
+        return request.user.is_staff or (
+            obj.submitted_by and obj.submitted_by == request.user
+        )
+
+    def get_support_count(self, obj):
+        if hasattr(obj, "votes_total") and obj.votes_total is not None:
+            return obj.votes_total
+        return obj.votes.count()
+
     def get_submitted_by_username(self, obj):
+        # D4: anonymise public complaints for non-privileged viewers.
+        if obj.complaint_type == "Public" and not self._is_privileged(obj):
+            return "Anonymous"
         if obj.submitted_by:
             return obj.submitted_by.first_name or obj.submitted_by.username
         return "Anonymous"
@@ -268,6 +301,13 @@ class ComplaintSerializer(serializers.ModelSerializer):
             ).exists()
         return False
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        # D4: blank room_no for public complaints viewed by non-privileged users.
+        if instance.complaint_type == "Public" and not self._is_privileged(instance):
+            data["room_no"] = ""
+        return data
+
     def validate_complaint_text(self, value):
         return validate_complaint_text_content(value)
 
@@ -277,10 +317,17 @@ class ComplaintCreateSerializer(serializers.ModelSerializer):
     Write serializer — used only for POST /api/complaints/.
     submitted_by is NOT accepted from the client; it is set from the JWT token.
     predicted_priority and status are set by the server.
+    `duration` is required — the ML model uses it and the frontend always sends it.
     """
-    block   = serializers.CharField(required=False, allow_blank=True)
-    floor   = serializers.CharField(required=False, allow_blank=True)
-    room_no = serializers.CharField(required=False, allow_blank=True)
+    block    = serializers.CharField(required=False, allow_blank=True)
+    floor    = serializers.CharField(required=False, allow_blank=True)
+    room_no  = serializers.CharField(required=False, allow_blank=True)
+    # 1e: duration is required on creation; blank/missing is rejected with 400.
+    duration = serializers.ChoiceField(
+        choices=Complaint.Duration.choices,
+        required=True,
+        error_messages={"required": "duration is required.", "invalid_choice": "Invalid duration value."},
+    )
 
     class Meta:
         model  = Complaint
@@ -291,17 +338,11 @@ class ComplaintCreateSerializer(serializers.ModelSerializer):
             "block",
             "floor",
             "room_no",
-            "students_affected",
             "duration",
         ]
 
     def validate_complaint_text(self, value):
         return validate_complaint_text_content(value)
-
-    def validate_students_affected(self, value):
-        if value < 1:
-            raise serializers.ValidationError("students_affected must be at least 1.")
-        return value
 
     def validate(self, attrs):
         request = self.context.get("request")

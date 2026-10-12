@@ -326,7 +326,7 @@ def escalate_priority(base_priority: str, support_count: int) -> str:
         return PRIORITY_ORDER[min(idx + 1, 3)]
 
 
-def apply_priority_update(complaint) -> str:
+def apply_priority_update(complaint, support_count: int = None) -> str:
     """
     Re-run ML prediction on the complaint's current field values,
     then apply escalation rules, and return the updated priority string.
@@ -337,11 +337,18 @@ def apply_priority_update(complaint) -> str:
     Parameters
     ----------
     complaint : Complaint model instance
+    support_count : int, optional
+        Current number of student support votes. Derived from votes if None.
 
     Returns
     -------
-    str  — the new priority to store in complaint.predicted_priority
+    str — the new priority to store in complaint.predicted_priority
     """
+    if support_count is None:
+        support_count = getattr(complaint, "votes_total", None)
+        if support_count is None:
+            support_count = complaint.votes.count()
+
     # Step 1: Re-run the ML model with current complaint data
     ml_priority = predict_priority({
         "complaint_text" : complaint.complaint_text,
@@ -353,10 +360,10 @@ def apply_priority_update(complaint) -> str:
     })
 
     # Step 2: Apply escalation on top of ML result
-    final_priority = escalate_priority(ml_priority, complaint.support_count)
+    final_priority = escalate_priority(ml_priority, support_count)
 
     logger.info(
         "Priority update — ML: %s → Escalated: %s (support_count=%d)",
-        ml_priority, final_priority, complaint.support_count,
+        ml_priority, final_priority, support_count,
     )
     return final_priority

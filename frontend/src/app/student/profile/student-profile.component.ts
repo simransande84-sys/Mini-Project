@@ -192,7 +192,7 @@ export class StudentProfileComponent implements OnInit {
   saving  = signal(false);
 
   blocks = ['A', 'B', 'C', 'D'];
-  floors = ['Ground', 'First', 'Second', 'Third'];
+  floors = ['Ground', 'First', 'Second', 'Third', 'Fourth'];
 
   form = { block: '', floor: '', room_no: '', phone: '' };
 

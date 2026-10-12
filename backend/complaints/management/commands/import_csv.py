@@ -8,6 +8,7 @@ Usage:
     python manage.py import_csv
     python manage.py import_csv --file path/to/other.csv
     python manage.py import_csv --clear   # deletes existing records first
+    python manage.py import_csv --dry-run # parses CSV and shows counts without saving
 
 Strategy:
     - Uses the Priority column from the CSV as predicted_priority
@@ -27,38 +28,6 @@ from django.utils import timezone
 from complaints.models import Complaint
 
 
-# Map CSV column values → model choice values
-FLOOR_MAP = {
-    "ground": "Ground",
-    "first":  "First",
-    "second": "Second",
-    "third":  "Third",
-}
-
-CATEGORY_MAP = {
-    "cleanliness":  "Cleanliness",
-    "mess":         "Mess",
-    "washroom":     "Washroom",
-    "furniture":    "Furniture",
-    "water cooler": "Water Cooler",
-    "security":     "Security",
-    "electricity":  "Electricity",
-    "wifi":         "WiFi",
-}
-
-PRIORITY_MAP = {
-    "critical": "Critical",
-    "high":     "High",
-    "medium":   "Medium",
-    "low":      "Low",
-}
-
-TYPE_MAP = {
-    "public":  "Public",
-    "private": "Private",
-}
-
-
 class Command(BaseCommand):
     help = "Import hostel complaints from the CSV file into PostgreSQL."
 
@@ -67,7 +36,7 @@ class Command(BaseCommand):
             "--file",
             type=str,
             default=None,
-            help="Path to the CSV file. Defaults to the project-root CSV.",
+            help="Path to the CSV file. Defaults to the project-root Dataset_duration.csv.",
         )
         parser.add_argument(
             "--clear",
@@ -75,32 +44,42 @@ class Command(BaseCommand):
             default=False,
             help="Delete all existing complaints before importing.",
         )
+        parser.add_argument(
+            "--dry-run",
+            action="store_true",
+            default=False,
+            help="Parse CSV and validate mappings without modifying the database.",
+        )
 
     def handle(self, *args, **options):
+        dry_run = options["dry_run"]
+
         # ── Resolve CSV path ───────────────────────────────────────────
         if options["file"]:
             csv_path = options["file"]
         else:
-            # Default: two levels up from manage.py (project root)
-            base = os.path.dirname(  # backend/
-                os.path.dirname(     # complaints/
-                    os.path.dirname( # management/
-                        os.path.abspath(__file__)
-                    )
-                )
-            )
+            # Default: project root (above backend)
+            import_csv_dir = os.path.dirname(os.path.abspath(__file__))
+            commands_dir = import_csv_dir
+            management_dir = os.path.dirname(commands_dir)
+            complaints_dir = os.path.dirname(management_dir)
+            backend_dir = os.path.dirname(complaints_dir)
+            project_root = os.path.dirname(backend_dir)
+
             csv_path = os.path.join(
-                os.path.dirname(base),  # hostelSenseAi/
-                "hostel_complaints_800_final (1).csv"
+                project_root,
+                "Dataset_duration.csv"
             )
 
         if not os.path.isfile(csv_path):
             raise CommandError(f"CSV file not found: {csv_path}")
 
         self.stdout.write(f"Reading: {csv_path}")
+        if dry_run:
+            self.stdout.write(self.style.WARNING("DRY RUN MODE ENABLED. Database will not be modified."))
 
         # ── Optionally clear existing records ──────────────────────────
-        if options["clear"]:
+        if options["clear"] and not dry_run:
             count = Complaint.objects.count()
             Complaint.objects.all().delete()
             self.stdout.write(
@@ -111,6 +90,14 @@ class Command(BaseCommand):
         complaints  = []
         skipped     = 0
         row_num     = 0
+
+        # Build dynamic maps from model choices for case-insensitive lookup
+        category_map = {choice[0].lower(): choice[0] for choice in Complaint.Category.choices}
+        floor_map = {choice[0].lower(): choice[0] for choice in Complaint.Floor.choices}
+        priority_map = {choice[0].lower(): choice[0] for choice in Complaint.Priority.choices}
+        status_map = {choice[0].lower(): choice[0] for choice in Complaint.Status.choices}
+        duration_map = {choice[0].lower(): choice[0] for choice in Complaint.Duration.choices}
+        type_map = {choice[0].lower(): choice[0] for choice in Complaint.ComplaintType.choices}
 
         with open(csv_path, encoding="utf-8", errors="replace") as f:
             reader = csv.DictReader(f)
@@ -125,32 +112,29 @@ class Command(BaseCommand):
                         continue
 
                     # Normalise and map each field
-                    complaint_type = TYPE_MAP.get(
-                        row.get("Complaint_Type", "Public").strip().lower(),
-                        "Public"
-                    )
+                    complaint_type_raw = row.get("Complaint_Type", "Public").strip().lower()
+                    complaint_type = type_map.get(complaint_type_raw, "Public")
+                    
                     block = row.get("Block", "A").strip().upper()
                     if block not in ("A", "B", "C", "D"):
                         block = "A"
 
                     floor_raw = row.get("Floor", "Ground").strip().lower()
-                    floor = FLOOR_MAP.get(floor_raw, "Ground")
+                    floor = floor_map.get(floor_raw, "Ground")
 
                     category_raw = row.get("Category", "Other").strip().lower()
-                    category = CATEGORY_MAP.get(category_raw, "Other")
-
-                    try:
-                        students_affected = int(row.get("Students_Affected", 1))
-                    except (ValueError, TypeError):
-                        students_affected = 1
-
-                    try:
-                        support_count = int(row.get("Support_Count", 0))
-                    except (ValueError, TypeError):
-                        support_count = 0
+                    category = category_map.get(category_raw, "Other")
 
                     priority_raw = row.get("Priority", "Low").strip().lower()
-                    predicted_priority = PRIORITY_MAP.get(priority_raw, "Low")
+                    predicted_priority = priority_map.get(priority_raw, "Low")
+                    
+                    status_raw = row.get("Status", "Pending").strip().lower()
+                    status = status_map.get(status_raw, "Pending")
+                    
+                    room_no = row.get("Room_No", "").strip()
+                    
+                    duration_raw = row.get("Duration_Standardized", "").strip().lower()
+                    duration = duration_map.get(duration_raw, None)
 
                     # Parse date (DD-MM-YYYY format in the CSV)
                     date_str = row.get("Complaint_Date", "").strip()
@@ -167,8 +151,9 @@ class Command(BaseCommand):
                             category=category,
                             block=block,
                             floor=floor,
-                            students_affected=students_affected,
-                            support_count=support_count,
+                            room_no=room_no,
+                            duration=duration,
+                            status=status,
                             predicted_priority=predicted_priority,
                             created_at=created_at,
                         )
@@ -181,6 +166,10 @@ class Command(BaseCommand):
         self.stdout.write(
             f"Parsed {len(complaints)} valid rows, skipped {skipped}."
         )
+
+        if dry_run:
+            self.stdout.write(self.style.SUCCESS("Dry run complete. No records were imported."))
+            return
 
         # ── Bulk insert in one transaction ─────────────────────────────
         with transaction.atomic():

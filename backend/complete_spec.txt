@@ -1,0 +1,120 @@
+<USER_REQUEST>
+You are working on HostelSense AI (Django REST + PostgreSQL + Angular + trained scikit-learn model).
+Implement the approved database/schema fixes below, in phases, with verification gates.
+
+═══════════════ GLOBAL RULES ═══════════════
+- Do NOT delete, edit, or rewrite any existing migration file. Only add new ones.
+- Do NOT touch the ML artifacts in /saved_model or the training dataset/notebooks.
+- Do NOT drop, alter, or touch the table complaints_waterlevelreading.
+- Do NOT run destructive commands (flush, reset_db, DROP, TRUNCATE, import_csv --clear).
+- Do NOT change architecture or add new features.
+- Preserve all working behavior: JWT auth, public/private visibility, voting, escalation, status updates.
+- After each phase, run: python manage.py check, python manage.py makemigrations --check --dry-run (except where I say a migration is expected), and python manage.py test. Report results.
+- STOP and wait for my confirmation at every "GATE".
+
+═══════════════ DECISIONS (edit before use) ═══════════════
+D1 Block D: keep A, B, C, D as allowed choices (do not remove any block that existing rows may use).
+D2 Floors: add "Fourth" ("Fourth Floor") to the allowed floors.
+D3 Categories: extend the app's categories to the 29 values the model was trained on, and keep "Other".
+   Trained values: AC, Cleanliness, Door, Drainage, Electricity, Fan, Fire Safety, Furniture, Internet, Laundry, Leakage, Lift, Light, Mattress, Medical, Mess, Noise, Parking, Pest Control, Ragging/Harassment, Room Allocation, Security, Structural, Study Room, Washroom, Water Cooler, Water Supply, WiFi, Window.
+D4 Public feed privacy: for public complaints, hide submitted_by_username and room_no from everyone except the complaint owner and staff. Show "Anonymous" instead of the name. block and floor remain visible.
+D5 Imported complaints' old support_count values: discard (votes become the only source of truth).
+D6 complaints_waterlevelreading: leave completely untouched.
+
+═══════════════ PHASE 0: SYNC AND VERIFY (no code changes) ═══════════════
+1. Confirm local models.py has no students_affected and that its removal migration (0005 or similar) exists and is applied. List all files under complaints/migrations/ and run: python manage.py showmigrations complaints
+2. Search the entire repo (backend + frontend + tests) for "students_affected" and "Students_Affected" and list every remaining reference with file and line.
+3. Give me these read-only SQL queries' results, or tell me to run them if you have no DB access:
+   - SELECT column_name FROM information_schema.columns WHERE table_name='complaints_complaint';
+   - SELECT count(*) FROM complaints_complaint WHERE created_at IS NULL;
+   - SELECT DISTINCT block, floor FROM complaints_studentprofile;
+   - SELECT DISTINCT block, floor, category FROM complaints_complaint;
+   - SELECT c.id, c.support_count, count(v.id) AS real_votes FROM complaints_complaint c LEFT JOIN complaints_complaintvote v ON v.complaint_id=c.id GROUP BY c.id HAVING c.support_count <> count(v.id);
+4. Remind me to take a backup: pg_dump -U postgres hostelsense_db > backup_before_schema_fixes.sql
+GATE: report findings and wait for my "continue".
+
+═══════════════ PHASE 1: CODE-ONLY FIXES (no migration expected) ═══════════════
+1a. Finish students_affected cleanup everywhere it still appears:
+    - management/commands/import_csv.py (remove the field and its parsing)
+    - backend/test_duration_flow.py (remove it from the payload)
+    - frontend: complaint.model.ts (all 3 interfaces), submit-complaint.component.ts (form defaults, destructuring, create call, reset)
+    - the stale comment in utils.py can stay, it is harmless.
+1b. Privacy (D4): in ComplaintSerializer, override to_representation (or use get_ methods) so that for complaints with complaint_type == "Public", submitted_by_username becomes "Anonymous" and room_no is omitted/blank unless request.user is staff or the complaint's submitted_by. Private complaints keep current behavior. Update the frontend only if it breaks on a missing room_no. Add tests in test_privacy.py: anonymous user, other student, owner, and admin viewing a public complaint.
+1c. In ComplaintListCreateView.perform_create, if predict_priority returns "Unknown" or the model is not loaded, return HTTP 503 and do NOT save the complaint. Apply the same guard in ComplaintVoteView post/delete (do not overwrite priority with "Unknown").
+1d. PredictOnlySerializer: add an optional duration ChoiceField (Complaint.Duration.choices, required=False, allow_null=True, allow_blank=True). Make sure the frontend preview call in submit-complaint sends the selected duration.
+1e. ComplaintCreateSerializer: make duration required on creation (reject missing/blank), since the frontend already requires it and the ML model uses it.
+GATE: show diff summary and test results.
+
+═══════════════ PHASE 2: CHOICES ALIGNMENT AND VALIDATION ═══════════════
+2a. models.py: update Complaint.Floor (add Fourth) and Complaint.Category (29 trained values + Other) per D2/D3. Keep Block as A-D. Add "13 days" to Complaint.Duration choices to match the dataset.
+2b. StudentProfile.block and floor: add choices=Complaint.Block.choices / Complaint.Floor.choices (keep blank=True, default="").
+2c. serializers.py: in ComplaintCreateSerializer remove the plain CharField overrides for block/floor/room_no only if validation still works, otherwise keep them (values are always overwritten from the student's profile, which is now validated). Ensure StudentProfileSerializer rejects invalid block/floor values with a clear 400 error.
+2d. Frontend: update the category list in submit-complaint.component.ts, the floor and block dropdowns in student-profile.component.ts and complete-profile.component.ts, and duration options (add "13 days"), so they match the backend exactly. Better: keep each list defined once per component and verify there is no mismatch.
+2e. Before generating migrations, check that no existing complaint or profile row contains a value outside the new choices (use the Phase 0 query results). Report any.
+2f. Run makemigrations. EXPECTED: AlterField migrations only (choices changes, no SQL changes on PostgreSQL). Show me the generated migration file before applying. Then apply.
+GATE.
+
+═══════════════ PHASE 3: created_at ═══════════════
+3a. Backfill: write a data migration (RunPython) that sets created_at = now for rows where it is NULL (none are expected, but be safe).
+3b. Change the field to: created_at = models.DateTimeField(default=timezone.now). That means NOT NULL, no null=True, no blank=True. Keep the explicit created_at=timezone.now() in perform_create, or remove it since the default covers it.
+3c. Keep import_csv setting created_at explicitly from the CSV date.
+3d. Show me the migration(s) before applying. Apply, run tests.
+GATE.
+
+═══════════════ PHASE 4: support_count BECOMES DERIVED (two steps) ═══════════════
+STEP 4A (code only, column still exists):
+- Add a queryset helper, for example Complaint.objects.with_support_count() or an annotate(support_count=Count("votes")) applied in every view that returns complaints: ComplaintListCreateView, ComplaintDetailView, MyComplaintsView, PublicComplaintsView, dashboard if needed, and the vote GET.
+- Because the annotation name would clash with the model field, first rename the stored field's usage: read the annotated value (use the alias votes_total in the queryset and map it to the API's "support_count" key in ComplaintSerializer via source="votes_total", with a fallback to a votes.count() query when the attribute is missing, e.g. for a freshly created instance).
+- The public feed must still sort by most-supported (order_by("-votes_total", "-created_at")).
+- ComplaintVoteView: stop writing support_count. After create/delete of a vote, wrap the vote operation and priority recalculation in transaction.atomic(), compute count = ComplaintVote.objects.filter(complaint=complaint).count(), and pass that count to the escalation logic. Change apply_priority_update(complaint) to accept the count as an argument (apply_priority_update(complaint, support_count)) and update all callers and tests.
+- API response shape must stay identical: support_count still appears in every complaint response and in vote responses, so the frontend needs no change.
+- Remove support_count from perform_create's serializer.save(...) and from import_csv (D5: discard imported values), and from admin readonly_fields/list_display (show a computed votes column instead using a small admin method).
+- Add tests: first vote on an imported-style complaint gives count 1 with no crash; vote then unvote returns 0; deleting a user who voted reduces the count; two different users voting gives 2; the same user voting twice returns 409.
+GATE: show test results, and manually confirm in the API that counts match ComplaintVote rows.
+
+STEP 4B (only after I confirm 4A works): add a migration that removes the support_count column (migrations.RemoveField). Show it to me first. Remind me to confirm the backup exists. Apply. Run all tests.
+GATE.
+
+═══════════════ PHASE 5: import_csv FIXES ═══════════════
+- Default file path: Dataset_duration.csv at the repo root (replace the missing "hostel_complaints_800_final (1).csv").
+- Map ALL 29 categories (case-insensitive) to the model choices; unknown values still fall back to "Other".
+- Floor map must include "fourth" -> "Fourth".
+- Read Room_No into room_no, Duration_Standardized into duration (only if it is a valid choice, otherwise NULL), and Status into status (mapped to valid choices, default Pending).
+- Remove students_affected and support_count handling.
+- Do NOT run this command against my database. Only verify it with a dry run: add a --dry-run flag that parses and prints counts per field value without writing anything, and show me the output.
+GATE.
+
+═══════════════ PHASE 6: SMALL CONSTRAINT CLEANUP (low risk) ═══════════════
+- ComplaintVote: replace unique_together with UniqueConstraint(fields=["complaint","student"], name="unique_vote_per_student_per_complaint"). Verify the generated migration does not change data and the constraint still blocks duplicates.
+- Admin: add room_no and submitted_by to ComplaintAdmin list_display and a list_filter for floor.
+- Do NOT remove profile_complete in this pass; leave it as is.
+- Do NOT add CheckConstraints or extra indexes in this pass.
+
+═══════════════ FINAL REPORT (required) ═══════════════
+At the end, give me:
+1. List of every file changed.
+2. List of every migration added, with its purpose.
+3. Test results (python manage.py test) and the output of python manage.py check and makemigrations --check.
+4. Any place where the frontend and backend choices could still disagree.
+5. Anything you skipped or were unsure about.
+6. Confirmation that complaints_waterlevelreading, historical migrations, and /saved_model were not touched.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-11T00:24:16+05:30.
+
+The user's current state is as follows:
+Active Document: e:\downloads\HostelSense-main\HostelSense-main\backend\complaints\serializers.py (LANGUAGE_PYTHON)
+Cursor is on line: 299
+Other open documents:
+- e:\downloads\HostelSense-main\HostelSense-main\backend\.gitignore (LANGUAGE_UNSPECIFIED)
+- e:\downloads\HostelSense-main\HostelSense-main\backend\complaints\management\commands\import_csv.py (LANGUAGE_PYTHON)
+- e:\downloads\HostelSense-main\HostelSense-main\backend\test_duration_flow.py (LANGUAGE_PYTHON)
+- e:\downloads\HostelSense-main\HostelSense-main\frontend\src\app\student\submit-complaint\submit-complaint.component.ts (LANGUAGE_TYPESCRIPT)
+- e:\downloads\HostelSense-main\HostelSense-main\backend\complaints\serializers.py (LANGUAGE_PYTHON)
+Running terminal commands:
+- python manage.py  runserver (in e:\downloads\HostelSense-main\HostelSense-main\backend, running for 13h30m52s)
+- npm start (in e:\downloads\HostelSense-main\HostelSense-main\frontend, running for 13h29m8s)
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.6 Flash (Medium) to Claude Sonnet 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

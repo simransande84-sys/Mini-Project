@@ -315,7 +315,13 @@ export class PublicFeedComponent implements OnInit {
   filterBlock    = '';
   sortBy         = 'support';
 
-  categories = ['Cleanliness', 'Mess', 'Washroom', 'Furniture', 'Water Cooler', 'Security', 'Electricity', 'WiFi', 'Other'];
+  categories = [
+    'AC', 'Cleanliness', 'Door', 'Drainage', 'Electricity', 'Fan', 'Fire Safety',
+    'Furniture', 'Internet', 'Laundry', 'Leakage', 'Lift', 'Light', 'Mattress',
+    'Medical', 'Mess', 'Noise', 'Parking', 'Pest Control', 'Ragging/Harassment',
+    'Room Allocation', 'Security', 'Structural', 'Study Room', 'Washroom',
+    'Water Cooler', 'Water Supply', 'WiFi', 'Window', 'Other'
+  ];
   blocks     = ['A', 'B', 'C', 'D'];
 
   constructor(

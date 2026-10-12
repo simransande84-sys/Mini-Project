@@ -59,7 +59,6 @@ def run_flow_tests():
             "complaint_text" : tc["complaint_text"],
             "complaint_type" : "Public",
             "category"       : tc["category"],
-            "students_affected": 1,
             "duration"       : tc["duration"],
         }
         resp = requests.post(f"{BASE}/complaints/", json=payload, headers=headers)

@@ -82,7 +82,7 @@ if not _db_password:
 DATABASES = {
     "default": {
         "ENGINE":   "django.db.backends.postgresql",
-        "NAME":     os.getenv("DB_NAME",     "hostelSenseAI_db"),
+        "NAME": os.getenv("DB_NAME", "hostelsense_db"),
         "USER":     os.getenv("DB_USER",     "postgres"),
         "PASSWORD": _db_password,
         "HOST":     os.getenv("DB_HOST",     "localhost"),

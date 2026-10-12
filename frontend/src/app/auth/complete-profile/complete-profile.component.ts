@@ -274,7 +274,7 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class CompleteProfileComponent {
   blocks = ['A', 'B', 'C', 'D'];
-  floors = ['Ground', 'First', 'Second', 'Third'];
+  floors = ['Ground', 'First', 'Second', 'Third', 'Fourth'];
   form   = { block: '', floor: '', room_no: '', phone: '' };
   loading = signal(false);
 
