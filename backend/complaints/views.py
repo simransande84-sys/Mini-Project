@@ -55,6 +55,7 @@ from .serializers import (
     UserSerializer,
 )
 from .utils import apply_priority_update, get_model_info, is_model_loaded, predict_priority
+from .water_level import fetch_blynk_water_data
 
 logger = logging.getLogger(__name__)
 
@@ -498,3 +499,24 @@ def dashboard_view(request):
         "monthly_trend":     monthly_data,
         "model_info":        get_model_info(),
     })
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Live Water Level Monitoring (Blynk Cloud IoT)
+# ─────────────────────────────────────────────────────────────────────────────
+
+@api_view(["GET"])
+@permission_classes([IsAdminUser])
+def water_level_view(request):
+    """
+    GET /api/water-level/
+    Retrieves the latest water level readings (V0 % and V1 cm) from Blynk Cloud.
+    Evaluates status (Critical, Low, Normal, High), triggers low-water email alert
+    when level drops below 15%, and returns structured metrics.
+    """
+    data = fetch_blynk_water_data()
+    if "error" in data:
+        # Return 503 Service Unavailable so client receives structured error detail
+        return Response(data, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+    return Response(data, status=status.HTTP_200_OK)
+

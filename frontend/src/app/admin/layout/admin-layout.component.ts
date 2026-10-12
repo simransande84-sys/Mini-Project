@@ -348,8 +348,7 @@ export class AdminLayoutComponent {
   navItems: NavItem[] = [
     { svgPath: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', label: 'Dashboard', route: '/admin/dashboard' },
     { svgPath: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6', label: 'All Complaints', route: '/admin/complaints' },
-    { svgPath: 'M18 20V10M12 20V4M6 20v-6', label: 'Analytics', route: '/admin/analytics' },
-    { svgPath: 'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z', label: 'Water Monitoring', route: '', soon: true },
+    { svgPath: 'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z', label: 'Water Monitoring', route: '/admin/water-monitoring' },
     { svgPath: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z', label: 'Settings', route: '', soon: true },
   ];
 

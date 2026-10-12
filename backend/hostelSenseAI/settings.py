@@ -13,7 +13,9 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ── Load .env ─────────────────────────────────────────────────────────────────
+# Checks backend/.env first, then project root .env
 load_dotenv(BASE_DIR / ".env", override=True)
+load_dotenv(BASE_DIR.parent / ".env", override=False)
 
 
 # ── Security ──────────────────────────────────────────────────────────────────
@@ -70,26 +72,29 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "hostelSenseAI.wsgi.application"
+# ── Database ─────────────────────────────────────────────────────────────────
 
-# ── Database — PostgreSQL Only ───────────────────────────────────────────────
+
 _db_password = os.getenv("DB_PASSWORD")
-if not _db_password:
-    from django.core.exceptions import ImproperlyConfigured
-    raise ImproperlyConfigured(
-        "DB_PASSWORD environment variable must be set in backend/.env to connect to PostgreSQL."
-    )
 
+if _db_password:
 DATABASES = {
-    "default": {
-        "ENGINE":   "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", "hostelsense_db"),
-        "USER":     os.getenv("DB_USER",     "postgres"),
-        "PASSWORD": _db_password,
-        "HOST":     os.getenv("DB_HOST",     "localhost"),
-        "PORT":     os.getenv("DB_PORT",     "5432"),
-    }
+"default": {
+"ENGINE": "django.db.backends.postgresql",
+"NAME": os.getenv("DB_NAME", "hostelsense_db"),
+"USER": os.getenv("DB_USER", "postgres"),
+"PASSWORD": _db_password,
+"HOST": os.getenv("DB_HOST", "localhost"),
+"PORT": os.getenv("DB_PORT", "5432"),
 }
-
+}
+else:
+DATABASES = {
+"default": {
+"ENGINE": "django.db.backends.sqlite3",
+"NAME": BASE_DIR / "db.sqlite3",
+}
+}
 
 
 # ── Password validation ───────────────────────────────────────────────────────
@@ -152,3 +157,18 @@ CORS_ALLOW_CREDENTIALS = True
 # ── ML model path ─────────────────────────────────────────────────────────────
 # Points to the saved_model/ folder in the project root (one level above backend/)
 ML_MODEL_DIR = BASE_DIR.parent / "saved_model"
+
+# ── Blynk IoT Cloud Configuration ─────────────────────────────────────────────
+BLYNK_DEVICE_TOKEN = os.getenv("BLYNK_DEVICE_TOKEN", "")
+BLYNK_SERVER_URL   = os.getenv("BLYNK_SERVER_URL", "https://blynk.cloud").rstrip("/")
+
+# ── Email Alert Configuration ─────────────────────────────────────────────────
+EMAIL_BACKEND       = os.getenv("EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
+EMAIL_HOST          = os.getenv("EMAIL_HOST", "smtp.gmail.com")
+EMAIL_PORT          = int(os.getenv("EMAIL_PORT", "587"))
+EMAIL_USE_TLS       = os.getenv("EMAIL_USE_TLS", "True") == "True"
+EMAIL_HOST_USER     = os.getenv("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
+DEFAULT_FROM_EMAIL  = os.getenv("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER or "noreply@hostelsense.local")
+ADMIN_EMAIL         = os.getenv("ADMIN_EMAIL", "")
+

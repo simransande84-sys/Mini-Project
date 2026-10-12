@@ -40,6 +40,10 @@ export const routes: Routes = [
         path: 'analytics',
         loadComponent: () => import('./admin/analytics/admin-analytics.component').then(m => m.AdminAnalyticsComponent)
       },
+      {
+        path: 'water-monitoring',
+        loadComponent: () => import('./admin/water-monitoring/water-monitoring.component').then(m => m.WaterMonitoringComponent)
+      },
     ]
   },
 

@@ -17,6 +17,7 @@ from .views import (
     PublicComplaintsView,
     ComplaintVoteView,
     dashboard_view,
+    water_level_view,
 )
 
 urlpatterns = [
@@ -39,7 +40,8 @@ urlpatterns = [
     path("complaints/<int:pk>/status/", ComplaintStatusUpdateView.as_view(), name="complaint-status"),
     path("complaints/<int:pk>/vote/",   ComplaintVoteView.as_view(),        name="complaint-vote"),
 
-    # ── Dashboard (admin only) ─────────────────────────────────────────
-    path("dashboard/", dashboard_view, name="dashboard"),
+    # ── Dashboard & Monitoring (admin only) ────────────────────────────
+    path("dashboard/",   dashboard_view,   name="dashboard"),
+    path("water-level/", water_level_view, name="water-level"),
 ]
 
